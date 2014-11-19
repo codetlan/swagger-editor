@@ -1,0 +1,140 @@
+swagger: '2.0'
+info:
+  title: Intrinno API
+  description: Intrinno API
+  version: "1.0.0"
+# the domain of the service
+host: intrinno.mx:9000
+# array of all schemes that your API supports
+schemes:
+  - http
+# will be prefixed to all paths
+basePath: /app/spec-files
+produces:
+  - application/json
+paths:
+  /sessions/forgot_password:
+    post:
+      summary: Sessions Forgot  Password
+      description: |
+        Preconditions: The email must be registered into the system. Postconditions: The system will send an email to reset password.
+      tags:
+        - Sessions
+      parameters:
+        - name: email
+          in: query
+          description: user@example.com
+          required: true
+          type: string
+      responses:
+        200:
+          description: Password reset
+          schema:
+            type: array
+            items:
+              $ref: Session
+        401:
+          description: Email is not registered or The user is not activated
+          schema:
+            type: array
+            items:
+              $ref: ErrorServer
+        500:
+          description: Some internal error occurs and the system
+          schema:
+            $ref: Error
+  /sessions/sign_up:
+    post:
+      summary: Sessions Sign Up
+      description: |
+        Preconditions: It requires that the user isn't already logged. Postconditions: The system will send an email confirmation and will create a register of the user into the database.
+      tags:
+        - Sessions
+      parameters:
+        - name: email
+          in: query
+          description: user@example.com
+          required: true
+          type: string
+        - name: password
+          in: query
+          description: password has a length greater than 5
+          required: true
+          type: string
+      responses:
+        200:
+          description: The system creates a new user into the database, this new user with consultant role and it isnt active. And the system sends an email confirmation to user@example.com.
+          schema:
+            type: array
+            items:
+              $ref: Signup
+        401:
+          description: Email already in use or Password length minimum is 6 or Please fill a valid email address
+          schema:
+            type: array
+            items:
+              $ref: ErrorServer
+        500:
+          description: Some internal error occurs and the system
+          schema:
+            $ref: Error
+definitions:
+  Session:
+    properties:
+      email:
+        type: string
+        value: user@example.com
+      token:
+        type: string
+        value: kasdlajsd.%1wa/,
+      succes:
+        type: boolean
+        value: true
+      total:
+        type: integer
+        value: 0
+  Signup:
+    properties:
+      status:
+        type: integer
+        value: 401
+      message:
+        type: string
+        value: Email is not registered or The user is not activated
+      data:
+        type: object
+        value: 
+           email: user@example.com
+           token: kasdlajsd.%1wa/
+      succes:
+        type: boolean
+        value: true
+      total:
+        type: integer
+        value: 0
+  ErrorServer:
+    properties:
+      status:
+        type: integer
+        value: 401
+      message:
+        type: string
+        value: Email is not registered or The user is not activated
+      data:
+        type: object
+        value: {}
+      succes:
+        type: boolean
+        value: false
+      total:
+        type: integer
+        value: 0
+  Error:
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      fields:
+        type: string
