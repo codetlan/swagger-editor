@@ -3,138 +3,57 @@ info:
   title: Intrinno API
   description: Intrinno API
   version: "1.0.0"
-# the domain of the service
+  # the domain of the service
 host: intrinno.mx:9000
-# array of all schemes that your API supports
+  # array of all schemes that your API supports
 schemes:
   - http
+  - https
 # will be prefixed to all paths
 basePath: /app/spec-files
 produces:
   - application/json
 paths:
-  /sessions/forgot_password:
+  /forgot_password:
     post:
       summary: Sessions Forgot  Password
       description: |
-        Preconditions: The email must be registered into the system. Postconditions: The system will send an email to reset password.
+        <b>Preconditions:</b> The email must be registered into the system. <br>
+        <b>Postconditions:</b> The system will send an email to reset password.
       tags:
         - Sessions
       parameters:
         - name: email
-          in: query
+          in: body
+          schema:
+           type: string
           description: user@example.com
           required: true
-          type: string
       responses:
         200:
           description: Password reset
           schema:
-            type: array
-            items:
-              $ref: Session
+            status  : 200
+            message : "Password Reset"
+            data    :
+              email : "user@example.com"
+            success : true
+            total   : 0
+        
         401:
-          description: Email is not registered or The user is not activated
+          description: Email is not registered or the user is not activated
           schema:
-            type: array
-            items:
-              $ref: ErrorServer
+            status  : 401
+            message : "Email is not registered/The user is not activated"
+            data    : {}
+            success : false
+            total   : 0
         500:
-          description: Some internal error occurs and the system
+          description: Some internal error occurs
           schema:
-            $ref: Error
-  /sessions/sign_up:
-    post:
-      summary: Sessions Sign Up
-      description: |
-        Preconditions: It requires that the user isn't already logged. Postconditions: The system will send an email confirmation and will create a register of the user into the database.
-      tags:
-        - Sessions
-      parameters:
-        - name: email
-          in: query
-          description: user@example.com
-          required: true
-          type: string
-        - name: password
-          in: query
-          description: password has a length greater than 5
-          required: true
-          type: string
-      responses:
-        200:
-          description: The system creates a new user into the database, this new user with consultant role and it isnt active. And the system sends an email confirmation to user@example.com.
-          schema:
-            type: array
-            items:
-              $ref: Signup
-        401:
-          description: Email already in use or Password length minimum is 6 or Please fill a valid email address
-          schema:
-            type: array
-            items:
-              $ref: ErrorServer
-        500:
-          description: Some internal error occurs and the system
-          schema:
-            $ref: Error
-definitions:
-  Session:
-    properties:
-      email:
-        type: string
-        value: user@example.com
-      token:
-        type: string
-        value: kasdlajsd.%1wa/,
-      succes:
-        type: boolean
-        value: true
-      total:
-        type: integer
-        value: 0
-  Signup:
-    properties:
-      status:
-        type: integer
-        value: 401
-      message:
-        type: string
-        value: Email is not registered or The user is not activated
-      data:
-        type: object
-        value: 
-           email: user@example.com
-           token: kasdlajsd.%1wa/
-      succes:
-        type: boolean
-        value: true
-      total:
-        type: integer
-        value: 0
-  ErrorServer:
-    properties:
-      status:
-        type: integer
-        value: 401
-      message:
-        type: string
-        value: Email is not registered or The user is not activated
-      data:
-        type: object
-        value: {}
-      succes:
-        type: boolean
-        value: false
-      total:
-        type: integer
-        value: 0
-  Error:
-    properties:
-      code:
-        type: integer
-        format: int32
-      message:
-        type: string
-      fields:
-        type: string
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+ 
