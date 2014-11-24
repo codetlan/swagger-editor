@@ -14,6 +14,254 @@ basePath: /app/spec-files
 produces:
   - application/json
 paths:
+  /sign_up:
+    post:
+      summary: Sessions Sign Up
+      description: |
+        <b>Preconditions:</b> It requires that the user isn't already logged. <br>
+        <b>Postconditions:</b> The system will send an email confirmation and will create a register of the user into the database.
+      tags:
+        - Sessions
+      parameters:
+        - name: email
+          in: body
+          schema:
+           type: string
+          description: user@example.com
+          required: true
+        - name: password
+          in: body
+          schema: 
+           type: string
+          description: "Password has a length greater than 5 - 'lkasjd%1,.0$AS'"
+          required: true
+      responses:
+        200:
+          description: Password reset
+          schema:
+            status  : 200
+            message : "Successful sign up"
+            data    :
+              email : "user@example.com"
+              token : "kasdlajsd.%1wa/"
+            success : true
+            total   : 0
+        
+        401:
+          description: Email already in use
+          schema:
+            status  : 401
+            message : "Email already in use"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /sign_in:
+    post:
+      summary: Sessions Sign In
+      description: |
+        <b>Preconditions:</b> It requires that the user is already register into the system.<br>
+        <b>Postconditions:</b> The system will create a cookie session for this client.
+      tags:
+        - Sessions
+      parameters:
+        - name: email
+          in: body
+          schema:
+           type: string
+          description: user@example.com
+          required: true
+        - name: password
+          in: body
+          schema: 
+           type: string
+          description: "Password has a length greater than 5 - 'lkasjd%1,.0$AS'"
+          required: true
+      responses:
+        200:
+          description: Sign In 
+          schema:
+            status  : 200
+            message : "Successful sign in"
+            data    :
+              _id   : "asdasd21323123asd"
+              email : "user@example.com"
+              firstName: "Name"
+              lastName: "Last Name"
+              role: "admin/consultant"
+              avatar: "avatar"
+            success : true
+            total   : 0
+        
+        401:
+          description: User is already sign in or Invalid credentials
+          schema:
+            status  : 401
+            message : "User is already sign in or Invalid credentials"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /sign_out:
+    post:
+      summary: Sessions Sign Out
+      description: |
+        <b>Postconditions:</b> If the user has a cookie session then the system will terminate it.
+      tags:
+        - Sessions
+      responses:
+        200:
+          description: Sign In 
+          schema:
+            status  : 200
+            message : "Successful Sign Out"
+            data    : {}
+            success : true
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /confirmation/?email=user@example.com&token=kasdlajsd.%1wa/:
+    get:
+      summary: Sessions Confirmation Email
+      description: |
+        <b>Preconditions:</b> The system sent an confirmation email to the user.<br>
+        <b>Postconditions:</b> The user will be activate into the database and it will create a cookie session.
+      tags:
+        - Sessions
+      responses:
+        200:
+          description: The system validates the email and token, creates a cookie session if one already exists, then it erase the old one and creates the new one. Finally redirects to the profile url 
+          schema:
+            status  : 200
+            message : "Successful Confirmation"
+            data    : {}
+            success : true
+            total   : 0
+        401:
+          description: Invalid email or Token
+          schema:
+            status  : 401
+            message : "The system can't validates the email and token, and redirects to a default url."
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /has_session:
+    post:
+      summary: Sessions Has session
+      tags:
+        - Sessions
+      responses:
+        200:
+          description: Has session 
+          schema:
+            status  : 200
+            message : "Successful has session"
+            data    :
+              _id   : "asdasd21323123asd"
+              email : "user@example.com"
+              firstName: "Name"
+              lastName: "Last Name"
+              role: "admin/consultant"
+              avatar: "avatar"
+            success : true
+            total   : 0
+        
+        401:
+          description: Your session has expired, please sign in again
+          schema:
+            status  : 401
+            message : "Your session has expired, please sign in again"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+  
+  /invite_user:
+    post:
+      summary: Sessions Invite User
+      parameters:
+        - name: email
+          in: body
+          schema:
+           type: string
+          description: user@example.com
+          required: true
+        - name: role
+          in: body
+          schema: 
+           type: string
+          description: consultant or admin
+          required: true
+      tags:
+        - Sessions
+      responses:
+        200:
+          description: Invite user 
+          schema:
+            status  : 200
+            message : "Invitation send"
+            data    :
+              email : "user@example.com"
+              token : "kasdlajsd.%1wa/"
+            success : true
+            total   : 0
+        
+        401:
+          description: "You do not have permissions or User was already activate or Please fill a valid email address or Please fill a valid role: admin or consultant address."
+          schema:
+            status  : 401
+            message : "You do not have permissions"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
   /forgot_password:
     post:
       summary: Sessions Forgot  Password
@@ -37,6 +285,7 @@ paths:
             message : "Password Reset"
             data    :
               email : "user@example.com"
+              token : "kasdlajsd.%1wa/"
             success : true
             total   : 0
         
@@ -55,5 +304,4 @@ paths:
             message : "Some internal error ocurrs"
             data    : {}
             success : false
-            total   : 0
- 
+            total   : 0  

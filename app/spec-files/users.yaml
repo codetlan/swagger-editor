@@ -1,0 +1,361 @@
+swagger: '2.0'
+info:
+  title: Intrinno API
+  description: Intrinno API
+  version: "1.0.0"
+  # the domain of the service
+host: intrinno.mx:9000
+  # array of all schemes that your API supports
+schemes:
+  - http
+  - https
+# will be prefixed to all paths
+basePath: /app/spec-files
+produces:
+  - application/json
+paths:
+  /users/index:
+    post:
+      summary: List users (paginate)
+      description: |
+        <b>Preconditions:</b> The user must be sign in into the server and he must have an admin role.
+      tags:
+        - Users
+      parameters:
+        - name: page
+          in: body
+          schema:
+           type: string
+          description: user@example.com
+          required: true
+        - name: usersPerPage
+          in: body
+          schema: 
+           type: string
+          description: "Password has a length greater than 5 - 'lkasjd%1,.0$AS'"
+          required: true
+        - name: filter
+          in: body
+          schema:
+            filter  :
+              role    : "admin/consultant"
+              blocked : "true/false"
+              group   : "Some random group"
+              serch   : "Some random name" 
+          description: "'filter': {role: 'admin/consultant', 'blocked': true/false, 'group': 'Some random group', 'search': 'Some random name'"
+          required: true
+      responses:
+        200:
+          description: List users
+          schema:
+            status  : 200
+            message : "Successful List users"
+            data      :
+              objects : 
+                _id   : "asdklajqwe123123"
+                email : "user@example.com"
+                role  : "admin/consultant"
+                avatar: 
+                  id  : "asdasd"
+                  name: "new_avatar.png"
+                  url : "https://aws3.amazon.com/asldkjalskd.png"
+                timestamps: 
+                  createdAt: "20-August-2014"
+                  updatedAt: "21-August-2014"
+                group : "Some random group" 
+        
+        401:
+          description: You do not have permissions
+          schema:
+            status  : 401
+            message : "You do not have permissions"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /users/update/:
+    post:
+      summary: Update His Own User Information (consultant or admin)
+      description: |
+        <b>Preconditions:</b> The user must be sign in into the server.<br>
+        <b>Postconditions:</b> The information will be update.
+      tags:
+        - Users
+      parameters:
+        - name: firstName
+          in: body
+          schema:
+           type: string
+          description: Name
+        - name: lastName
+          in: body
+          schema: 
+           type: string
+          description: "Last Name"
+        - name: avatar
+          in: body
+          schema:
+           _id  : asdasd
+           name : new_avatar.png
+           url  : https://aws3.amazon.com/asldkjalskd.png
+          description: "{'_id': 'asdasd', 'name': 'new_avatar.png', 'url': 'https://aws3.amazon.com/asldkjalskd.png'}"
+        - name: bio
+          in: body
+          schema: 
+           type: string
+          description: "Some random text"
+        - name: linkedin
+          in: body
+          schema:
+           type: string
+          description: "@user1234ca"
+        - name: twitter
+          in: body
+          schema: 
+           type: string
+          description: "@user1234ca"
+        - name: facebook
+          in: body
+          schema: 
+           type: string
+          description: "@user1234ca"
+        - name: website
+          in: body
+          schema:
+           type: string
+          description: www.example.com
+        - name: interests
+          in: body
+          schema: 
+           type: string
+          description: "Another random text"
+        - name: skills
+          in: body
+          schema:
+           type: string
+          description: A third random text
+        - name: old_password
+          in: body
+          schema: 
+           type: string
+          description: "123456"
+        - name: new_password
+          in: body
+          schema: 
+           type: string
+          description: "654321"
+        - name: birthday
+          in: body
+          schema:
+           type: string
+          description: "1991-12-12"
+        - name: jobs
+          in: body
+          schema: 
+           name   : developer
+           period : 2013-
+           company: Bussiness Stuff
+          description: "[{'name': 'developer', 'period': '2013-', 'company': 'Bussiness Stuff'}, ... ]"
+        - name: group
+          in: body
+          schema:
+           groupId: asdlk1290231ñlkdaskj
+           name   : New group
+      responses:
+        200:
+          description: Update User
+          schema:
+            status  : 200
+            message : "Successful update"
+            data    :
+              email    : user@example.com
+              firstName: Name
+              lastName : Last Name
+              avatar   : 
+               _id : asdasd
+               name: new_avatar.png
+               url : https://aws3.amazon.com/asldkjalskd.png
+              bio       : Some random text
+              linkedin  : "@user1234ca"
+              twitter   : "@user1234ca"
+              facebook  : "@user1234ca"
+              website   : www.example.com
+              interests : Another random text
+              skills    : A third random text
+              birthday  : 1991-12-12
+              jobs      : 
+               name   : developer
+               period : 2013-
+               company: Bussiness Stuff
+              group:
+               groupId: asdlk1290231ñlkdaskj
+               name   : New group
+            success : true
+            total   : 0
+        401:
+          description: The system can't find an active session
+          schema:
+            status  : 401
+            message : "You do not have permissions"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /users/show/:
+    post:
+      summary: Get Profile
+      description: |
+        <b>Preconditions:</b> The user must be sign in into the server.
+      tags:
+        - Users
+      responses:
+        200:
+          description: The system verifies the session of the current user. 
+          schema:
+            status  : 200
+            message : "Successful User"
+            data    :
+              email    : user@example.com
+              firstName: Name
+              lastName : Last Name
+              avatar   : 
+               _id : asdasd
+               name: new_avatar.png
+               url : https://aws3.amazon.com/asldkjalskd.png
+              bio       : Some random text
+              linkedin  : "@user1234ca"
+              twitter   : "@user1234ca"
+              facebook  : "@user1234ca"
+              website   : www.example.com
+              interests : Another random text
+              skills    : A third random text
+              birthday  : 1991-12-12
+              jobs      : 
+               name   : developer
+               period : 2013-
+               company: Bussiness Stuff
+              group:
+               groupId: asdlk1290231ñlkdaskj
+               name   : New group
+            success : true
+            total   : 0
+        401:
+          description: The system can't find an active session
+          schema:
+            status  : 401
+            message : "You do not have permissions"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /users/blocked:
+    post:
+      summary: Blocked User
+      description: |
+        <b>Preconditions:</b> The user must be sign in into the server and must have an admin role.<br>
+        <b>Postconditions:</b> Some user will be blocked.
+      parameters:
+        - name: _id
+          in: body
+          schema:
+           type: string
+          description: asdasd21323123asd
+      tags:
+        - Users
+      responses:
+        200:
+          description: Successful blocked
+          schema:
+            status     : 200
+            message    : "Successful blocked"
+            data       : 
+             _id       : asdasd21323123asd
+             email     : user@example.com
+             firstName : Name
+             lastName  : Last Name
+            success    : true
+            total      : 0
+        401:
+          description: The user doesn't have permissions to blocked a user or The email doesn't exist.
+          schema:
+            status  : 401
+            message : "You do not have permissions or Record not found"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /users/unblocked:
+    post:
+      summary: Unblocked User
+      description: |
+        <b>Preconditions:</b> The user must be sign in into the server and must have an admin role.<br>
+        <b>Postconditions:</b> Some user will be unblocked.
+      parameters:
+        - name: _id
+          in: body
+          schema:
+           type: string
+          description: asdasd21323123asd  
+      tags:
+        - Users
+      responses:
+        200:
+          description: Successful Unblocked 
+          schema:
+            status     : 200
+            message    : "Successful blocked"
+            data       : 
+             _id       : asdasd21323123asd
+             email     : user@example.com
+             firstName : Name
+             lastName  : Last Name
+            success    : true
+            total      : 0
+        401:
+          description: The user doesn't have permissions to unblocked a user or The email doesn't exist.
+          schema:
+            status  : 401
+            message : "You do not have permissions or Record not found"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0

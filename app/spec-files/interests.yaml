@@ -1,0 +1,252 @@
+swagger: '2.0'
+info:
+  title: Intrinno API
+  description: Intrinno API
+  version: "1.0.0"
+  # the domain of the service
+host: intrinno.mx:9000
+  # array of all schemes that your API supports
+schemes:
+  - http
+  - https
+# will be prefixed to all paths
+basePath: /app/spec-files
+produces:
+  - application/json
+paths:
+  /interests/index:
+    post:
+      summary: List Interests
+      tags:
+        - Interests
+      parameters:
+        - name: page
+          in: body
+          schema:
+           type: integer
+          description: "1"
+        - name: interestsPerPage
+          in: body
+          schema: 
+           type: integer
+          description: "20"
+      responses:
+        200:
+          description: List interests
+          schema:
+            status  : 200
+            message : "List interests"
+            data      :
+              objects : 
+                _id   : "asdklajqwe123123"
+                name : "Oficina"
+                blocked      : false
+                background: 
+                  name: "background.jpg"
+                  url : "https://aws3.amazon.com/asldkjalskd.png"
+                timestamps: 
+                  createdAt: "20-August-2014"
+                  updatedAt: "21-August-2014"
+            success : true
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /interests/create/:
+    post:
+      summary: Create Interest
+      tags:
+        - Interests
+      parameters:
+        - name: name
+          in: body
+          schema:
+           type: string
+          description: "Oficina"
+        - name: background
+          in: body
+          schema: 
+            name: "new_background.png"
+            url : "https://aws3.amazon.com/asldkjalskd.png"
+          description: "{'name': 'new_background.png', 'url': 'https://aws3.amazon.com/asldkjalsk123d.docx'}"
+      responses:
+        200:
+          description: The system verifies the session of the current user.
+          schema:
+            status  : 200
+            message : "Successful interest created"
+            data    :
+              _id   : "asdklajqwe123123"
+              name : "Oficina"
+              background: 
+                name: "background.jpg"
+                url : "https://aws3.amazon.com/asldkjalskd.png"
+              blocked: false
+              timestamps: 
+                createdAt: "20-August-2014"
+                updatedAt: "21-August-2014"
+            success : true
+            total   : 0
+        401:
+          description: The user doesn't have permissions to create
+          schema:
+            status  : 401
+            message : "The user doesn't have permissions to create"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /interests/update/:
+    post:
+      summary: Update Interest
+      parameters:
+        - name: _id
+          in: body
+          schema:
+           type: string
+          description: "asdlkj12nlvcxlñ9032"
+        - name: name
+          in: body
+          schema: 
+           type: string
+          description: "Some random name"
+        - name: background
+          in: body
+          schema: 
+            name: "background.jpg"
+            url : "https://aws3.amazon.com/asldkjalskd.png"
+          description: "{'name': 'background.jpg', 'url': 'https://…..'}"
+      tags:
+        - Interests
+      responses:
+        200:
+          description: The system verifies the session of the current user. 
+          schema:
+            status  : 200
+            message : "Successful Update Proposal"
+            data    :
+              _id   : "asdklajqwe123123"
+              name : "Oficina"
+              background: 
+                name: "background.jpg"
+                url : "https://aws3.amazon.com/asldkjalskd.png"
+              blocked: false
+              timestamps: 
+                createdAt: "20-August-2014"
+                updatedAt: "21-August-2014"
+            success : true
+            total   : 0
+        401:
+          description: The system can't find an active session
+          schema:
+            status  : 401
+            message : "You do not have permissions"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /interests/blocked:
+    post:
+      summary: Blocked Interest
+      parameters:
+        - name: _id
+          in: body
+          schema:
+           type: string
+          description: "as123123ldkajsldkj1231231"
+      tags:
+        - Interests
+      responses:
+        200:
+          description: The system verifies the session of the current user. 
+          schema:
+            status     : 200
+            message    : "Interest blocked"
+            data      :
+              _id   : "asdklajqwe123123"
+              name : "Oficina"
+              background: 
+                name: "background.jpg"
+                url : "https://aws3.amazon.com/asldkjalskd.png"
+              blocked: false
+              timestamps: 
+                createdAt: "20-August-2014"
+                updatedAt: "21-August-2014"
+            success    : true
+            total      : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /interests/unblocked:
+    post:
+      summary: Unblocked Interest
+      parameters:
+        - name: _id
+          in: body
+          schema:
+           type: string
+          description: asdasd21323123asd  
+      tags:
+        - Interests
+      responses:
+        200:
+          description: Interest unblocked
+          schema:
+            status     : 200
+            message    : "Interest unblocked"
+            data      :
+              _id   : "asdklajqwe123123"
+              name : "Oficina"
+              background: 
+                name: "background.jpg"
+                url : "https://aws3.amazon.com/asldkjalskd.png"
+              blocked: false
+              timestamps: 
+                createdAt: "20-August-2014"
+                updatedAt: "21-August-2014"
+            success    : true
+            total      : 0
+        401:
+          description: The user doesn't have permissions or record not found.
+          schema:
+            status  : 401
+            message : "The user doesn't have permissions or record not found"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0

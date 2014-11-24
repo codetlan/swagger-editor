@@ -1,0 +1,863 @@
+swagger: '2.0'
+info:
+  title: Intrinno API
+  description: Intrinno API
+  version: "1.0.0"
+  # the domain of the service
+host: intrinno.mx:9000
+  # array of all schemes that your API supports
+schemes:
+  - http
+  - https
+# will be prefixed to all paths
+basePath: /app/spec-files
+produces:
+  - application/json
+paths:
+  /challenges/index:
+    post:
+      summary: List challenges (paginate)
+      tags:
+        - Challenges
+      parameters:
+        - name: page
+          in: body
+          schema:
+           type: integer
+          description: "1"
+        - name: challengesPerPage
+          in: body
+          schema: 
+           type: integer
+          description: "20"
+        - name: filter
+          in: body
+          schema:
+            filter          :
+              status        : "open/close/created"
+              blocked       : "true/false"
+              accessibility : "public/private"
+              participant   : "true/false" 
+              groups        : "Some random group"
+              title         : "Some random title"
+              categories    : "Some random category"
+          description: "'filter': {'status': 'open/close/created', 'blocked': true/false, 'accessibility': 'public/private', 'participant': true/false, 'groups': 'Some random group', 'title': 'Some random title', 'categories': 'Some random categor'}"
+          required: true
+      responses:
+        200:
+          description: List users
+          schema:
+            status  : 200
+            message : "List challenges"
+            data      :
+              objects : 
+                _id   : "asdklajqwe123123"
+                title : "Some random title"
+                startDate  : "Date"
+                endDate    : "Date"
+                status     : "open/pending/close"
+                avatar: 
+                  id  : "asdasd"
+                  name: "new_avatar.png"
+                  url : "https://aws3.amazon.com/asldkjalskd.png"
+                background: 
+                  id  : "asdasd"
+                  name: "new_background.png"
+                  url : "https://aws3.amazon.com/asldkjalskd.png"
+                groups:
+                  groupId: "as123123ldkajsldkj1231343"
+                  name: "Grupo1"
+                categories:
+                  categoryId: "as123123ldkajsldkj1231343"
+                  name: "Social Media"
+                priorities:
+                  _id: "733hfsdfh3347sfjsdf"
+                  name: "cost"
+                  range: "[100,200]"
+                  priority: "1"
+                files: 
+                  id  : "asdasd"
+                  name: "new_file.docx"
+                  url : "https://aws3.amazon.com/asldkjalskd.png"
+                timestamps: 
+                  createdAt: "20-August-2014"
+                  updatedAt: "21-August-2014"
+            success : true
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /challenges/users/index:
+    post:
+      summary: Participants of a Challenge
+      tags:
+        - Challenges
+      parameters:
+        - name: page
+          in: body
+          schema:
+           type: integer
+          description: "1"
+        - name: usersPerPage
+          in: body
+          schema: 
+           type: integer
+          description: "20"
+        - name: challengeId
+          in: body
+          schema: 
+           type: integer
+          description: "asdaopqasx123we"
+        - name: filter
+          in: body
+          schema:
+            role          : "admin/consultant"
+            blocked       : "true/false"
+            finalist      : "true/false"
+          description: "'filter': {'role': 'admin/consultant', 'blocked': true/false, 'finalist': true/false}"
+      responses:
+        200:
+          description: List of participants
+          schema:
+            status  : 200
+            message : "List of participants"
+            data    :
+              objects : 
+                _id   : "asdklajqwe123123"
+                email : "user@example.com"
+                role  : "admin/consultant"
+                avatar: 
+                  id  : "asdasd"
+                  name: "new_avatar.png"
+                  url : "https://aws3.amazon.com/asldkjalskd.png"
+                timestamps: 
+                  createdAt: "20-August-2014"
+                  updatedAt: "21-August-2014"
+                group : "Some random group" 
+                proposals": 
+                  _id: "54124324f956f2f604d8f0cb"
+                  title: "Some random title"
+            success : true
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /challenges/update/:
+    post:
+      summary: Update Challenge Information (admin)
+      description: |
+        <b>Preconditions:</b> The user must be sign in into the server and must have an admin role.<br>
+        <b>Postconditions:</b> The information will be update.
+      parameters:
+        - name: _id
+          in: body
+          schema:
+           type: string
+          description: "as123123ldkajsldkj1231231"
+        - name: title
+          in: body
+          schema: 
+           type: string
+          description: "Some random title"
+        - name: startDate
+          in: body
+          schema: 
+           type: integer
+          description: "Date"
+        - name: endDate
+          in: body
+          schema: 
+           type: integer
+          description: "Date"
+        - name: status
+          in: body
+          schema: 
+           type: integer
+          description: "open/created/close/selecting finalists/selecting winner/ended"
+        - name: objetive
+          in: body
+          schema: 
+           type: integer
+          description: "Some random objetive"
+        - name: categories
+          in: body
+          schema: 
+           categoryId: integer
+           name: 
+          description: "{'categoryId':'as123123ldkajsldkj1231343', 'name':'Social Media'}, {'categoryId':'as123123ldkajsldkj1231343','name':'Health'}"
+        - name: description
+          in: body
+          schema:
+            type: string
+          description: "Some random description"
+        - name: accessibility
+          in: body
+          schema: 
+            type: string
+          description: "public/private"
+        - name: avatar
+          in: body
+          schema: 
+            _id: asdasd
+            name: new_avatar.png 
+            url: https://aws3.amazon.com/asldkjalskd.png
+          description: "{'_id': 'asdasd', 'name': 'new_avatar.png', 'url': 'https://aws3.amazon.com/asldkjalskd.png'}"
+        - name: background
+          in: body
+          schema: 
+            _id: asdasd
+            name: new_background.png 
+            url: https://aws3.amazon.com/asldkjalskd.png
+          description: "{'_id': 'asdasd', 'name': 'new_background.png', 'url': 'https://aws3.amazon.com/asldkjalskd.png'}"
+        - name: specifications
+          in: body
+          schema:
+            type: string
+          description: "Some large specifications"
+        - name: reward
+          in: body
+          schema:
+           description: "Some reward's description"
+           amount: "0/1/..."
+           points: "0/1/..."
+          description: "{'description': 'Some rewards description','amount': '0/1/...', 'points': '0/1/...'}"
+        - name: groups
+          in: body
+          schema: 
+           name: Group 1
+          description: "{'name': 'Some group1 name'}, {'name': 'Some group2 name'}"
+        - name: priorities
+          in: body
+          schema: 
+           _id: "733hfsdfh3347sfjsdf"
+           name: "cost"
+           range: "[100,200]"
+           priority: 1
+          description: "[{'_id':'733hfsdfh3347sfjsdf','name':'cost', 'range': [100,200],'priority':'1'},{'_id':'733hfsdfh3347sfjsdf','name':'foreigner', 'range': [true/false],'priority':'2'},{'_id':'733hfsdfh3347sfjsdf','name':'patent', 'range': [true/false],'priority':'3'},{'_id':'733hfsdfh3347sfjsdf','name':'outsourcing', 'range': [true/false],'priority':'4'},{'_id':'733hfsdfh3347sfjsdf','name':'experienceTime', 'range': [100,400],'priority':'5'},{'_id':'733hfsdfh3347sfjsdf','name':'country', 'range': ['Mexico', 'Brasil',...],'priority':'6'},{'_id':'733hfsdfh3347sfjsdf','name':'state', 'range': ['DF','Chihuahua',...],'priority':'7'},{'_id':'733hfsdfh3347sfjsdf','name':'businessName', 'range': [true/false], 'priority':'8'},{'_id':'733hfsdfh3347sfjsdf','name':'duration', 'range': [1,10],'priority':'9'},{'_id':'733hfsdfh3347sfjsdf','name':'type', 'range': [vacio/patente/secreto/industrial],'priority':'10'}]"
+        - name: files
+          in: body
+          schema:
+           _id: asdas123d123
+           name: new_file.docx
+           url: https://aws3.amazon.com/asldkjalsk123d.docx
+      tags:
+        - Challenges
+      responses:
+        200:
+          description: The system verifies the session of the current user. 
+          schema:
+            status  : 200
+            message : "Successful Update Challenge"
+            data      :
+              objects : 
+                _id   : "asdklajqwe123123"
+                title : "Some random title"
+                startDate  : "Date"
+                endDate    : "Date"
+                status     : "open/pending/close"
+                avatar: 
+                  id  : "asdasd"
+                  name: "new_avatar.png"
+                  url : "https://aws3.amazon.com/asldkjalskd.png"
+                background: 
+                  id  : "asdasd"
+                  name: "new_background.png"
+                  url : "https://aws3.amazon.com/asldkjalskd.png"
+                groups:
+                  groupId: "as123123ldkajsldkj1231343"
+                  name: "Grupo1"
+                categories:
+                  categoryId: "as123123ldkajsldkj1231343"
+                  name: "Social Media"
+                priorities:
+                  _id: "733hfsdfh3347sfjsdf"
+                  name: "cost"
+                  range: "[100,200]"
+                  priority: "1"
+                files: 
+                  id  : "asdasd"
+                  name: "new_file.docx"
+                  url : "https://aws3.amazon.com/asldkjalskd.png"
+                timestamps: 
+                  createdAt: "20-August-2014"
+                  updatedAt: "21-August-2014"
+            success : true
+            total   : 0
+        401:
+          description: The system can't find an active session
+          schema:
+            status  : 401
+            message : "You do not have permissions"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /challenges/create/:
+    post:
+      summary: Create Challenge (admin)
+      description: |
+        <b>Preconditions:</b> The user must be sign in into the server and must have an admin role.<br>
+        <b>Postconditions:</b> There will be a new challenge record into the database.
+      parameters:
+        - name: _id
+          in: body
+          schema:
+           type: string
+          description: "as123123ldkajsldkj1231231"
+        - name: title
+          in: body
+          schema: 
+           type: string
+          description: "Some random title"
+        - name: startDate
+          in: body
+          schema: 
+           type: integer
+          description: "Date"
+        - name: endDate
+          in: body
+          schema: 
+           type: integer
+          description: "Date"
+        - name: status
+          in: body
+          schema: 
+           type: integer
+          description: "open/created/close/selecting finalists/selecting winner/ended"
+        - name: objetive
+          in: body
+          schema: 
+           type: integer
+          description: "Some random objetive"
+        - name: categories
+          in: body
+          schema: 
+           categoryId: integer
+           name: 
+          description: "{'categoryId':'as123123ldkajsldkj1231343', 'name':'Social Media'}, {'categoryId':'as123123ldkajsldkj1231343','name':'Health'}"
+        - name: description
+          in: body
+          schema:
+            type: string
+          description: "Some random description"
+        - name: accessibility
+          in: body
+          schema: 
+            type: string
+          description: "public/private"
+        - name: avatar
+          in: body
+          schema: 
+            _id: asdasd
+            name: new_avatar.png 
+            url: https://aws3.amazon.com/asldkjalskd.png
+          description: "{'_id': 'asdasd', 'name': 'new_avatar.png', 'url': 'https://aws3.amazon.com/asldkjalskd.png'}"
+        - name: background
+          in: body
+          schema: 
+            _id: asdasd
+            name: new_background.png 
+            url: https://aws3.amazon.com/asldkjalskd.png
+          description: "{'_id': 'asdasd', 'name': 'new_background.png', 'url': 'https://aws3.amazon.com/asldkjalskd.png'}"
+        - name: specifications
+          in: body
+          schema:
+            type: string
+          description: "Some large specifications"
+        - name: reward
+          in: body
+          schema:
+           description: "Some reward's description"
+           amount: "0/1/..."
+           points: "0/1/..."
+          description: "{'description': 'Some rewards description','amount': '0/1/...', 'points': '0/1/...'}"
+        - name: groups
+          in: body
+          schema: 
+           name: Group 1
+          description: "{'name': 'Some group1 name'}, {'name': 'Some group2 name'}"
+        - name: priorities
+          in: body
+          schema: 
+           _id: "733hfsdfh3347sfjsdf"
+           name: "cost"
+           range: "[100,200]"
+           priority: 1
+          description: "[{'_id':'733hfsdfh3347sfjsdf','name':'cost', 'range': [100,200],'priority':'1'},{'_id':'733hfsdfh3347sfjsdf','name':'foreigner', 'range': [true/false],'priority':'2'},{'_id':'733hfsdfh3347sfjsdf','name':'patent', 'range': [true/false],'priority':'3'},{'_id':'733hfsdfh3347sfjsdf','name':'outsourcing', 'range': [true/false],'priority':'4'},{'_id':'733hfsdfh3347sfjsdf','name':'experienceTime', 'range': [100,400],'priority':'5'},{'_id':'733hfsdfh3347sfjsdf','name':'country', 'range': ['Mexico', 'Brasil',...],'priority':'6'},{'_id':'733hfsdfh3347sfjsdf','name':'state', 'range': ['DF','Chihuahua',...],'priority':'7'},{'_id':'733hfsdfh3347sfjsdf','name':'businessName', 'range': [true/false], 'priority':'8'},{'_id':'733hfsdfh3347sfjsdf','name':'duration', 'range': [1,10],'priority':'9'},{'_id':'733hfsdfh3347sfjsdf','name':'type', 'range': [vacio/patente/secreto/industrial],'priority':'10'}]"
+        - name: files
+          in: body
+          schema:
+           _id: asdas123d123
+           name: new_file.docx
+           url: https://aws3.amazon.com/asldkjalsk123d.docx
+      tags:
+        - Challenges
+      responses:
+        200:
+          description: The system verifies the session of the current user. 
+          schema:
+            status     : 200
+            message    : "Successful create Challenge"
+            data      :
+              _id   : "asdklajqwe123123"
+              title : "Some random title"
+              startDate  : "Date"
+              endDate    : "Date"
+              status     : "open/pending/close"
+              avatar: 
+                id  : "asdasd"
+                name: "new_avatar.png"
+                url : "https://aws3.amazon.com/asldkjalskd.png"
+              background: 
+                id  : "asdasd"
+                name: "new_background.png"
+                url : "https://aws3.amazon.com/asldkjalskd.png"
+              groups:
+                groupId: "as123123ldkajsldkj1231343"
+                name: "Grupo1"
+              categories:
+                categoryId: "as123123ldkajsldkj1231343"
+                name: "Social Media"
+              priorities:
+                _id: "733hfsdfh3347sfjsdf"
+                name: "cost"
+                range: "[100,200]"
+                priority: "1"
+              files: 
+                id  : "asdasd"
+                name: "new_file.docx"
+                url : "https://aws3.amazon.com/asldkjalskd.png"
+              timestamps: 
+                createdAt: "20-August-2014"
+                updatedAt: "21-August-2014"
+            success    : true
+            total      : 0
+        401:
+          description: The user doesn't have permissions to create a user or Some is required.
+          schema:
+            status  : 401
+            message : "You do not have permissions or Some is required"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /challenges/show/:
+    post:
+      summary: Show challenge
+      parameters:
+        - name: _id
+          in: body
+          schema:
+           type: string
+          description: asdasd21323123asd  
+      tags:
+        - Challenges
+      responses:
+        200:
+          description: Show challenge
+          schema:
+            status     : 200
+            message    : "Show challenge"
+            data      :
+              _id   : "asdklajqwe123123"
+              title : "Some random title"
+              startDate  : "Date"
+              endDate    : "Date"
+              status     : "open/pending/close"
+              avatar: 
+                id  : "asdasd"
+                name: "new_avatar.png"
+                url : "https://aws3.amazon.com/asldkjalskd.png"
+              background: 
+                id  : "asdasd"
+                name: "new_background.png"
+                url : "https://aws3.amazon.com/asldkjalskd.png"
+              groups:
+                groupId: "as123123ldkajsldkj1231343"
+                name: "Grupo1"
+              categories:
+                categoryId: "as123123ldkajsldkj1231343"
+                name: "Social Media"
+              priorities:
+                _id: "733hfsdfh3347sfjsdf"
+                name: "cost"
+                range: "[100,200]"
+                priority: "1"
+              files: 
+                id  : "asdasd"
+                name: "new_file.docx"
+                url : "https://aws3.amazon.com/asldkjalskd.png"
+              timestamps: 
+                createdAt: "20-August-2014"
+                updatedAt: "21-August-2014"
+            success    : true
+            total      : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /challenges/blocked/:
+    post:
+      summary: Blocked Challenge
+      description: |
+        <b>Preconditions:</b> The user must be sign in into the server and must have an admin role.<br>
+        <b>Postconditions:</b> Some challenge will be blocked.
+      parameters:
+        - name: _id
+          in: body
+          schema:
+           type: string
+          description: asdasd21323123asd  
+      tags:
+        - Challenges
+      responses:
+        200:
+          description: The system verifies the session of the current user and his role
+          schema:
+            status     : 200
+            message    : "Successful challenge blocked"
+            data      :
+              _id   : "asdklajqwe123123"
+              title : "Some random title"
+              blocked: true
+              startDate  : "Date"
+              endDate    : "Date"
+              status     : "open/pending/close"
+              avatar: 
+                id  : "asdasd"
+                name: "new_avatar.png"
+                url : "https://aws3.amazon.com/asldkjalskd.png"
+              background: 
+                id  : "asdasd"
+                name: "new_background.png"
+                url : "https://aws3.amazon.com/asldkjalskd.png"
+              groups:
+                groupId: "as123123ldkajsldkj1231343"
+                name: "Grupo1"
+              categories:
+                categoryId: "as123123ldkajsldkj1231343"
+                name: "Social Media"
+              priorities:
+                _id: "733hfsdfh3347sfjsdf"
+                name: "cost"
+                range: "[100,200]"
+                priority: "1"
+              files: 
+                id  : "asdasd"
+                name: "new_file.docx"
+                url : "https://aws3.amazon.com/asldkjalskd.png"
+              timestamps: 
+                createdAt: "20-August-2014"
+                updatedAt: "21-August-2014"
+            success    : true
+            total      : 0
+        401:
+          description: The system verifies the session of the current user and his role.
+          schema:
+            status  : 401
+            message : "You do not have permissions or Challenge already blocked"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /challenges/unblocked/:
+    post:
+      summary: Unblocked Challenge
+      description: |
+        <b>Preconditions:</b> The user must be sign in into the server and must have an admin role.<br>
+        <b>Postconditions:</b> Some challenge will be unblocked.
+      parameters:
+        - name: _id
+          in: body
+          schema:
+           type: string
+          description: asdasd21323123asd  
+      tags:
+        - Challenges
+      responses:
+        200:
+          description: The system verifies the session of the current user and his role
+          schema:
+            status     : 200
+            message    : "Successful challenge unblocked"
+            data      :
+              _id   : "asdklajqwe123123"
+              title : "Some random title"
+              blocked: false
+              startDate  : "Date"
+              endDate    : "Date"
+              status     : "open/pending/close"
+              avatar: 
+                id  : "asdasd"
+                name: "new_avatar.png"
+                url : "https://aws3.amazon.com/asldkjalskd.png"
+              background: 
+                id  : "asdasd"
+                name: "new_background.png"
+                url : "https://aws3.amazon.com/asldkjalskd.png"
+              groups:
+                groupId: "as123123ldkajsldkj1231343"
+                name: "Grupo1"
+              categories:
+                categoryId: "as123123ldkajsldkj1231343"
+                name: "Social Media"
+              priorities:
+                _id: "733hfsdfh3347sfjsdf"
+                name: "cost"
+                range: "[100,200]"
+                priority: "1"
+              files: 
+                id  : "asdasd"
+                name: "new_file.docx"
+                url : "https://aws3.amazon.com/asldkjalskd.png"
+              timestamps: 
+                createdAt: "20-August-2014"
+                updatedAt: "21-August-2014"
+            success    : true
+            total      : 0
+        401:
+          description: The system verifies the session of the current user and his role.
+          schema:
+            status  : 401
+            message : "You do not have permissions or Challenge already blocked"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /challenges/updateStatus/:
+    post:
+      summary: Update Challenge Status (admin)
+      description: |
+        <b>Preconditions:</b> The user must be sign in into the server and must have an admin role.<br>
+        <b>Postconditions:</b> The information will be update.
+      parameters:
+        - name: _id
+          in: body
+          schema:
+           type: string
+          description: asdasd21323123asd 
+        - name: status
+          in: body
+          schema:
+           type: string
+          description: "open|close|created|selecting finalists|selecting winner|no winner|ended"
+      tags:
+        - Challenges
+      responses:
+        200:
+          description: The system verifies the session of the current user and his role
+          schema:
+            status     : 200
+            message    : "Successful challenge status change"
+            data      :
+              _id   : "asdklajqwe123123"
+              title : "Some random title"
+              blocked: false
+              startDate  : "Date"
+              endDate    : "Date"
+              status     : "open/pending/close"
+              avatar: 
+                id  : "asdasd"
+                name: "new_avatar.png"
+                url : "https://aws3.amazon.com/asldkjalskd.png"
+              background: 
+                id  : "asdasd"
+                name: "new_background.png"
+                url : "https://aws3.amazon.com/asldkjalskd.png"
+              groups:
+                groupId: "as123123ldkajsldkj1231343"
+                name: "Grupo1"
+              categories:
+                categoryId: "as123123ldkajsldkj1231343"
+                name: "Social Media"
+              priorities:
+                _id: "733hfsdfh3347sfjsdf"
+                name: "cost"
+                range: "[100,200]"
+                priority: "1"
+              files: 
+                id  : "asdasd"
+                name: "new_file.docx"
+                url : "https://aws3.amazon.com/asldkjalskd.png"
+              timestamps: 
+                createdAt: "20-August-2014"
+                updatedAt: "21-August-2014"
+            success    : true
+            total      : 0
+        401:
+          description: The system verifies the session of the current user and his role.
+          schema:
+            status  : 401
+            message : "You do not have permissions"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /challenges/finalists/index/:
+    post:
+      summary: Finalists of a Challenge.
+      parameters:
+        - name: page
+          in: body
+          schema:
+           type: integer
+          description: "1" 
+        - name: usersPerPage
+          in: body
+          schema:
+           type: integer
+          description: "20"
+        - name: challengeId
+          in: body
+          schema:
+           type: string
+          description: "asdaopqasx123we" 
+        - name: filter
+          in: body
+          schema:
+           finalist: true
+           blocked: false
+          description: "{'finalist':'true', 'blocked': true}"
+      tags:
+        - Challenges
+      responses:
+        200:
+          description: The system verifies the session of the current user and his role
+          schema:
+            status     : 200
+            message    : "List of Finalist participants"
+            data      :
+             objects:
+              _id   : "asdklajqwe123123"
+              email : "Some random title"
+              role: false
+              timestamps  : 
+                createdAt: "20-August-2014"
+                updatedAt: "21-August-2014"
+              proposals    : 
+                _id: "54124324f956f2f604d8f0cb"
+                title: "Some random title"
+                finalist: true
+            success    : true
+            total      : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+          
+  /challenges/winners/index/:
+    post:
+      summary: Finalists of a Challenge.
+      parameters:
+        - name: page
+          in: body
+          schema:
+           type: integer
+          description: "1" 
+        - name: usersPerPage
+          in: body
+          schema:
+           type: integer
+          description: "20"
+        - name: challengeId
+          in: body
+          schema:
+           type: string
+          description: "asdaopqasx123we" 
+        - name: filter
+          in: body
+          schema:
+           winner: true
+           blocked: false
+          description: "{'winner':'true', 'blocked': true}"
+      tags:
+        - Challenges
+      responses:
+        200:
+          description: The system verifies the session of the current user and his role
+          schema:
+            status     : 200
+            message    : "List of Winner participants"
+            data      :
+             objects:
+              _id   : "asdklajqwe123123"
+              email : "Some random title"
+              role: false
+              timestamps  : 
+                createdAt: "20-August-2014"
+                updatedAt: "21-August-2014"
+              proposals    : 
+                _id: "54124324f956f2f604d8f0cb"
+                title: "Some random title"
+                finalist: true
+            success    : true
+            total      : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0

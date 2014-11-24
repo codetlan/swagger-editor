@@ -1,0 +1,369 @@
+swagger: '2.0'
+info:
+  title: Intrinno API
+  description: Intrinno API
+  version: "1.0.0"
+  # the domain of the service
+host: intrinno.mx:9000
+  # array of all schemes that your API supports
+schemes:
+  - http
+  - https
+# will be prefixed to all paths
+basePath: /app/spec-files
+produces:
+  - application/json
+paths:
+  /comments/index:
+    post:
+      summary: List Comments
+      tags:
+        - Comments
+      parameters:
+        - name: page
+          in: body
+          schema:
+           type: integer
+          description: "1"
+        - name: commentsPerPage
+          in: body
+          schema: 
+           type: integer
+          description: "20"
+        - name: commentableId
+          in: body
+          schema:
+           type: "string"
+          description: "lkasdlkj123k90098098c098"
+      responses:
+        200:
+          description: List comments
+          schema:
+            status  : 200
+            message : "List comments"
+            data      :
+              objects : 
+                id   : "asdklajqwe123123"
+                text : "Text message"
+                files: 
+                  _id: "asdas123d123"
+                  name: "new_file.docx" 
+                  url: "https://aws3.amazon.com/asldkjalsk123d.docx"                   likeable: true
+                createdBy: {}
+                commentsBelow: "1,2,3"
+            success : true
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /comments/create/:
+    post:
+      summary: Create Comment
+      tags:
+        - Comments
+      parameters:
+        - name: commentableType
+          in: body
+          schema:
+           type: string
+          description: "change/comment"
+        - name: commentableId
+          in: body
+          schema:
+           type: string
+          description: "2312masldkqwd12"
+        - name: files
+          in: body
+          schema:
+           name: new_file.docx
+           url: https://aws3.amazon.com/asldkjalsk123d.docx
+          description: "opened/created"
+        - name: text
+          in: body
+          schema: 
+            type: "string"
+          description: "Text message"
+      responses:
+        200:
+          description: The system verifies the session of the current user.
+          schema:
+            status  : 200
+            message : "Successful Comment created"
+            data    :
+              _id   : "asdklajqwe123123"
+              text : "Some message"
+              files: 
+                _id: "12lasdlajsñldjkasd"
+                name: "new_file.docx"
+                url: "https://aws3.amazon.com/asldkjalsk123d.docx"
+              commentsBelow: "1,2,3"
+              likes: 0
+              reported: false
+              timestamps: 
+                createdAt: "20-August-2014"
+                updatedAt: "21-August-2014"
+            success : true
+            total   : 0
+        401:
+          description: The user doesn't have permissions to create
+          schema:
+            status  : 401
+            message : "The user doesn't have permissions to create"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /comments/update/:
+    post:
+      summary: Update Comment
+      parameters:
+        - name: files
+          in: body
+          schema:
+           name: new_file.docx
+           url: https://aws3.amazon.com/asldkjalsk123d.docx
+          description: "opened/created"
+        - name: text
+          in: body
+          schema: 
+            type: "string"
+          description: "Text message"
+      tags:
+        - Comments
+      responses:
+        200:
+          description: The system verifies the session of the current user. 
+          schema:
+            status  : 200
+            message : "Successful Update Comment"
+            data    :
+              _id   : "asdklajqwe123123"
+              text : "Some message"
+              files: 
+                _id: "12lasdlajsñldjkasd"
+                name: "new_file.docx"
+                url: "https://aws3.amazon.com/asldkjalsk123d.docx"
+              commentsBelow: "1,2,3"
+              likes: 2
+              reported: false
+              timestamps: 
+                createdAt: "20-August-2014"
+                updatedAt: "21-August-2014"
+            success : true
+            total   : 0
+        401:
+          description: The system can't find an active session
+          schema:
+            status  : 401
+            message : "You do not have permissions"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /comments/like:
+    post:
+      summary: Like Comment
+      parameters:
+        - name: _id
+          in: body
+          schema:
+           type: string
+          description: "as123123ldkajsldkj1231231"
+      tags:
+        - Comment
+      responses:
+        200:
+          description: The system verifies the session of the current user. 
+          schema:
+            status     : 200
+            message    : "Like comment"
+            data      :
+              _id   : "asdklajqwe123123"
+              text : "Some message"
+              files: 
+                _id: "12lasdlajsñldjkasd"
+                name: "new_file.docx"
+                url: "https://aws3.amazon.com/asldkjalsk123d.docx"
+              commentsBelow: "1,2,3"
+              likes: 2
+              reported: false
+              timestamps: 
+                createdAt: "20-August-2014"
+                updatedAt: "21-August-2014"
+            success    : true
+            total      : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /comments/index/reported:
+    post:
+      summary: Reported Comment
+      parameters:
+        - name: page
+          in: body
+          schema:
+           type: string
+          description: "1"
+        - name: commentsPerPage
+          in: body
+          schema:
+           type: string
+          description: "20"  
+      tags:
+        - Comments
+      responses:
+        200:
+          description: List messages
+          schema:
+            status     : 200
+            message    : "List Messages"
+            data      :
+              objects:
+                _id   : "asdklajqwe123123"
+                text : "Some message"
+                files: 
+                 _id: "12lasdlajsñldjkasd"
+                 name: "new_file.docx"
+                 url: "https://aws3.amazon.com/asldkjalsk123d.docx"
+                commentsBelow: "1,2,3"
+                likes: 2
+                reported: false
+                timestamps: 
+                  createdAt: "20-August-2014"
+                  updatedAt: "21-August-2014"
+            success    : true
+            total      : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+  
+  /comments/report:
+    post:
+      summary: Report Comment
+      parameters:
+        - name: _id
+          in: body
+          schema:
+           type: string
+          description: asdasd21323123asd  
+      tags:
+        - Comments
+      responses:
+        200:
+          description: Comment report
+          schema:
+            status     : 200
+            message    : "Comment report"
+            data      :
+              _id   : "asdklajqwe123123"
+              text : "Some message"
+              files: 
+               _id: "12lasdlajsñldjkasd"
+               name: "new_file.docx"
+               url: "https://aws3.amazon.com/asldkjalsk123d.docx"
+              commentsBelow: "1,2,3"
+              likes: 2
+              reported: true
+              timestamps: 
+                createdAt: "20-August-2014"
+                updatedAt: "21-August-2014"
+            success    : true
+            total      : 0
+        401:
+          description: The user doesn't have permissions or record not found.
+          schema:
+            status  : 401
+            message : "The user doesn't have permissions or record not found"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /comments/unreport:
+    post:
+      summary: Unreport Comment
+      parameters:
+        - name: _id
+          in: body
+          schema:
+           type: string
+          description: asdasd21323123asd 
+      tags:
+        - Comments
+      responses:
+        200:
+          description: Unreport Comment
+          schema:
+            status     : 200
+            message    : "Unreport Comment"
+            data      :
+              _id   : "asdklajqwe123123"
+              text : "Some message"
+              files: 
+               _id: "12lasdlajsñldjkasd"
+               name: "new_file.docx"
+               url: "https://aws3.amazon.com/asldkjalsk123d.docx"
+              commentsBelow: "1,2,3"
+              likes: 2
+              reported: false
+              timestamps: 
+                createdAt: "20-August-2014"
+                updatedAt: "21-August-2014"
+            success    : true
+            total      : 0
+        401:
+          description: The user doesn't have permissions or record not found.
+          schema:
+            status  : 401
+            message : "The user doesn't have permissions or record not found"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
