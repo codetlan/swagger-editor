@@ -1,0 +1,63 @@
+swagger: '2.0'
+info:
+  title: Intrinno API
+  description: Intrinno API
+  version: "1.0.0"
+  # the domain of the service
+host: intrinno.mx:9000
+  # array of all schemes that your API supports
+schemes:
+  - http
+  - https
+# will be prefixed to all paths
+basePath: /app/spec-files
+produces:
+  - application/json
+paths:
+  /configuration/saveTerms:
+    post:
+      summary: Save Terms of Services (admin)
+      description: |
+        <b>Preconditions:</b> The user must be sign in into the server and must have an admin role.<br>
+        <b>Postconditions:</b> There will be a new terms of services record into the database.
+      parameters:
+        - name: terms
+          in: body
+          schema:
+           title: "Some random title"
+           description: "Some random description"
+          description: "{'terms':{'title': 'Some random title', 'description': 'Some random description'}}" 
+      tags:
+        - Configurations
+      responses:
+        200:
+          description: Create or Update Terms of services
+          schema:
+            status     : 200
+            message    : "Create or Update Terms of services"
+            data       : 
+              objects:
+                _id   : "as123123ldkajsldkj1231231"
+                title : "Some random title"
+                description: "Some random description"
+                timestamps: 
+                 createdAt: "20-August-2014"
+                 updatedAt: "21-August-2014"
+            success    : true
+            total      : 0
+        401:
+          description: The system can't find an active session
+          schema:
+            status  : 401
+            message : "You do not have permissions or Some is required"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0

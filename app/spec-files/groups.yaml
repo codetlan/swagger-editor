@@ -1,0 +1,231 @@
+swagger: '2.0'
+info:
+  title: Intrinno API
+  description: Intrinno API
+  version: "1.0.0"
+  # the domain of the service
+host: intrinno.mx:9000
+  # array of all schemes that your API supports
+schemes:
+  - http
+  - https
+# will be prefixed to all paths
+basePath: /app/spec-files
+produces:
+  - application/json
+paths:
+  /groups/index:
+    post:
+      summary: List Groups (paginate)
+      parameters:
+        - name: page
+          in: body
+          schema:
+           type: string
+          description: "1"
+        - name: groupsPerPage
+          in: body
+          schema:
+           type: string
+          description: "20" 
+        - name: filter
+          in: body
+          schema:
+           _id: "lkasdlkj123k90098098c098"
+           name: "Some random name"
+          description: "'filter': {'_id': 'lkasdlkj123k90098098c098', 'name': 'asd129askjclñkoihew'}" 
+      tags:
+        - Groups
+      responses:
+        200:
+          description: List groups
+          schema:
+            status     : 200
+            message    : "List Groups"
+            data      :
+              objects:
+                _id   : "asdklajqwe123123"
+                namme : "Some random name"
+                timestamps: 
+                  createdAt: "20-August-2014"
+                  updatedAt: "21-August-2014"
+            success    : true
+            total      : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /groups/create:
+    post:
+      summary: Create Group (admin)
+      description: |
+        <b>Preconditions:</b> The user must be sign in into the server and must have an admin role.<br>
+        <b>Postconditions:</b> There will be a new group record into the database.
+      tags:
+        - Groups
+      parameters:
+        - name: name
+          in: body
+          schema:
+           type: string
+          description: "Group 1"
+      responses:
+        200:
+          description: List comments
+          schema:
+            status  : 200
+            message : "Succesful create group"
+            data      :
+              _id   : "asdklajqwe123123"
+              name : "Group 1"
+              timestamps: 
+                createdAt: "20-August-2014"
+                updatedAt: "21-August-2014"
+              createdBy: {}
+            success : true
+            total   : 0
+        401:
+          description: The system can't find an active session
+          schema:
+            status  : 401
+            message : "You do not have permissions or Some is required"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /groups/show/:
+    post:
+      summary: Show Group
+      tags:
+        - Groups
+      parameters:
+        - name: _id
+          in: body
+          schema:
+           type: string
+          description: "2312masldkqwd12"
+      responses:
+        200:
+          description: The system verifies the session of the current user.
+          schema:
+            status  : 200
+            message : "Show group"
+            data    :
+              _id   : "asdklajqwe123123"
+              name  : "Some random name"
+            success : true
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /groups/update/:
+    post:
+      summary: Update Group Information (admin)
+      description: |
+        <b>Preconditions:</b> The user must be sign in into the server and must have an admin role.<br>
+        <b>Postconditions:</b> The information will be update.
+      parameters:
+        - name: _id
+          in: body
+          schema:
+            type: string
+          description: "as123123ldkajsldkj1231231"
+        - name: name
+          in: body
+          schema: 
+            type: "string"
+          description: "Soem random name"
+      tags:
+        - Groups
+      responses:
+        200:
+          description: The system verifies the session of the current user. 
+          schema:
+            status  : 200
+            message : "Successful Update Group"
+            data    :
+              _id   : "asdklajqwe123123"
+              name : "Some random name"
+            success : true
+            total   : 0
+        401:
+          description: The system can't find an active session
+          schema:
+            status  : 401
+            message : "You do not have permissions"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error ocurrs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /groups/delete:
+    post:
+      summary: Delete Group (admin)
+      description: |
+        <b>Preconditions:</b> The user must be sign in into the server and must have an admin role.<br>
+        <b>Postconditions:</b> There will be not record of the group into the database.
+      parameters:
+        - name: _id
+          in: body
+          schema:
+           type: string
+          description: "as123123ldkajsldkj1231231"
+      tags:
+        - Groups
+      responses:
+        200:
+          description: The system verifies the session of the current user. 
+          schema:
+            status     : 200
+            message    : "Like comment"
+            data      :
+              _id   : "asdklajqwe123123"
+              name : "Some random name"
+              timestamps: 
+                createdAt: "20-August-2014"
+                updatedAt: "21-August-2014"
+              createdBy: {}
+            success    : true
+            total      : 0
+        401:
+          description: The system can't find an active session
+          schema:
+            status  : 401
+            message : "You do not have permissions or Record not found"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0

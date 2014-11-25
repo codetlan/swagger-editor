@@ -21,7 +21,11 @@ PhonicsApp.config(function ($provide) {
                               'comments.yaml',
                               'proposals.yaml',
                               'ideas.yaml',
-                              'interests.yaml'
+                              'interests.yaml',
+                              'categories.yaml',
+                              'groups.yaml',
+                              'configurations.yaml',
+                              'files.yaml'
                           ],
                           
                           // See keyword-map.js for object format

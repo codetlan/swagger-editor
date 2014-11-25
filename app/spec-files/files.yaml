@@ -1,0 +1,50 @@
+swagger: '2.0'
+info:
+  title: Intrinno API
+  description: Intrinno API
+  version: "1.0.0"
+  # the domain of the service
+host: intrinno.mx:9000
+  # array of all schemes that your API supports
+schemes:
+  - http
+  - https
+# will be prefixed to all paths
+basePath: /app/spec-files
+produces:
+  - application/json
+paths:
+  /files/create:
+    post:
+      summary: Upload Files
+      description: |
+        <b>Preconditions:</b> The user must be sign in into the server.<br>
+        <b>Postconditions:</b> The system will create a new File document.
+      parameters:
+        - name: fileUpload
+          in: body
+          schema:
+           fileData: "fileData"
+          description: "{fileData}" 
+      tags:
+        - Files
+      responses:
+        200:
+          description: Upload File
+          schema:
+            status     : 200
+            message    : "Succesful upload"
+            data       : 
+              objects:
+                _id   : "as123123ldkajsldkj1231231"
+                url   : "https://intrinno.s3.amazonaws.com/qlwoi13nsdnjzxcjqwelkj123kjbp12oihfddkjbaASLKJlkjalsdkj.png"
+            success    : true
+            total      : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
