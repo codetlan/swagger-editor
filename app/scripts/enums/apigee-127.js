@@ -15,7 +15,13 @@ PhonicsApp.config(function ($provide) {
 
                           examplesFolder: '/spec-files/',
                           exampleFiles: [
-                              'sessions.yaml'
+                              'sessions.yaml',
+                              'users.yaml',
+                              'challenges.yaml',
+                              'comments.yaml',
+                              'proposals.yaml',
+                              'ideas.yaml',
+                              'interests.yaml'
                           ],
 
                           autocompleteExtension: {
