@@ -15,17 +15,17 @@ PhonicsApp.config(function ($provide) {
 
                           examplesFolder: '/spec-files/',
                           exampleFiles: [
-                              'sessions.yaml',
-                              'users.yaml',
                               'challenges.yaml',
                               'comments.yaml',
-                              'proposals.yaml',
                               'ideas.yaml',
                               'interests.yaml',
                               'categories.yaml',
                               'groups.yaml',
                               'configurations.yaml',
-                              'files.yaml'
+                              'files.yaml',
+                              'proposals.yaml',
+                              'sessions.yaml',
+                              'users.yaml'
                           ],
                           
                           // See keyword-map.js for object format
