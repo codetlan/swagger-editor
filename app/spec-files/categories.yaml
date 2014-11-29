@@ -1,0 +1,243 @@
+swagger: '2.0'
+info:
+  title: Intrinno API
+  description: Intrinno API
+  version: "1.0.0"
+  # the domain of the service
+host: intrinno.mx:9000
+  # array of all schemes that your API supports
+schemes:
+  - http
+  - https
+# will be prefixed to all paths
+basePath: /app/spec-files
+produces:
+  - application/json
+paths:
+  /categories/index:
+    post:
+      summary: List Categories (paginate)
+      parameters:
+        - name: page
+          in: body
+          schema:
+           type: string
+          description: "1"
+        - name: categoriesPerPage
+          in: body
+          schema:
+           type: string
+          description: "20" 
+        - name: filter
+          in: body
+          schema:
+           _id: "lkasdlkj123k90098098c098"
+           name: "Some random name"
+          description: "'filter': {'_id': 'lkasdlkj123k90098098c098', 'name': 'asd129askjclñkoihew'}" 
+      tags:
+        - Categories
+      responses:
+        200:
+          description: List categories
+          schema:
+            status     : 200
+            message    : "List Categories"
+            data      :
+              objects:
+                _id   : "asdklajqwe123123"
+                namme : "Some random name"
+                icon  : "http://intrinnode.aws.com/icon.jpg" 
+            success    : true
+            total      : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /categories/create:
+    post:
+      summary: Create Category (admin)
+      description: |
+        <b>Preconditions:</b> The user must be sign in into the server and must have an admin role.<br>
+        <b>Postconditions:</b> There will be a new category record into the database.
+      tags:
+        - Categories
+      parameters:
+        - name: name
+          in: body
+          schema:
+           type: string
+          description: "Some random category"
+        - name: icon
+          in: body
+          schema:
+           type: string
+          description: "http://intrinnode.aws.com/icon.jpg"
+      responses:
+        200:
+          description: Succesful create category
+          schema:
+            status  : 200
+            message : "Succesful create category"
+            data      :
+              _id   : "asdklajqwe123123"
+              name : "Category 1"
+              icon : "http://intrinnode.aws.com/icon.jpg"
+              timestamps: 
+                createdAt: "20-August-2014"
+                updatedAt: "21-August-2014"
+              createdBy: {}
+            success : true
+            total   : 0
+        401:
+          description: The system can't find an active session
+          schema:
+            status  : 401
+            message : "You do not have permissions or Some is required"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /categories/show/:
+    post:
+      summary: Show Category
+      tags:
+        - Categories
+      parameters:
+        - name: _id
+          in: body
+          schema:
+           type: string
+          description: "2312masldkqwd12"
+      responses:
+        200:
+          description: The system verifies the session of the current user.
+          schema:
+            status  : 200
+            message : "Show category"
+            data    :
+              _id   : "asdklajqwe123123"
+              name  : "Some random name"
+              icon  : "http://intrinnode.aws.com/icon.jpg"
+            success : true
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /categories/update/:
+    post:
+      summary: Update Category Information (admin)
+      description: |
+        <b>Preconditions:</b> The user must be sign in into the server and must have an admin role.<br>
+        <b>Postconditions:</b> The information will be update.
+      parameters:
+        - name: _id
+          in: body
+          schema:
+            type: string
+          description: "as123123ldkajsldkj1231231"
+        - name: name
+          in: body
+          schema: 
+            type: "string"
+          description: "Soem random name"
+        - name: icon
+          in: body
+          schema:
+           type: string
+          description: "http://intrinnode.aws.com/icon.jpg"
+      tags:
+        - Categories
+      responses:
+        200:
+          description: The system verifies the session of the current user. 
+          schema:
+            status  : 200
+            message : "Successful Update Category"
+            data    :
+              _id   : "asdklajqwe123123"
+              name : "Some random name"
+              icon  : "http://intrinnode.aws.com/icon.jpg"
+            success : true
+            total   : 0
+        401:
+          description: The system can't find an active session
+          schema:
+            status  : 401
+            message : "You do not have permissions"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error ocurrs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /categories/delete:
+    post:
+      summary: Delete Category (admin)
+      description: |
+        <b>Preconditions:</b> The user must be sign in into the server and must have an admin role.<br>
+        <b>Postconditions:</b> There will be not record of the category into the database.
+      parameters:
+        - name: _id
+          in: body
+          schema:
+           type: string
+          description: "as123123ldkajsldkj1231231"
+      tags:
+        - Categories
+      responses:
+        200:
+          description: The system verifies the session of the current user. 
+          schema:
+            status     : 200
+            message    : "Delete category"
+            data      :
+              _id   : "asdklajqwe123123"
+              name : "Some random name"
+              icon  : "http://intrinnode.aws.com/icon.jpg"
+              timestamps: 
+                createdAt: "20-August-2014"
+                updatedAt: "21-August-2014"
+              createdBy: {}
+            success    : true
+            total      : 0
+        401:
+          description: The system can't find an active session
+          schema:
+            status  : 401
+            message : "You do not have permissions or Record not found"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
