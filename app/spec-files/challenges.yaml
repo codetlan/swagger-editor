@@ -16,72 +16,121 @@ produces:
 paths:
   /challenges/index:
     post:
-      summary: List challenges (paginate)
+      summary: List Challenges
+      description : |  
+        <b>Postconditions:</b> List all public or private challenges that the user can see.
       tags:
         - Challenges
       parameters:
         - name: page
           in: body
+          required : true
           schema:
            type: integer
-          description: "1"
+           minimum: 0
+          description: "The count start from 0"
         - name: challengesPerPage
           in: body
+          required : true
           schema: 
            type: integer
-          description: "20"
+           minimum : 1
+           maximum : 50
+          description: "We only list 1-50 elements, no less no more"
         - name: filter
           in: body
+          required : false
           schema:
             filter          :
+              admin         : true/false
               status        : "open/close/created"
               blocked       : "true/false"
               accessibility : "public/private"
               participant   : "true/false" 
-              groups        : "Some random group"
               title         : "Some random title"
-              categories    : "Some random category"
-          description: "'filter': {'status': 'open/close/created', 'blocked': true/false, 'accessibility': 'public/private', 'participant': true/false, 'groups': 'Some random group', 'title': 'Some random title', 'categories': 'Some random categor'}"
-          required: true
+              groups        : [Group id 1, Group id 2]
+              categories    : [Category id 1, Category id 2]
+          description: |
+            All the fields of filter are optionals. The flag admin indicates if the
+            request is used for an admin user
+          
+          required: false
       responses:
         200:
-          description: List users
+          description: The was no error on the server
           schema:
             status  : 200
             message : "List challenges"
             data      :
               objects : 
-                _id   : "asdklajqwe123123"
-                title : "Some random title"
-                startDate  : "Date"
-                endDate    : "Date"
-                status     : "open/pending/close"
-                avatar: 
-                  id  : "asdasd"
-                  name: "new_avatar.png"
-                  url : "https://aws3.amazon.com/asldkjalskd.png"
-                background: 
-                  id  : "asdasd"
-                  name: "new_background.png"
-                  url : "https://aws3.amazon.com/asldkjalskd.png"
-                groups:
-                  groupId: "as123123ldkajsldkj1231343"
-                  name: "Grupo1"
-                categories:
-                  categoryId: "as123123ldkajsldkj1231343"
-                  name: "Social Media"
-                priorities:
-                  _id: "733hfsdfh3347sfjsdf"
-                  name: "cost"
-                  range: "[100,200]"
-                  priority: "1"
-                files: 
-                  id  : "asdasd"
-                  name: "new_file.docx"
-                  url : "https://aws3.amazon.com/asldkjalskd.png"
-                timestamps: 
-                  createdAt: "20-August-2014"
-                  updatedAt: "21-August-2014"
+                - _id   : "asdklajqwe123123"
+                  title : "Title"
+                  description : "Some random description"
+                  startDate  : "Mon Nov 24 2014 22:15:07 GMT-0600 (CST)"
+                  endDate    : "Wed Nov 30 2014 16:20:50 GMT-0600 (CST)"
+                  status     : "open/close/created/finalists/winner/noWinner/ended"
+                  accessibility: "public/private"
+                  blocked : false/true
+                  specifications : "Description of all the points that the proposal must have"
+                  objective : "The objective of this challenge"
+                
+                
+                  avatar: 
+                    _id  : "lvÃƒÂ±jasu230vnl"
+                    name: "new_avatar.png"
+                    url : "https://aws3.amazon.com/asldkjalskd.png"
+                
+                  background: 
+                    _id  : "dsjkbk1op12d01dfasdad"
+                    name: "new_background.png"
+                    url : "https://aws3.amazon.com/asldkjalskd.png"
+                  
+                  rewards : 
+                    - title: "Pack of books"
+                      description: "Contains a collection..."
+                      place: 1
+                      points : 200
+                      photos: 
+                        - _id: "aqwlknsxczklnc"
+                          name: "photo1.png"
+                          url: "https://aws3.amazon.com/asldkjalsk123123d.png"
+                
+                  createdBy : 
+                    _id : "asdlkjaÃƒÂ±sjdÃƒÂ±123"
+                    avatar : 
+                      _id: "12i3ojsaldkjaslkd"
+                      name : "avatar.jpg"
+                      url : "https://aws3.amazon.com/asldkjalsk123123d123123.png"
+                    firstName: "Leon"
+                    lastName: "S. Kennedy"
+                    email : "user@example.com"
+                
+                  groups: 
+                    - _id: "as123123ldkajs"
+                      name: "Grupo 1"
+                    - _id: "aslihdqlkwjel12j3"
+                      name: "Grupo 2"
+                      
+                  categories: 
+                    - _id: "as123123ldkajsldkj1231343"
+                      name : "Social Media"
+                    - _id : "asda10knffkjb"
+                      name : "Development"
+                
+                  priorities:
+                    - _id: "733hfsdfh3347sfjsdf"
+                      name: "cost"
+                      range: [100,200]
+                      priority: 1
+                
+                  files: 
+                    - _id : "asdasd"
+                      name: "new_file.docx"
+                      url : "https://aws3.amazon.com/asldkjalskd.png"
+                      
+                  timestamps: 
+                    createdAt: "20-August-2014"
+                    updatedAt: "21-August-2014"
             success : true
             total   : 0
         500:
@@ -93,216 +142,143 @@ paths:
             success : false
             total   : 0
             
-  /challenges/users/index:
+  /challenges/show/:
     post:
-      summary: Participants of a Challenge
-      tags:
-        - Challenges
-      parameters:
-        - name: page
-          in: body
-          schema:
-           type: integer
-          description: "1"
-        - name: usersPerPage
-          in: body
-          schema: 
-           type: integer
-          description: "20"
-        - name: challengeId
-          in: body
-          schema: 
-           type: integer
-          description: "asdaopqasx123we"
-        - name: filter
-          in: body
-          schema:
-            role          : "admin/consultant"
-            blocked       : "true/false"
-            finalist      : "true/false"
-          description: "'filter': {'role': 'admin/consultant', 'blocked': true/false, 'finalist': true/false}"
-      responses:
-        200:
-          description: List of participants
-          schema:
-            status  : 200
-            message : "List of participants"
-            data    :
-              objects : 
-                _id   : "asdklajqwe123123"
-                email : "user@example.com"
-                role  : "admin/consultant"
-                avatar: 
-                  id  : "asdasd"
-                  name: "new_avatar.png"
-                  url : "https://aws3.amazon.com/asldkjalskd.png"
-                timestamps: 
-                  createdAt: "20-August-2014"
-                  updatedAt: "21-August-2014"
-                group : "Some random group" 
-                proposals": 
-                  _id: "54124324f956f2f604d8f0cb"
-                  title: "Some random title"
-            success : true
-            total   : 0
-        500:
-          description: Some internal error occurs
-          schema:
-            status  : 500
-            message : "Some internal error ocurrs"
-            data    : {}
-            success : false
-            total   : 0
-            
-  /challenges/update/:
-    post:
-      summary: Update Challenge Information (admin)
+      summary: Show Challenge
       description: |
-        <b>Preconditions:</b> The user must be sign in into the server and must have an admin role.<br>
-        <b>Postconditions:</b> The information will be update.
+        <b>Postconditions</b>: Show the challenge only if the user have permissions to see it. <br>
+        If the challenge is blocked only the admin can see it.
       parameters:
         - name: _id
           in: body
+          required : true
           schema:
            type: string
-          description: "as123123ldkajsldkj1231231"
-        - name: title
-          in: body
-          schema: 
-           type: string
-          description: "Some random title"
-        - name: startDate
-          in: body
-          schema: 
-           type: integer
-          description: "Date"
-        - name: endDate
-          in: body
-          schema: 
-           type: integer
-          description: "Date"
-        - name: status
-          in: body
-          schema: 
-           type: integer
-          description: "open/created/close/selecting finalists/selecting winner/ended"
-        - name: objetive
-          in: body
-          schema: 
-           type: integer
-          description: "Some random objetive"
-        - name: categories
-          in: body
-          schema: 
-           categoryId: integer
-           name: 
-          description: "{'categoryId':'as123123ldkajsldkj1231343', 'name':'Social Media'}, {'categoryId':'as123123ldkajsldkj1231343','name':'Health'}"
-        - name: description
-          in: body
-          schema:
-            type: string
-          description: "Some random description"
-        - name: accessibility
-          in: body
-          schema: 
-            type: string
-          description: "public/private"
-        - name: avatar
-          in: body
-          schema: 
-            _id: asdasd
-            name: new_avatar.png 
-            url: https://aws3.amazon.com/asldkjalskd.png
-          description: "{'_id': 'asdasd', 'name': 'new_avatar.png', 'url': 'https://aws3.amazon.com/asldkjalskd.png'}"
-        - name: background
-          in: body
-          schema: 
-            _id: asdasd
-            name: new_background.png 
-            url: https://aws3.amazon.com/asldkjalskd.png
-          description: "{'_id': 'asdasd', 'name': 'new_background.png', 'url': 'https://aws3.amazon.com/asldkjalskd.png'}"
-        - name: specifications
-          in: body
-          schema:
-            type: string
-          description: "Some large specifications"
-        - name: reward
-          in: body
-          schema:
-           description: "Some reward's description"
-           amount: "0/1/..."
-           points: "0/1/..."
-          description: "{'description': 'Some rewards description','amount': '0/1/...', 'points': '0/1/...'}"
-        - name: groups
-          in: body
-          schema: 
-           name: Group 1
-          description: "{'name': 'Some group1 name'}, {'name': 'Some group2 name'}"
-        - name: priorities
-          in: body
-          schema: 
-           _id: "733hfsdfh3347sfjsdf"
-           name: "cost"
-           range: "[100,200]"
-           priority: 1
-          description: "[{'_id':'733hfsdfh3347sfjsdf','name':'cost', 'range': [100,200],'priority':'1'},{'_id':'733hfsdfh3347sfjsdf','name':'foreigner', 'range': [true/false],'priority':'2'},{'_id':'733hfsdfh3347sfjsdf','name':'patent', 'range': [true/false],'priority':'3'},{'_id':'733hfsdfh3347sfjsdf','name':'outsourcing', 'range': [true/false],'priority':'4'},{'_id':'733hfsdfh3347sfjsdf','name':'experienceTime', 'range': [100,400],'priority':'5'},{'_id':'733hfsdfh3347sfjsdf','name':'country', 'range': ['Mexico', 'Brasil',...],'priority':'6'},{'_id':'733hfsdfh3347sfjsdf','name':'state', 'range': ['DF','Chihuahua',...],'priority':'7'},{'_id':'733hfsdfh3347sfjsdf','name':'businessName', 'range': [true/false], 'priority':'8'},{'_id':'733hfsdfh3347sfjsdf','name':'duration', 'range': [1,10],'priority':'9'},{'_id':'733hfsdfh3347sfjsdf','name':'type', 'range': [vacio/patente/secreto/industrial],'priority':'10'}]"
-        - name: files
-          in: body
-          schema:
-           _id: asdas123d123
-           name: new_file.docx
-           url: https://aws3.amazon.com/asldkjalsk123d.docx
+          description: For example  "lo234oyaslkhsd97mnv123"
+          required : true
       tags:
         - Challenges
       responses:
         200:
-          description: The system verifies the session of the current user. 
+          description: The were no error
           schema:
-            status  : 200
-            message : "Successful Update Challenge"
+            status     : 200
+            message    : "Show challenge"
             data      :
-              objects : 
-                _id   : "asdklajqwe123123"
-                title : "Some random title"
-                startDate  : "Date"
-                endDate    : "Date"
-                status     : "open/pending/close"
-                avatar: 
-                  id  : "asdasd"
-                  name: "new_avatar.png"
-                  url : "https://aws3.amazon.com/asldkjalskd.png"
-                background: 
-                  id  : "asdasd"
-                  name: "new_background.png"
-                  url : "https://aws3.amazon.com/asldkjalskd.png"
-                groups:
-                  groupId: "as123123ldkajsldkj1231343"
-                  name: "Grupo1"
-                categories:
-                  categoryId: "as123123ldkajsldkj1231343"
-                  name: "Social Media"
-                priorities:
-                  _id: "733hfsdfh3347sfjsdf"
+              _id   : "lo234oyaslkhsd97mnv123"
+              title : "Title"
+              description : "Some random description"
+              startDate  : "Mon Nov 24 2014 22:15:07 GMT-0600 (CST)"
+              endDate    : "Wed Nov 30 2014 16:20:50 GMT-0600 (CST)"
+              status     : "open/close/created/finalists/winner/noWinner/ended"
+              accessibility: "public/private"
+              blocked : false/true
+              specifications : "Description of all the points that the proposal must have"
+              objective : "The objective of this challenge"
+                
+              avatar: 
+                _id  : "lvÃƒÂ±jasu230vnl"
+                name: "new_avatar.png"
+                url : "https://aws3.amazon.com/asldkjalskd.png"
+                
+              background: 
+                _id  : "dsjkbk1op12d01dfasdad"
+                name: "new_background.png"
+                url : "https://aws3.amazon.com/asldkjalskd.png"
+                  
+              rewards : 
+                - title: "Pack of books"
+                  description: "Contains a collection..."
+                  place: 1
+                  points : 200
+                  photos: 
+                    - _id: "aqwlknsxczklnc"
+                      name: "photo1.png"
+                      url: "https://aws3.amazon.com/asldkjalsk123123d.png"
+                
+              createdBy : 
+                _id : "asdlkjaÃƒÂ±sjdÃƒÂ±123"
+                avatar : 
+                  _id: "12i3ojsaldkjaslkd"
+                  name : "avatar.jpg"
+                  url : "https://aws3.amazon.com/asldkjalsk123123d123123.png"
+                firstName: "Leon"
+                lastName: "S. Kennedy"
+                email : "user@example.com"
+                
+              groups: 
+                - _id: "as123123ldkajs"
+                  name: "Grupo 1"
+                - _id: "aslihdqlkwjel12j3"
+                  name: "Grupo 2"
+                      
+              categories: 
+                - _id: "as123123ldkajsldkj1231343"
+                  name : "Social Media"
+                - _id : "asda10knffkjb"
+                  name : "Development"
+                
+              priorities:
+                - _id: "733hfsdfh3347sfjsdf"
                   name: "cost"
-                  range: "[100,200]"
-                  priority: "1"
-                files: 
-                  id  : "asdasd"
+                  range: [100,200]
+                  priority: 1
+                  
+                - _id : "asldkjl12039usad"
+                  name : "duration"
+                  range: [50,100]
+                  priority : 2
+                  
+                - _id : "alsh129u3dfbdlfgj"
+                  name : "experienceTime"
+                  range: [1,3]
+                  priority : 3
+                
+                - _id: "129831lknsadkjbgfh0943"
+                  name : "patent"
+                  range : [true/false]
+                  priority : 4
+                  
+                - _id: "asd831lknsadkjbgfh0943"
+                  name : "outsourcing"
+                  range : [true/false]
+                  priority : 5
+                
+                - _id: "oi12o3iuoisaud12mn"
+                  name : "businessName"
+                  range : [true/false]
+                  priority : 1
+                
+                - _id: "asldjasldkjl1jk23fds"
+                  name : "foreigner"
+                  range : [true/false]
+                  priority : 2
+                
+                - _id: "alskjdlaksjd1231233456345"
+                  name : "kind"
+                  range : ["empty", "patent", "secret", "industry", "prototype"]
+                  priority : 3
+                
+                - _id: "oaiwoasdo12323"
+                  name : "country"
+                  range : ["Mexico", "EU", "Canada"]
+                  priority : 4
+                  
+                - _id: "123asdih12h3iasdasd"
+                  name : "state"
+                  range : ["California", "Yucatan", "Oregon"]
+                  priority : 5
+                
+              files: 
+                - _id : "asdasd"
                   name: "new_file.docx"
                   url : "https://aws3.amazon.com/asldkjalskd.png"
-                timestamps: 
-                  createdAt: "20-August-2014"
-                  updatedAt: "21-August-2014"
-            success : true
-            total   : 0
-        401:
-          description: The system can't find an active session
-          schema:
-            status  : 401
-            message : "You do not have permissions"
-            data    : {}
-            success : false
-            total   : 0
+                      
+              timestamps: 
+                createdAt: "20-August-2014"
+                updatedAt: "21-August-2014"
+            success    : true
+            total      : 0
         500:
           description: Some internal error occurs
           schema:
@@ -319,144 +295,311 @@ paths:
         <b>Preconditions:</b> The user must be sign in into the server and must have an admin role.<br>
         <b>Postconditions:</b> There will be a new challenge record into the database.
       parameters:
-        - name: _id
-          in: body
-          schema:
-           type: string
-          description: "as123123ldkajsldkj1231231"
         - name: title
           in: body
           schema: 
-           type: string
-          description: "Some random title"
-        - name: startDate
-          in: body
-          schema: 
-           type: integer
-          description: "Date"
-        - name: endDate
-          in: body
-          schema: 
-           type: integer
-          description: "Date"
-        - name: status
-          in: body
-          schema: 
-           type: integer
-          description: "open/created/close/selecting finalists/selecting winner/ended"
-        - name: objetive
-          in: body
-          schema: 
-           type: integer
-          description: "Some random objetive"
-        - name: categories
-          in: body
-          schema: 
-           categoryId: integer
-           name: 
-          description: "{'categoryId':'as123123ldkajsldkj1231343', 'name':'Social Media'}, {'categoryId':'as123123ldkajsldkj1231343','name':'Health'}"
+            type: string
+          description: "The title of every challenge must have a length in this range [10...140]"
+          required: true 
+        
         - name: description
           in: body
           schema:
             type: string
-          description: "Some random description"
+          description: "The description must have a length greater than 140"
+          required : true
+          
+        - name: startDate
+          in: body
+          schema: 
+           type: integer
+           format: date
+          description: "Mon Nov 24 2014 22:15:07 GMT-0600 (CST)"
+          required : true
+          
+        - name: endDate
+          in: body
+          schema: 
+           type: integer
+           format: date
+          description: "Wed Nov 30 2014 16:20:50 GMT-0600 (CST)"
+          required : true
+          
+        - name: status
+          in: body
+          schema: 
+           type: integer
+          description: "open/close/created"
+          required : false
+          
         - name: accessibility
           in: body
           schema: 
             type: string
           description: "public/private"
-        - name: avatar
-          in: body
-          schema: 
-            _id: asdasd
-            name: new_avatar.png 
-            url: https://aws3.amazon.com/asldkjalskd.png
-          description: "{'_id': 'asdasd', 'name': 'new_avatar.png', 'url': 'https://aws3.amazon.com/asldkjalskd.png'}"
-        - name: background
-          in: body
-          schema: 
-            _id: asdasd
-            name: new_background.png 
-            url: https://aws3.amazon.com/asldkjalskd.png
-          description: "{'_id': 'asdasd', 'name': 'new_background.png', 'url': 'https://aws3.amazon.com/asldkjalskd.png'}"
+          required: false
+          
         - name: specifications
           in: body
           schema:
             type: string
           description: "Some large specifications"
-        - name: reward
+          required : false
+          
+        - name: objective
           in: body
-          schema:
-           description: "Some reward's description"
-           amount: "0/1/..."
-           points: "0/1/..."
-          description: "{'description': 'Some rewards description','amount': '0/1/...', 'points': '0/1/...'}"
+          schema: 
+           type: string
+          description: "Some random objective"
+          required: false
+          
+        - name: avatar
+          in: body
+          schema: 
+            _id: "kajshdlkj1l23hlkasjd"
+            name: "new_avatar.png"
+            url: "https://aws3.amazon.com/asldkjalskd.png"
+          description: "The object that returns files/create"
+          required: false
+          
+        - name: background
+          in: body
+          schema: 
+            _id: "asdasdlkjalskdjlaksjd"
+            name: "new_background.png"
+            url: "https://aws3.amazon.com/asldkjalskd.png"
+            
+          description: "The object that returns files/create"
+          required : false
+          
+        - name : rewards
+          in: body 
+          schema : 
+            rewards :
+              - title:  "Pack of books"
+                description : "Contains a collection ..."
+                place : 1
+                points : 200
+                photos : 
+                  - _id : "ljasldkejkqwes123"
+                    name : "photo1.png"
+                    url : "https://aws3.amazon.com/asdÃ±alksdqweg.png"
+                  
+                  - _id : "kqwe90u50384r5234"
+                    name : "photo2.png"
+                    url : "https://aws3.amazon.com/asl123p104udsfn.png"
+                    
+          description : "The admin only can post 10 different photos for every reward"
+          required: true
+        
         - name: groups
           in: body
           schema: 
-           name: Group 1
-          description: "{'name': 'Some group1 name'}, {'name': 'Some group2 name'}"
+           groups:
+            - _id : "asdk3091203uiasd"
+              name : "Group name 1"
+            - _id : "12o9prkldfnb"
+              name : "Group name 2"
+          description: The group ids must exist.
+          required : false
+        
+        - name: categories
+          in: body
+          schema: 
+            categories : 
+              - _id : "aslkdql01293123"
+                name: "Category 1 name"
+              - _id : "12u3asjdasdo3qw"
+                name : "Category 2 name"
+          description: The category ids must exists.
+          required : false
+       
         - name: priorities
           in: body
           schema: 
-           _id: "733hfsdfh3347sfjsdf"
-           name: "cost"
-           range: "[100,200]"
-           priority: 1
-          description: "[{'_id':'733hfsdfh3347sfjsdf','name':'cost', 'range': [100,200],'priority':'1'},{'_id':'733hfsdfh3347sfjsdf','name':'foreigner', 'range': [true/false],'priority':'2'},{'_id':'733hfsdfh3347sfjsdf','name':'patent', 'range': [true/false],'priority':'3'},{'_id':'733hfsdfh3347sfjsdf','name':'outsourcing', 'range': [true/false],'priority':'4'},{'_id':'733hfsdfh3347sfjsdf','name':'experienceTime', 'range': [100,400],'priority':'5'},{'_id':'733hfsdfh3347sfjsdf','name':'country', 'range': ['Mexico', 'Brasil',...],'priority':'6'},{'_id':'733hfsdfh3347sfjsdf','name':'state', 'range': ['DF','Chihuahua',...],'priority':'7'},{'_id':'733hfsdfh3347sfjsdf','name':'businessName', 'range': [true/false], 'priority':'8'},{'_id':'733hfsdfh3347sfjsdf','name':'duration', 'range': [1,10],'priority':'9'},{'_id':'733hfsdfh3347sfjsdf','name':'type', 'range': [vacio/patente/secreto/industrial],'priority':'10'}]"
+            priorities : 
+              - name: "cost"
+                range: [100,200]
+                priority: 1
+                  
+              - name : "duration"
+                range: [50,100]
+                priority : 2
+                  
+              - name : "experienceTime"
+                range: [1,3]
+                priority : 3
+                
+              - name : "patent"
+                range : [true/false]
+                priority : 4
+                  
+              - name : "outsourcing"
+                range : [true/false]
+                priority : 5
+                
+              - name : "businessName"
+                range : [true/false]
+                priority : 1
+                
+              - name : "foreigner"
+                range : [true/false]
+                priority : 2
+                
+              - name : "kind"
+                range : ["empty", "patent", "secret", "industry", "prototype"]
+                priority : 3
+                
+              - name : "country"
+                range : ["Mexico", "EU", "Canada"]
+                priority : 4
+                  
+              - name : "state"
+                range : ["California", "Yucatan", "Oregon"]
+                priority : 5
+                
+          description: |
+            In this example you can see every possible filter.
+            The array can have a maximum length of 10.
+          required : false
+          
         - name: files
           in: body
           schema:
            _id: asdas123d123
            name: new_file.docx
            url: https://aws3.amazon.com/asldkjalsk123d.docx
+          description : "The maximum length of this value is 20"
+          
       tags:
         - Challenges
       responses:
         200:
-          description: The system verifies the session of the current user. 
+          description: The challenge was created, here is an example. 
           schema:
             status     : 200
             message    : "Successful create Challenge"
             data      :
               _id   : "asdklajqwe123123"
-              title : "Some random title"
-              startDate  : "Date"
-              endDate    : "Date"
-              status     : "open/pending/close"
+              title : "Title"
+              description : "Some random description"
+              startDate  : "Mon Nov 24 2014 22:15:07 GMT-0600 (CST)"
+              endDate    : "Wed Nov 30 2014 16:20:50 GMT-0600 (CST)"
+              status     : "open/close/created/finalists/winner/noWinner/ended"
+              accessibility: "public/private"
+              blocked : false/true
+              specifications : "Description of all the points that the proposal must have"
+              objective : "The objective of this challenge"
+                
+                
               avatar: 
-                id  : "asdasd"
+                _id  : "lvÃƒÂ±jasu230vnl"
                 name: "new_avatar.png"
                 url : "https://aws3.amazon.com/asldkjalskd.png"
+                
               background: 
-                id  : "asdasd"
+                _id  : "dsjkbk1op12d01dfasdad"
                 name: "new_background.png"
                 url : "https://aws3.amazon.com/asldkjalskd.png"
-              groups:
-                groupId: "as123123ldkajsldkj1231343"
-                name: "Grupo1"
-              categories:
-                categoryId: "as123123ldkajsldkj1231343"
-                name: "Social Media"
+                  
+              rewards : 
+                - title: "Pack of books"
+                  description: "Contains a collection..."
+                  place: 1
+                  points : 200
+                  photos: 
+                    - _id: "aqwlknsxczklnc"
+                      name: "photo1.png"
+                      url: "https://aws3.amazon.com/asldkjalsk123123d.png"
+              
+              createdBy : 
+                _id : "asdlkjaÃƒÂ±sjdÃƒÂ±123"
+                avatar : 
+                  _id: "12i3ojsaldkjaslkd"
+                  name : "avatar.jpg"
+                  url : "https://aws3.amazon.com/asldkjalsk123123d123123.png"
+                firstName: "Leon"
+                lastName: "S. Kennedy"
+                email : "user@example.com"
+                
+              groups: 
+                - _id: "as123123ldkajs"
+                  name: "Grupo 1"
+                - _id: "aslihdqlkwjel12j3"
+                  name: "Grupo 2"
+                      
+              categories: 
+                - _id: "as123123ldkajsldkj1231343"
+                  name : "Social Media"
+                - _id : "asda10knffkjb"
+                  name : "Development"
+              
               priorities:
-                _id: "733hfsdfh3347sfjsdf"
-                name: "cost"
-                range: "[100,200]"
-                priority: "1"
+                - _id: "733hfsdfh3347sfjsdf"
+                  name: "cost"
+                  range: [100,200]
+                  priority: 1
+                  
+                - _id : "asldhql3jlkjasd123"
+                  name : "duration"
+                  range: [50,100]
+                  priority : 2
+                  
+                - _id : "12oi3upkfba"
+                  name : "experienceTime"
+                  range: [1,3]
+                  priority : 3
+                
+                - _id : "12o3u12pou3ad123"
+                  name : "patent"
+                  range : [true/false]
+                  priority : 4
+                  
+                - _id : "123hlaksdlkasd"
+                  name : "outsourcing"
+                  range : [true/false]
+                  priority : 5
+                
+                - _id : "123iulaksdlakjsdrqwe"
+                  name : "businessName"
+                  range : [true/false]
+                  priority : 1
+                
+                - _id: "asp12oi3oi123dfsdf"
+                  name : "foreigner"
+                  range : [true/false]
+                  priority : 2
+                
+                - _id : "asdh3po24jnsfaa"
+                  name : "kind"
+                  range : ["empty", "patent", "secret", "industry", "prototype"]
+                  priority : 3
+                
+                - _id : "aslkd1p23udf"
+                  name : "country"
+                  range : ["Mexico", "EU", "Canada"]
+                  priority : 4
+                  
+                - _id : "asdp9i243jkbs"
+                  name : "state"
+                  range : ["California", "Yucatan", "Oregon"]
+                  priority : 5
+                
               files: 
-                id  : "asdasd"
-                name: "new_file.docx"
-                url : "https://aws3.amazon.com/asldkjalskd.png"
+                - _id : "sddfl21kj3kjhasd"
+                  name: "new_file.docx"
+                  url : "https://aws3.amazon.com/asldkjalskd.png"
+                  
               timestamps: 
                 createdAt: "20-August-2014"
-                updatedAt: "21-August-2014"
+                updatedAt: "20-August-2014"
             success    : true
             total      : 0
         401:
-          description: The user doesn't have permissions to create a user or Some is required.
+          description: The user doesn't have permissions to create a challenge.
           schema:
             status  : 401
-            message : "You do not have permissions or Some is required"
+            message : "You do not have permissions"
             data    : {}
             success : false
             total   : 0
@@ -469,57 +612,489 @@ paths:
             success : false
             total   : 0
             
-  /challenges/show/:
+  /challenges/update/:
     post:
-      summary: Show challenge
+      summary: Update Challenge Information
+      description: |
+        <b>Preconditions:</b> The user must be sign in into the server and must have an admin role.<br>
+        <b>Postconditions:</b> The information will be update.
       parameters:
         - name: _id
           in: body
           schema:
            type: string
-          description: asdasd21323123asd  
+          description: "as123123ldkajsldkj1231231"
+          required : true
+        
+        - name: title
+          in: body
+          schema: 
+            type: string
+          description: "The title of every challenge must have a length in this range [10...140]"
+          required: false 
+        
+        - name: description
+          in: body
+          schema:
+            type: string
+          description: "The description must have a length greater than 140"
+          required : false
+          
+        - name: startDate
+          in: body
+          schema: 
+           type: integer
+           format: date
+          description: "Mon Nov 24 2014 22:15:07 GMT-0600 (CST)"
+          required : false
+          
+        - name: endDate
+          in: body
+          schema: 
+           type: integer
+           format: date
+          description: "Wed Nov 30 2014 16:20:50 GMT-0600 (CST)"
+          required : false
+          
+        - name: status
+          in: body
+          schema: 
+           type: integer
+          description: "open/close/created"
+          required : false
+          
+        - name: accessibility
+          in: body
+          schema: 
+            type: string
+          description: "public/private"
+          required: false
+          
+        - name: specifications
+          in: body
+          schema:
+            type: string
+          description: "Some large specifications"
+          required : false
+          
+        - name: objective
+          in: body
+          schema: 
+           type: string
+          description: "Some random objective"
+          required: false
+          
+        - name: avatar
+          in: body
+          schema: 
+            _id: "kajshdlkj1l23hlkasjd"
+            name: "new_avatar.png"
+            url: "https://aws3.amazon.com/asldkjalskd.png"
+          description: "The object that returns files/create"
+          required: false
+          
+        - name: background
+          in: body
+          schema: 
+            _id: "asdasdlkjalskdjlaksjd"
+            name: "new_background.png"
+            url: "https://aws3.amazon.com/asldkjalskd.png"
+            
+          description: "The object that returns files/create"
+          required : false
+          
+        - name : rewards
+          in: body 
+          schema : 
+            rewards :
+              - title:  "Pack of books"
+                description : "Contains a collection ..."
+                place : 1
+                points : 200
+                photos : 
+                  - _id : "ljasldkejkqwes123"
+                    name : "photo1.png"
+                    url : "https://aws3.amazon.com/asdÃ±alksdqweg.png"
+                  
+                  - _id : "kqwe90u50384r5234"
+                    name : "photo2.png"
+                    url : "https://aws3.amazon.com/asl123p104udsfn.png"
+                    
+          description : "The admin only can post 10 different photos for every reward"
+          required: false
+        
+        - name: groups
+          in: body
+          schema: 
+           groups:
+            - _id : "asdk3091203uiasd"
+              name : "Group name 1"
+            - _id : "12o9prkldfnb"
+              name : "Group name 2"
+          description: The group ids must exist.
+          required : false
+        
+        - name: categories
+          in: body
+          schema: 
+            categories : 
+              - _id : "aslkdql01293123"
+                name: "Category 1 name"
+              - _id : "12u3asjdasdo3qw"
+                name : "Category 2 name"
+          description: The category ids must exists.
+          required : false
+       
+        - name: priorities
+          in: body
+          schema: 
+            priorities : 
+              - name: "cost"
+                range: [100,200]
+                priority: 1
+                  
+              - name : "duration"
+                range: [50,100]
+                priority : 2
+                  
+              - name : "experienceTime"
+                range: [1,3]
+                priority : 3
+                
+              - name : "patent"
+                range : [true/false]
+                priority : 4
+                  
+              - name : "outsourcing"
+                range : [true/false]
+                priority : 5
+                
+              - name : "businessName"
+                range : [true/false]
+                priority : 1
+                
+              - name : "foreigner"
+                range : [true/false]
+                priority : 2
+                
+              - name : "kind"
+                range : ["empty", "patent", "secret", "industry", "prototype"]
+                priority : 3
+                
+              - name : "country"
+                range : ["Mexico", "EU", "Canada"]
+                priority : 4
+                  
+              - name : "state"
+                range : ["California", "Yucatan", "Oregon"]
+                priority : 5
+                
+          description: |
+            In this example you can see every possible filter.
+            The array can have a maximum length of 10.
+          required : false
+          
+        - name: files
+          in: body
+          schema:
+           _id: asdas123d123
+           name: new_file.docx
+           url: https://aws3.amazon.com/asldkjalsk123d.docx
+          description : "The maximum length of this value is 20"
+          required : false
+          
       tags:
         - Challenges
       responses:
         200:
-          description: Show challenge
+          description: The challenge was succesfully updated
           schema:
-            status     : 200
-            message    : "Show challenge"
+            status  : 200
+            message : "Successful Update Challenge"
             data      :
               _id   : "asdklajqwe123123"
-              title : "Some random title"
-              startDate  : "Date"
-              endDate    : "Date"
-              status     : "open/pending/close"
+              title : "Title"
+              description : "Some random description"
+              startDate  : "Mon Nov 24 2014 22:15:07 GMT-0600 (CST)"
+              endDate    : "Wed Nov 30 2014 16:20:50 GMT-0600 (CST)"
+              status     : "open/close/created"
+              accessibility: "public/private"
+              blocked : false/true
+              specifications : "Description of all the points that the proposal must have"
+              objective : "The objective of this challenge"
+                
               avatar: 
-                id  : "asdasd"
+                _id  : "lvÃƒÂ±jasu230vnl"
                 name: "new_avatar.png"
                 url : "https://aws3.amazon.com/asldkjalskd.png"
+                
               background: 
-                id  : "asdasd"
+                _id  : "dsjkbk1op12d01dfasdad"
                 name: "new_background.png"
                 url : "https://aws3.amazon.com/asldkjalskd.png"
-              groups:
-                groupId: "as123123ldkajsldkj1231343"
-                name: "Grupo1"
-              categories:
-                categoryId: "as123123ldkajsldkj1231343"
-                name: "Social Media"
+                  
+              rewards : 
+                - title: "Pack of books"
+                  description: "Contains a collection..."
+                  place: 1
+                  points : 200
+                  photos: 
+                    - _id: "aqwlknsxczklnc"
+                      name: "photo1.png"
+                      url: "https://aws3.amazon.com/asldkjalsk123123d.png"
+              
+              createdBy : 
+                _id : "asdlkjaÃƒÂ±sjdÃƒÂ±123"
+                avatar : 
+                  _id: "12i3ojsaldkjaslkd"
+                  name : "avatar.jpg"
+                  url : "https://aws3.amazon.com/asldkjalsk123123d123123.png"
+                firstName: "Leon"
+                lastName: "S. Kennedy"
+                email : "user@example.com"
+                
+              groups: 
+                - _id: "as123123ldkajs"
+                  name: "Grupo 1"
+                - _id: "aslihdqlkwjel12j3"
+                  name: "Grupo 2"
+                      
+              categories: 
+                - _id: "as123123ldkajsldkj1231343"
+                  name : "Social Media"
+                - _id : "asda10knffkjb"
+                  name : "Development"
+              
               priorities:
-                _id: "733hfsdfh3347sfjsdf"
-                name: "cost"
-                range: "[100,200]"
-                priority: "1"
+                - _id: "733hfsdfh3347sfjsdf"
+                  name: "cost"
+                  range: [100,200]
+                  priority: 1
+                  
+                - _id : "asldhql3jlkjasd123"
+                  name : "duration"
+                  range: [50,100]
+                  priority : 2
+                  
+                - _id : "12oi3upkfba"
+                  name : "experienceTime"
+                  range: [1,3]
+                  priority : 3
+                
+                - _id : "12o3u12pou3ad123"
+                  name : "patent"
+                  range : [true/false]
+                  priority : 4
+                  
+                - _id : "123hlaksdlkasd"
+                  name : "outsourcing"
+                  range : [true/false]
+                  priority : 5
+                
+                - _id : "123iulaksdlakjsdrqwe"
+                  name : "businessName"
+                  range : [true/false]
+                  priority : 1
+                
+                - _id: "asp12oi3oi123dfsdf"
+                  name : "foreigner"
+                  range : [true/false]
+                  priority : 2
+                
+                - _id : "asdh3po24jnsfaa"
+                  name : "kind"
+                  range : ["empty", "patent", "secret", "industry", "prototype"]
+                  priority : 3
+                
+                - _id : "aslkd1p23udf"
+                  name : "country"
+                  range : ["Mexico", "EU", "Canada"]
+                  priority : 4
+                  
+                - _id : "asdp9i243jkbs"
+                  name : "state"
+                  range : ["California", "Yucatan", "Oregon"]
+                  priority : 5
+                
               files: 
-                id  : "asdasd"
-                name: "new_file.docx"
-                url : "https://aws3.amazon.com/asldkjalskd.png"
+                - _id : "sddfl21kj3kjhasd"
+                  name: "new_file.docx"
+                  url : "https://aws3.amazon.com/asldkjalskd.png"
+                  
               timestamps: 
                 createdAt: "20-August-2014"
-                updatedAt: "21-August-2014"
+                updatedAt: "20-August-2014"
             success    : true
             total      : 0
+        401:
+          description: The user doesn't have permissions to update a challenge.
+          schema:
+            status  : 401
+            message : "You do not have permissions"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+
+  /challenges/update/status/:
+    post:
+      summary: Update Challenge Status (admin)
+      description: |
+        <b>Preconditions:</b> The user must be sign in into the server and must have an admin role.<br>
+        <b>Postconditions:</b> The information will be update.
+      parameters:
+        - name: _id
+          in: body
+          schema:
+           type: string
+          description: asdasd21323123asd 
+          required: true
+          
+        - name: status
+          in: body
+          schema:
+           type: string
+          description: "open|close|created|finalists|winner|noWinner|ended"
+          required : true
+          
+      tags:
+        - Challenges
+      responses:
+        200:
+          description: The system verifies the session of the current user and his role
+          schema:
+            status     : 200
+            message    : "Successful challenge status change"
+            data      :
+              _id   : "asdklajqwe123123"
+              title : "Title"
+              description : "Some random description"
+              startDate  : "Mon Nov 24 2014 22:15:07 GMT-0600 (CST)"
+              endDate    : "Wed Nov 30 2014 16:20:50 GMT-0600 (CST)"
+              status     : "open/close/created/finalists/winner/noWinner/ended"
+              accessibility: "public/private"
+              blocked : false/true
+              specifications : "Description of all the points that the proposal must have"
+              objective : "The objective of this challenge"
+                
+              avatar: 
+                _id  : "lvÃƒÂ±jasu230vnl"
+                name: "new_avatar.png"
+                url : "https://aws3.amazon.com/asldkjalskd.png"
+                
+              background: 
+                _id  : "dsjkbk1op12d01dfasdad"
+                name: "new_background.png"
+                url : "https://aws3.amazon.com/asldkjalskd.png"
+                  
+              rewards : 
+                - title: "Pack of books"
+                  description: "Contains a collection..."
+                  place: 1
+                  points : 200
+                  photos: 
+                    - _id: "aqwlknsxczklnc"
+                      name: "photo1.png"
+                      url: "https://aws3.amazon.com/asldkjalsk123123d.png"
+              
+              createdBy : 
+                _id : "asdlkjaÃƒÂ±sjdÃƒÂ±123"
+                avatar : 
+                  _id: "12i3ojsaldkjaslkd"
+                  name : "avatar.jpg"
+                  url : "https://aws3.amazon.com/asldkjalsk123123d123123.png"
+                firstName: "Leon"
+                lastName: "S. Kennedy"
+                email : "user@example.com"
+                
+              groups: 
+                - _id: "as123123ldkajs"
+                  name: "Grupo 1"
+                - _id: "aslihdqlkwjel12j3"
+                  name: "Grupo 2"
+                      
+              categories: 
+                - _id: "as123123ldkajsldkj1231343"
+                  name : "Social Media"
+                - _id : "asda10knffkjb"
+                  name : "Development"
+              
+              priorities:
+                - _id: "733hfsdfh3347sfjsdf"
+                  name: "cost"
+                  range: [100,200]
+                  priority: 1
+                  
+                - _id : "asldhql3jlkjasd123"
+                  name : "duration"
+                  range: [50,100]
+                  priority : 2
+                  
+                - _id : "12oi3upkfba"
+                  name : "experienceTime"
+                  range: [1,3]
+                  priority : 3
+                
+                - _id : "12o3u12pou3ad123"
+                  name : "patent"
+                  range : [true/false]
+                  priority : 4
+                  
+                - _id : "123hlaksdlkasd"
+                  name : "outsourcing"
+                  range : [true/false]
+                  priority : 5
+                
+                - _id : "123iulaksdlakjsdrqwe"
+                  name : "businessName"
+                  range : [true/false]
+                  priority : 1
+                
+                - _id: "asp12oi3oi123dfsdf"
+                  name : "foreigner"
+                  range : [true/false]
+                  priority : 2
+                
+                - _id : "asdh3po24jnsfaa"
+                  name : "kind"
+                  range : ["empty", "patent", "secret", "industry", "prototype"]
+                  priority : 3
+                
+                - _id : "aslkd1p23udf"
+                  name : "country"
+                  range : ["Mexico", "EU", "Canada"]
+                  priority : 4
+                  
+                - _id : "asdp9i243jkbs"
+                  name : "state"
+                  range : ["California", "Yucatan", "Oregon"]
+                  priority : 5
+                
+              files: 
+                - _id : "sddfl21kj3kjhasd"
+                  name: "new_file.docx"
+                  url : "https://aws3.amazon.com/asldkjalskd.png"
+                  
+              timestamps: 
+                createdAt: "20-August-2014"
+                updatedAt: "20-August-2014"
+            success    : true
+            total      : 0
+        401:
+          description: The user doesn't have permissions to update a challenge.
+          schema:
+            status  : 401
+            message : "You do not have permissions"
+            data    : {}
+            success : false
+            total   : 0
         500:
           description: Some internal error occurs
           schema:
@@ -540,7 +1115,9 @@ paths:
           in: body
           schema:
            type: string
-          description: asdasd21323123asd  
+          description: asdklajqwe123123
+          required: true
+          
       tags:
         - Challenges
       responses:
@@ -548,47 +1125,127 @@ paths:
           description: The system verifies the session of the current user and his role
           schema:
             status     : 200
-            message    : "Successful challenge blocked"
+            message    : "Challenge updated"
             data      :
               _id   : "asdklajqwe123123"
-              title : "Some random title"
-              blocked: true
-              startDate  : "Date"
-              endDate    : "Date"
-              status     : "open/pending/close"
+              title : "Title"
+              description : "Some random description"
+              startDate  : "Mon Nov 24 2014 22:15:07 GMT-0600 (CST)"
+              endDate    : "Wed Nov 30 2014 16:20:50 GMT-0600 (CST)"
+              status     : "open/close/created/finalists/winner/noWinner/ended"
+              accessibility: "public/private"
+              blocked : true
+              specifications : "Description of all the points that the proposal must have"
+              objective : "The objective of this challenge"
+                
               avatar: 
-                id  : "asdasd"
+                _id  : "lvÃƒÂ±jasu230vnl"
                 name: "new_avatar.png"
                 url : "https://aws3.amazon.com/asldkjalskd.png"
+                
               background: 
-                id  : "asdasd"
+                _id  : "dsjkbk1op12d01dfasdad"
                 name: "new_background.png"
                 url : "https://aws3.amazon.com/asldkjalskd.png"
-              groups:
-                groupId: "as123123ldkajsldkj1231343"
-                name: "Grupo1"
-              categories:
-                categoryId: "as123123ldkajsldkj1231343"
-                name: "Social Media"
+                  
+              rewards : 
+                - title: "Pack of books"
+                  description: "Contains a collection..."
+                  place: 1
+                  points : 200
+                  photos: 
+                    - _id: "aqwlknsxczklnc"
+                      name: "photo1.png"
+                      url: "https://aws3.amazon.com/asldkjalsk123123d.png"
+              
+              createdBy : 
+                _id : "asdlkjaÃƒÂ±sjdÃƒÂ±123"
+                avatar : 
+                  _id: "12i3ojsaldkjaslkd"
+                  name : "avatar.jpg"
+                  url : "https://aws3.amazon.com/asldkjalsk123123d123123.png"
+                firstName: "Leon"
+                lastName: "S. Kennedy"
+                email : "user@example.com"
+                
+              groups: 
+                - _id: "as123123ldkajs"
+                  name: "Grupo 1"
+                - _id: "aslihdqlkwjel12j3"
+                  name: "Grupo 2"
+                      
+              categories: 
+                - _id: "as123123ldkajsldkj1231343"
+                  name : "Social Media"
+                - _id : "asda10knffkjb"
+                  name : "Development"
+              
               priorities:
-                _id: "733hfsdfh3347sfjsdf"
-                name: "cost"
-                range: "[100,200]"
-                priority: "1"
+                - _id: "733hfsdfh3347sfjsdf"
+                  name: "cost"
+                  range: [100,200]
+                  priority: 1
+                  
+                - _id : "asldhql3jlkjasd123"
+                  name : "duration"
+                  range: [50,100]
+                  priority : 2
+                  
+                - _id : "12oi3upkfba"
+                  name : "experienceTime"
+                  range: [1,3]
+                  priority : 3
+                
+                - _id : "12o3u12pou3ad123"
+                  name : "patent"
+                  range : [true/false]
+                  priority : 4
+                  
+                - _id : "123hlaksdlkasd"
+                  name : "outsourcing"
+                  range : [true/false]
+                  priority : 5
+                
+                - _id : "123iulaksdlakjsdrqwe"
+                  name : "businessName"
+                  range : [true/false]
+                  priority : 1
+                
+                - _id: "asp12oi3oi123dfsdf"
+                  name : "foreigner"
+                  range : [true/false]
+                  priority : 2
+                
+                - _id : "asdh3po24jnsfaa"
+                  name : "kind"
+                  range : ["empty", "patent", "secret", "industry", "prototype"]
+                  priority : 3
+                
+                - _id : "aslkd1p23udf"
+                  name : "country"
+                  range : ["Mexico", "EU", "Canada"]
+                  priority : 4
+                  
+                - _id : "asdp9i243jkbs"
+                  name : "state"
+                  range : ["California", "Yucatan", "Oregon"]
+                  priority : 5
+                
               files: 
-                id  : "asdasd"
-                name: "new_file.docx"
-                url : "https://aws3.amazon.com/asldkjalskd.png"
+                - _id : "sddfl21kj3kjhasd"
+                  name: "new_file.docx"
+                  url : "https://aws3.amazon.com/asldkjalskd.png"
+                  
               timestamps: 
                 createdAt: "20-August-2014"
-                updatedAt: "21-August-2014"
+                updatedAt: "20-August-2014"
             success    : true
             total      : 0
         401:
-          description: The system verifies the session of the current user and his role.
+          description: The user doesn't have permissions to update a challenge.
           schema:
             status  : 401
-            message : "You do not have permissions or Challenge already blocked"
+            message : "You do not have permissions"
             data    : {}
             success : false
             total   : 0
@@ -612,7 +1269,9 @@ paths:
           in: body
           schema:
            type: string
-          description: asdasd21323123asd  
+          description: asdklajqwe123123
+          required: true
+          
       tags:
         - Challenges
       responses:
@@ -620,121 +1279,124 @@ paths:
           description: The system verifies the session of the current user and his role
           schema:
             status     : 200
-            message    : "Successful challenge unblocked"
+            message    : "Challenge updated"
             data      :
               _id   : "asdklajqwe123123"
-              title : "Some random title"
-              blocked: false
-              startDate  : "Date"
-              endDate    : "Date"
-              status     : "open/pending/close"
+              title : "Title"
+              description : "Some random description"
+              startDate  : "Mon Nov 24 2014 22:15:07 GMT-0600 (CST)"
+              endDate    : "Wed Nov 30 2014 16:20:50 GMT-0600 (CST)"
+              status     : "open/close/created/finalists/winner/noWinner/ended"
+              accessibility: "public/private"
+              blocked : false
+              specifications : "Description of all the points that the proposal must have"
+              objective : "The objective of this challenge"
+                
               avatar: 
-                id  : "asdasd"
+                _id  : "lvÃƒÂ±jasu230vnl"
                 name: "new_avatar.png"
                 url : "https://aws3.amazon.com/asldkjalskd.png"
+                
               background: 
-                id  : "asdasd"
+                _id  : "dsjkbk1op12d01dfasdad"
                 name: "new_background.png"
                 url : "https://aws3.amazon.com/asldkjalskd.png"
-              groups:
-                groupId: "as123123ldkajsldkj1231343"
-                name: "Grupo1"
-              categories:
-                categoryId: "as123123ldkajsldkj1231343"
-                name: "Social Media"
+                  
+              rewards : 
+                - title: "Pack of books"
+                  description: "Contains a collection..."
+                  place: 1
+                  points : 200
+                  photos: 
+                    - _id: "aqwlknsxczklnc"
+                      name: "photo1.png"
+                      url: "https://aws3.amazon.com/asldkjalsk123123d.png"
+              
+              createdBy : 
+                _id : "asdlkjaÃƒÂ±sjdÃƒÂ±123"
+                avatar : 
+                  _id: "12i3ojsaldkjaslkd"
+                  name : "avatar.jpg"
+                  url : "https://aws3.amazon.com/asldkjalsk123123d123123.png"
+                firstName: "Leon"
+                lastName: "S. Kennedy"
+                email : "user@example.com"
+                
+              groups: 
+                - _id: "as123123ldkajs"
+                  name: "Grupo 1"
+                - _id: "aslihdqlkwjel12j3"
+                  name: "Grupo 2"
+                      
+              categories: 
+                - _id: "as123123ldkajsldkj1231343"
+                  name : "Social Media"
+                - _id : "asda10knffkjb"
+                  name : "Development"
+              
               priorities:
-                _id: "733hfsdfh3347sfjsdf"
-                name: "cost"
-                range: "[100,200]"
-                priority: "1"
+                - _id: "733hfsdfh3347sfjsdf"
+                  name: "cost"
+                  range: [100,200]
+                  priority: 1
+                  
+                - _id : "asldhql3jlkjasd123"
+                  name : "duration"
+                  range: [50,100]
+                  priority : 2
+                  
+                - _id : "12oi3upkfba"
+                  name : "experienceTime"
+                  range: [1,3]
+                  priority : 3
+                
+                - _id : "12o3u12pou3ad123"
+                  name : "patent"
+                  range : [true/false]
+                  priority : 4
+                  
+                - _id : "123hlaksdlkasd"
+                  name : "outsourcing"
+                  range : [true/false]
+                  priority : 5
+                
+                - _id : "123iulaksdlakjsdrqwe"
+                  name : "businessName"
+                  range : [true/false]
+                  priority : 1
+                
+                - _id: "asp12oi3oi123dfsdf"
+                  name : "foreigner"
+                  range : [true/false]
+                  priority : 2
+                
+                - _id : "asdh3po24jnsfaa"
+                  name : "kind"
+                  range : ["empty", "patent", "secret", "industry", "prototype"]
+                  priority : 3
+                
+                - _id : "aslkd1p23udf"
+                  name : "country"
+                  range : ["Mexico", "EU", "Canada"]
+                  priority : 4
+                  
+                - _id : "asdp9i243jkbs"
+                  name : "state"
+                  range : ["California", "Yucatan", "Oregon"]
+                  priority : 5
+                
               files: 
-                id  : "asdasd"
-                name: "new_file.docx"
-                url : "https://aws3.amazon.com/asldkjalskd.png"
+                - _id : "sddfl21kj3kjhasd"
+                  name: "new_file.docx"
+                  url : "https://aws3.amazon.com/asldkjalskd.png"
+                  
               timestamps: 
                 createdAt: "20-August-2014"
-                updatedAt: "21-August-2014"
+                updatedAt: "20-August-2014"
             success    : true
             total      : 0
         401:
-          description: The system verifies the session of the current user and his role.
-          schema:
-            status  : 401
-            message : "You do not have permissions or Challenge already blocked"
-            data    : {}
-            success : false
-            total   : 0
-        500:
-          description: Some internal error occurs
-          schema:
-            status  : 500
-            message : "Some internal error ocurrs"
-            data    : {}
-            success : false
-            total   : 0
-            
-  /challenges/updateStatus/:
-    post:
-      summary: Update Challenge Status (admin)
-      description: |
-        <b>Preconditions:</b> The user must be sign in into the server and must have an admin role.<br>
-        <b>Postconditions:</b> The information will be update.
-      parameters:
-        - name: _id
-          in: body
-          schema:
-           type: string
-          description: asdasd21323123asd 
-        - name: status
-          in: body
-          schema:
-           type: string
-          description: "open|close|created|selecting finalists|selecting winner|no winner|ended"
-      tags:
-        - Challenges
-      responses:
-        200:
-          description: The system verifies the session of the current user and his role
-          schema:
-            status     : 200
-            message    : "Successful challenge status change"
-            data      :
-              _id   : "asdklajqwe123123"
-              title : "Some random title"
-              blocked: false
-              startDate  : "Date"
-              endDate    : "Date"
-              status     : "open/pending/close"
-              avatar: 
-                id  : "asdasd"
-                name: "new_avatar.png"
-                url : "https://aws3.amazon.com/asldkjalskd.png"
-              background: 
-                id  : "asdasd"
-                name: "new_background.png"
-                url : "https://aws3.amazon.com/asldkjalskd.png"
-              groups:
-                groupId: "as123123ldkajsldkj1231343"
-                name: "Grupo1"
-              categories:
-                categoryId: "as123123ldkajsldkj1231343"
-                name: "Social Media"
-              priorities:
-                _id: "733hfsdfh3347sfjsdf"
-                name: "cost"
-                range: "[100,200]"
-                priority: "1"
-              files: 
-                id  : "asdasd"
-                name: "new_file.docx"
-                url : "https://aws3.amazon.com/asldkjalskd.png"
-              timestamps: 
-                createdAt: "20-August-2014"
-                updatedAt: "21-August-2014"
-            success    : true
-            total      : 0
-        401:
-          description: The system verifies the session of the current user and his role.
+          description: The user doesn't have permissions to update a challenge.
           schema:
             status  : 401
             message : "You do not have permissions"
@@ -750,109 +1412,71 @@ paths:
             success : false
             total   : 0
             
-  /challenges/finalists/index/:
+  /challenges/users/index:
     post:
-      summary: Finalists of a Challenge.
+      summary: Participants of a Challenge
+      tags:
+        - Challenges
       parameters:
         - name: page
           in: body
           schema:
            type: integer
-          description: "1" 
-        - name: usersPerPage
-          in: body
-          schema:
-           type: integer
-          description: "20"
-        - name: challengeId
-          in: body
-          schema:
-           type: string
-          description: "asdaopqasx123we" 
-        - name: filter
-          in: body
-          schema:
-           finalist: true
-           blocked: false
-          description: "{'finalist':'true', 'blocked': true}"
-      tags:
-        - Challenges
-      responses:
-        200:
-          description: The system verifies the session of the current user and his role
-          schema:
-            status     : 200
-            message    : "List of Finalist participants"
-            data      :
-             objects:
-              _id   : "asdklajqwe123123"
-              email : "Some random title"
-              role: false
-              timestamps  : 
-                createdAt: "20-August-2014"
-                updatedAt: "21-August-2014"
-              proposals    : 
-                _id: "54124324f956f2f604d8f0cb"
-                title: "Some random title"
-                finalist: true
-            success    : true
-            total      : 0
-        500:
-          description: Some internal error occurs
-          schema:
-            status  : 500
-            message : "Some internal error ocurrs"
-            data    : {}
-            success : false
-            total   : 0
+          description: "The count start from 0"
+          required: true
           
-  /challenges/winners/index/:
-    post:
-      summary: Finalists of a Challenge.
-      parameters:
-        - name: page
-          in: body
-          schema:
-           type: integer
-          description: "1" 
         - name: usersPerPage
           in: body
-          schema:
+          schema: 
            type: integer
-          description: "20"
+          description: We only list 1-50 elements, no less no more
+          required: true
+          
         - name: challengeId
           in: body
-          schema:
-           type: string
-          description: "asdaopqasx123we" 
+          schema: 
+           type: integer
+          description: The id of the challenge 
+          required : true
+          
         - name: filter
           in: body
           schema:
-           winner: true
-           blocked: false
-          description: "{'winner':'true', 'blocked': true}"
-      tags:
-        - Challenges
+            role          : "admin/consultant"
+            blocked       : "true/false"
+            finalist      : "true/false"
+            winners       : "true/false"
+          required: false
+            
+          description: "All the fields of filter are optionals."
       responses:
         200:
-          description: The system verifies the session of the current user and his role
+          description: List of participants
           schema:
-            status     : 200
-            message    : "List of Winner participants"
-            data      :
-             objects:
-              _id   : "asdklajqwe123123"
-              email : "Some random title"
-              role: false
-              timestamps  : 
-                createdAt: "20-August-2014"
-                updatedAt: "21-August-2014"
-              proposals    : 
-                _id: "54124324f956f2f604d8f0cb"
-                title: "Some random title"
-                finalist: true
-            success    : true
-            total      : 0
+            status  : 200
+            message : "List of participants"
+            data    :
+              objects : 
+                _id   : "asdklajqwe123123"
+                user : 
+                  email : "user@example.com"
+                  role  : "admin/consultant"
+                  avatar: 
+                    _id  : "asdasd"
+                    name: "new_avatar.png"
+                    url : "https://aws3.amazon.com/asldkjalskd.png"
+                  timestamps: 
+                    createdAt: "20-August-2014"
+                    updatedAt: "21-August-2014"
+                  group : 
+                    _id : "asldkjqlwjh312asd"
+                    name: "Some random group" 
+                  
+                proposal: 
+                  _id: "54124324f956f2f604d8f0cb"
+                  title: "Some random title"
+            success : true
+            total   : 0
         500:
           description: Some internal error occurs
           schema:
