@@ -24,22 +24,33 @@ paths:
           in: body
           schema:
            type: integer
-          description: "1"
+           minimum : 0
+          description: "The count start from 0"
+          required : true
+          
         - name: proposalsPerPage
           in: body
           schema: 
            type: integer
-          description: "20"
+           minimum: 1
+           maximum: 50
+          description: "We only list 1-50 elements, no less no more"
+          required: true
+          
         - name: filter
           in: body
           schema:
-            challengeId        : "lkasdlkj123k90098098c098"
-            userId       : "asd129askjclñkoihew"
-            winner : "true/false"
+            challengeId : "lkasdlkj123k90098098"
+            userId      : "asd129askjclÃ±koihew"
             delivered   : "true/false"
-            owner: "true/false"
-          description: "'filter': {'challengeId': 'lkasdlkj123k90098098c098', 'userId': 'asd129askjclñkoihew', 'winner': true/false, 'delivered': true/false, 'owner': true/false}"
-          required: true
+            owner       : "true/false"
+            admin       : "true/false"
+          description: |
+            All the fields of filter are optionals. 
+            The flag admin indicates if the
+            request is used for an admin user
+          required: false
+          
       responses:
         200:
           description: List proposals
@@ -49,8 +60,8 @@ paths:
             data      :
               objects : 
                 _id   : "asdklajqwe123123"
-                challengeId : "asdlkj12nlvcxlñ9032"
-                userId      : "asdlk1290231ñlkdaskj"
+                challenge : "asdlkj12nlvcxlÃ±9032"
+                user      : "asdlk1290231Ã±lkdaskj"
                 title       : "Some random title"
                 winner      : "true/false"
                 delivered   : "true/false"
@@ -73,42 +84,250 @@ paths:
             success : false
             total   : 0
             
+  /proposals/show/:
+    post:
+      summary: Show proposal
+      description: |
+        <b>Preconditions:</b> The user must be sign in into the server and must have an admin role or be the owner of the proposal.
+      parameters:
+        - name: _id
+          in: body
+          schema:
+           type: string
+          description: "as123123ldkajsldkj1231231"
+      tags:
+        - Proposals
+      responses:
+        200:
+          description: The system verifies the session of the current user. 
+          schema:
+            status     : 200
+            message    : "Show Proposal"
+            data      :
+              _id   : "asdklajqwe123123"
+              challengeId : "asdlkj12nlvcxlÃ±9032"
+              userId  : "asdlk1290231Ã±lkdaskj"
+              title: "Some random title"
+              description: "Some random description"
+              winner: true/false
+              delivered: true/false
+              cost: "1/2/3.."
+              patent: true/false
+              outsourcing: true/false
+              experience: "Description of his curriculum"
+              businessName: true(persona moral)/false(persona fisica)
+              duration: "Text that describe the duration of the project"
+              type: "prototype/operative/license"
+              company:
+                name: "Umbrella"
+                foreigner: true/false
+              files: 
+                id  : "asdasd"
+                name: "new_file.docx"
+                url : "https://aws3.amazon.com/asldkjalskd.png"
+              timestamps: 
+                createdAt: "20-August-2014"
+                updatedAt: "21-August-2014"
+              createdBy : {} 
+            success    : true
+            total      : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+
   /proposals/create/:
     post:
       summary: Create Proposal (consultant)
       tags:
         - Proposals
       parameters:
-        - name: challengeId
+        - name: challenge
           in: body
           schema:
-           type: string
-          description: "asdlkj12nlvcxlñ9032"
+            _id   : "asdklajqwe123123"
+            title : "title"
+            description : "Some random description"
+            startDate  : "Mon Nov 24 2014 22:15:07 GMT-0600 (CST)"
+            endDate    : "Wed Nov 30 2014 16:20:50 GMT-0600 (CST)"
+            status     : "open/close/created/finalists/winner/noWinner/ended"
+            accessibility: "public/private"
+            blocked : false/true
+            specifications : "Description of all the points that the proposal must have"
+            objective : "The objective of this challenge"
+
+
+            avatar:
+              _id  : "lvÃƒÆ’Ã‚Â±jasu230vnl"
+              name: "new_avatar.png"
+              url : "https://aws3.amazon.com/asldkjalskd.png"
+
+            background:
+              _id  : "dsjkbk1op12d01dfasdad"
+              name: "new_background.png"
+              url : "https://aws3.amazon.com/asldkjalskd.png"
+
+            rewards :
+              - title: "Pack of books"
+                description: "Contains a collection..."
+                place: 1
+                points : 200
+                photos:
+                  - _id: "aqwlknsxczklnc"
+                    name: "photo1.png"
+                    url: "https://aws3.amazon.com/asldkjalsk123123d.png"
+            
+            createdBy :
+              _id : "asdlkjaÃƒÆ’Ã‚Â±sjdÃƒÆ’Ã‚Â±123"
+              avatar :
+                _id: "12i3ojsaldkjaslkd"
+                name : "avatar.jpg"
+                url : "https://aws3.amazon.com/asldkjalsk123123d123123.png"
+              firstName: "Leon"
+              lastName: "S. Kennedy"
+              email : "user@example.com"
+
+            groups:
+              - _id: "as123123ldkajs"
+                name: "Grupo 1"
+              - _id: "aslihdqlkwjel12j3"
+                name: "Grupo 2"
+
+            categories:
+              - _id: "as123123ldkajsldkj1231343"
+                name : "Social Media"
+              - _id : "asda10knffkjb"
+                name : "Development"
+
+            priorities:
+              - _id: "733hfsdfh3347sfjsdf"
+                name: "cost"
+                range: [100,200]
+                priority: 1
+
+              - _id : "asldhql3jlkjasd123"
+                name : "duration"
+                range: [50,100]
+                priority : 2
+
+              - _id : "12oi3upkfba"
+                name : "experienceTime"
+                range: [1,3]
+                priority : 3
+
+              - _id : "12o3u12pou3ad123"
+                name : "patent"
+                range : [true/false]
+                priority : 4
+
+              - _id : "123hlaksdlkasd"
+                name : "outsourcing"
+                range : [true/false]
+                priority : 5
+
+              - _id : "123iulaksdlakjsdrqwe"
+                name : "businessName"
+                range : [true/false]
+                priority : 1
+
+              - _id: "asp12oi3oi123dfsdf"
+                name : "foreigner"
+                range : [true/false]
+                priority : 2
+
+              - _id : "asdh3po24jnsfaa"
+                name : "kind"
+                range : ["empty", "patent", "secret", "industry", "prototype"]
+                priority : 3
+
+              - _id : "aslkd1p23udf"
+                name : "country"
+                range : ["Mexico", "EU", "Canada"]
+                priority : 4
+
+              - _id : "asdp9i243jkbs"
+                name : "state"
+                range : ["California", "Yucatan", "Oregon"]
+                priority : 5
+
+            files:
+              - _id : "sddfl21kj3kjhasd"
+                name: "new_file.docx"
+                url : "https://aws3.amazon.com/asldkjalskd.png"
+
+            timestamps:
+              createdAt: "20-August-2014"
+              updatedAt: "20-August-2014"
+          description: |
+            The challenge document that is return from 
+            challenge/show
+          required : true
+          
         - name: title
           in: body
           schema: 
            type: string
-          description: "Some random title"
+          description: "Title"
+          required: true
+          
         - name: description
           in: body
           schema: 
            type: string
           description: "Some random description"
+          required : true
+          
         - name: delivered
           in: body
           schema: 
-           type: string
-          description: "true/false"
-        - name: cost
+           type: boolean
+          description: |
+            True when the user wants to send his proposal
+            to the admin. The default value is false.
+          required: false
+          
+        - name : kind
+          in: body
+          schema:
+            type : string
+          description: |
+            The options are "empty", "patent", "secret",
+            "industry" and "prototype"
+          required: false
+          
+        - name: company
           in: body
           schema: 
-           type: string
-          description: "1/2/3"
+            name : "The name of the company"
+            foreigner: true/false
+          
+          description: |
+            A document with basic information of the 
+            company who propose.
+            
+          required: false
+          
+        - name : cost
+          in: body
+          schema : 
+            type: integer
+          description : |
+            A number more than 1 that express the 
+            total cost of the proposal.
+          required : false
+          
         - name: patent
           in: body
           schema: 
-           type: string
-          description: "true/false"
+           type: boolean
+          description: "True or false"
+          required: false
+          
         - name: outsourcing
           in: body
           schema: 
@@ -134,12 +353,7 @@ paths:
           schema: 
            type: string
           description: "prototype/operative/license"
-        - name: company
-          in: body
-          schema: 
-           name: Umbrella
-           foreigner: true/false
-          description: "{'name': 'Umbrella', 'foreigner': 'true/false'}"
+
         - name: files
           in: body
           schema: 
@@ -156,8 +370,8 @@ paths:
             message : "Successful create participant"
             data    :
               _id   : "asdklajqwe123123"
-              challengeId : "asdlkj12nlvcxlñ9032"
-              userId  : "asdlk1290231ñlkdaskj"
+              challengeId : "asdlkj12nlvcxlÃ±9032"
+              userId  : "asdlk1290231Ã±lkdaskj"
               title: "Some random title"
               description: "Some random description"
               winner: true/false
@@ -210,7 +424,7 @@ paths:
           in: body
           schema:
            type: string
-          description: "asdlkj12nlvcxlñ9032"
+          description: "asdlkj12nlvcxlÃ±9032"
         - name: title
           in: body
           schema: 
@@ -285,8 +499,8 @@ paths:
             message : "Successful Update Proposal"
             data    :
               _id   : "asdklajqwe123123"
-              challengeId : "asdlkj12nlvcxlñ9032"
-              userId  : "asdlk1290231ñlkdaskj"
+              challengeId : "asdlkj12nlvcxlÃ±9032"
+              userId  : "asdlk1290231Ã±lkdaskj"
               title: "Some random title"
               description: "Some random description"
               winner: true/false
@@ -328,62 +542,6 @@ paths:
             success : false
             total   : 0
             
-  /proposals/show/:
-    post:
-      summary: Show proposal
-      description: |
-        <b>Preconditions:</b> The user must be sign in into the server and must have an admin role or be the owner of the proposal.
-      parameters:
-        - name: _id
-          in: body
-          schema:
-           type: string
-          description: "as123123ldkajsldkj1231231"
-      tags:
-        - Proposals
-      responses:
-        200:
-          description: The system verifies the session of the current user. 
-          schema:
-            status     : 200
-            message    : "Show Proposal"
-            data      :
-              _id   : "asdklajqwe123123"
-              challengeId : "asdlkj12nlvcxlñ9032"
-              userId  : "asdlk1290231ñlkdaskj"
-              title: "Some random title"
-              description: "Some random description"
-              winner: true/false
-              delivered: true/false
-              cost: "1/2/3.."
-              patent: true/false
-              outsourcing: true/false
-              experience: "Description of his curriculum"
-              businessName: true(persona moral)/false(persona fisica)
-              duration: "Text that describe the duration of the project"
-              type: "prototype/operative/license"
-              company:
-                name: "Umbrella"
-                foreigner: true/false
-              files: 
-                id  : "asdasd"
-                name: "new_file.docx"
-                url : "https://aws3.amazon.com/asldkjalskd.png"
-              timestamps: 
-                createdAt: "20-August-2014"
-                updatedAt: "21-August-2014"
-              createdBy : {} 
-            success    : true
-            total      : 0
-        500:
-          description: Some internal error occurs
-          schema:
-            status  : 500
-            message : "Some internal error ocurrs"
-            data    : {}
-            success : false
-            total   : 0
-            
   /proposals/delete/:
     post:
       summary: Delete Proposal (owner)
@@ -403,8 +561,8 @@ paths:
             message    : "Succesfull delete Proposal"
             data      :
               _id   : "asdklajqwe123123"
-              challengeId : "asdlkj12nlvcxlñ9032"
-              userId  : "asdlk1290231ñlkdaskj"
+              challengeId : "asdlkj12nlvcxlÃ±9032"
+              userId  : "asdlk1290231Ã±lkdaskj"
               title: "Some random title"
               description: "Some random description"
               winner: true/false

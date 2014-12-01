@@ -76,7 +76,7 @@ paths:
                 
                 
                   avatar: 
-                    _id  : "lvÃƒÂ±jasu230vnl"
+                    _id  : "lvÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±jasu230vnl"
                     name: "new_avatar.png"
                     url : "https://aws3.amazon.com/asldkjalskd.png"
                 
@@ -96,7 +96,7 @@ paths:
                           url: "https://aws3.amazon.com/asldkjalsk123123d.png"
                 
                   createdBy : 
-                    _id : "asdlkjaÃƒÂ±sjdÃƒÂ±123"
+                    _id : "asdlkjaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±sjdÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±123"
                     avatar : 
                       _id: "12i3ojsaldkjaslkd"
                       name : "avatar.jpg"
@@ -177,7 +177,7 @@ paths:
               objective : "The objective of this challenge"
                 
               avatar: 
-                _id  : "lvÃƒÂ±jasu230vnl"
+                _id  : "lvÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±jasu230vnl"
                 name: "new_avatar.png"
                 url : "https://aws3.amazon.com/asldkjalskd.png"
                 
@@ -197,7 +197,7 @@ paths:
                       url: "https://aws3.amazon.com/asldkjalsk123123d.png"
                 
               createdBy : 
-                _id : "asdlkjaÃƒÂ±sjdÃƒÂ±123"
+                _id : "asdlkjaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±sjdÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±123"
                 avatar : 
                   _id: "12i3ojsaldkjaslkd"
                   name : "avatar.jpg"
@@ -330,14 +330,14 @@ paths:
           schema: 
            type: integer
           description: "open/close/created"
-          required : false
+          required : true
           
         - name: accessibility
           in: body
           schema: 
             type: string
           description: "public/private"
-          required: false
+          required: true
           
         - name: specifications
           in: body
@@ -360,7 +360,7 @@ paths:
             name: "new_avatar.png"
             url: "https://aws3.amazon.com/asldkjalskd.png"
           description: "The object that returns files/create"
-          required: false
+          required: true
           
         - name: background
           in: body
@@ -370,7 +370,7 @@ paths:
             url: "https://aws3.amazon.com/asldkjalskd.png"
             
           description: "The object that returns files/create"
-          required : false
+          required : true
           
         - name : rewards
           in: body 
@@ -383,7 +383,7 @@ paths:
                 photos : 
                   - _id : "ljasldkejkqwes123"
                     name : "photo1.png"
-                    url : "https://aws3.amazon.com/asdÃ±alksdqweg.png"
+                    url : "https://aws3.amazon.com/asdÃƒÆ’Ã‚Â±alksdqweg.png"
                   
                   - _id : "kqwe90u50384r5234"
                     name : "photo2.png"
@@ -412,7 +412,7 @@ paths:
               - _id : "12u3asjdasdo3qw"
                 name : "Category 2 name"
           description: The category ids must exists.
-          required : false
+          required : true
        
         - name: priorities
           in: body
@@ -470,7 +470,8 @@ paths:
            name: new_file.docx
            url: https://aws3.amazon.com/asldkjalsk123d.docx
           description : "The maximum length of this value is 20"
-          
+          required : false
+              
       tags:
         - Challenges
       responses:
@@ -493,7 +494,7 @@ paths:
                 
                 
               avatar: 
-                _id  : "lvÃƒÂ±jasu230vnl"
+                _id  : "lvÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±jasu230vnl"
                 name: "new_avatar.png"
                 url : "https://aws3.amazon.com/asldkjalskd.png"
                 
@@ -513,7 +514,7 @@ paths:
                       url: "https://aws3.amazon.com/asldkjalsk123123d.png"
               
               createdBy : 
-                _id : "asdlkjaÃƒÂ±sjdÃƒÂ±123"
+                _id : "asdlkjaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±sjdÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±123"
                 avatar : 
                   _id: "12i3ojsaldkjaslkd"
                   name : "avatar.jpg"
@@ -714,7 +715,7 @@ paths:
                 photos : 
                   - _id : "ljasldkejkqwes123"
                     name : "photo1.png"
-                    url : "https://aws3.amazon.com/asdÃ±alksdqweg.png"
+                    url : "https://aws3.amazon.com/asdÃƒÆ’Ã‚Â±alksdqweg.png"
                   
                   - _id : "kqwe90u50384r5234"
                     name : "photo2.png"
@@ -824,7 +825,7 @@ paths:
               objective : "The objective of this challenge"
                 
               avatar: 
-                _id  : "lvÃƒÂ±jasu230vnl"
+                _id  : "lvÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±jasu230vnl"
                 name: "new_avatar.png"
                 url : "https://aws3.amazon.com/asldkjalskd.png"
                 
@@ -844,7 +845,7 @@ paths:
                       url: "https://aws3.amazon.com/asldkjalsk123123d.png"
               
               createdBy : 
-                _id : "asdlkjaÃƒÂ±sjdÃƒÂ±123"
+                _id : "asdlkjaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±sjdÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±123"
                 avatar : 
                   _id: "12i3ojsaldkjaslkd"
                   name : "avatar.jpg"
@@ -985,7 +986,7 @@ paths:
               objective : "The objective of this challenge"
                 
               avatar: 
-                _id  : "lvÃƒÂ±jasu230vnl"
+                _id  : "lvÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±jasu230vnl"
                 name: "new_avatar.png"
                 url : "https://aws3.amazon.com/asldkjalskd.png"
                 
@@ -1005,7 +1006,7 @@ paths:
                       url: "https://aws3.amazon.com/asldkjalsk123123d.png"
               
               createdBy : 
-                _id : "asdlkjaÃƒÂ±sjdÃƒÂ±123"
+                _id : "asdlkjaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±sjdÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±123"
                 avatar : 
                   _id: "12i3ojsaldkjaslkd"
                   name : "avatar.jpg"
@@ -1139,7 +1140,7 @@ paths:
               objective : "The objective of this challenge"
                 
               avatar: 
-                _id  : "lvÃƒÂ±jasu230vnl"
+                _id  : "lvÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±jasu230vnl"
                 name: "new_avatar.png"
                 url : "https://aws3.amazon.com/asldkjalskd.png"
                 
@@ -1159,7 +1160,7 @@ paths:
                       url: "https://aws3.amazon.com/asldkjalsk123123d.png"
               
               createdBy : 
-                _id : "asdlkjaÃƒÂ±sjdÃƒÂ±123"
+                _id : "asdlkjaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±sjdÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±123"
                 avatar : 
                   _id: "12i3ojsaldkjaslkd"
                   name : "avatar.jpg"
@@ -1293,7 +1294,7 @@ paths:
               objective : "The objective of this challenge"
                 
               avatar: 
-                _id  : "lvÃƒÂ±jasu230vnl"
+                _id  : "lvÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±jasu230vnl"
                 name: "new_avatar.png"
                 url : "https://aws3.amazon.com/asldkjalskd.png"
                 
@@ -1313,7 +1314,7 @@ paths:
                       url: "https://aws3.amazon.com/asldkjalsk123123d.png"
               
               createdBy : 
-                _id : "asdlkjaÃƒÂ±sjdÃƒÂ±123"
+                _id : "asdlkjaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±sjdÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±123"
                 avatar : 
                   _id: "12i3ojsaldkjaslkd"
                   name : "avatar.jpg"
@@ -1457,24 +1458,24 @@ paths:
             message : "List of participants"
             data    :
               objects : 
-                _id   : "asdklajqwe123123"
-                user : 
-                  email : "user@example.com"
-                  role  : "admin/consultant"
-                  avatar: 
-                    _id  : "asdasd"
-                    name: "new_avatar.png"
-                    url : "https://aws3.amazon.com/asldkjalskd.png"
-                  timestamps: 
-                    createdAt: "20-August-2014"
-                    updatedAt: "21-August-2014"
-                  group : 
-                    _id : "asldkjqlwjh312asd"
-                    name: "Some random group" 
+                - _id   : "asdklajqwe123123"
+                  user : 
+                    email : "user@example.com"
+                    role  : "admin/consultant"
+                    avatar: 
+                      _id  : "asdasd"
+                      name: "new_avatar.png"
+                      url : "https://aws3.amazon.com/asldkjalskd.png"
+                    timestamps: 
+                      createdAt: "20-August-2014"
+                      updatedAt: "21-August-2014"
+                    group : 
+                      _id : "asldkjqlwjh312asd"
+                      name: "Some random group" 
                   
-                proposal: 
-                  _id: "54124324f956f2f604d8f0cb"
-                  title: "Some random title"
+                  proposal: 
+                    _id: "54124324f956f2f604d8f0cb"
+                    title: "Some random title"
             success : true
             total   : 0
         500:
