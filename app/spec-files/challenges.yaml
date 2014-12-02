@@ -65,6 +65,7 @@ paths:
               objects : 
                 - _id   : "asdklajqwe123123"
                   title : "Title"
+                  editable : "true/false"
                   description : "Some random description"
                   startDate  : "Mon Nov 24 2014 22:15:07 GMT-0600 (CST)"
                   endDate    : "Wed Nov 30 2014 16:20:50 GMT-0600 (CST)"
@@ -76,7 +77,7 @@ paths:
                 
                 
                   avatar: 
-                    _id  : "lvÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±jasu230vnl"
+                    _id  : "lvÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±jasu230vnl"
                     name: "new_avatar.png"
                     url : "https://aws3.amazon.com/asldkjalskd.png"
                 
@@ -96,7 +97,7 @@ paths:
                           url: "https://aws3.amazon.com/asldkjalsk123123d.png"
                 
                   createdBy : 
-                    _id : "asdlkjaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±sjdÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±123"
+                    _id : "asdlkjaÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±sjdÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±123"
                     avatar : 
                       _id: "12i3ojsaldkjaslkd"
                       name : "avatar.jpg"
@@ -167,6 +168,7 @@ paths:
             data      :
               _id   : "lo234oyaslkhsd97mnv123"
               title : "Title"
+              editable : "true/false"
               description : "Some random description"
               startDate  : "Mon Nov 24 2014 22:15:07 GMT-0600 (CST)"
               endDate    : "Wed Nov 30 2014 16:20:50 GMT-0600 (CST)"
@@ -177,7 +179,7 @@ paths:
               objective : "The objective of this challenge"
                 
               avatar: 
-                _id  : "lvÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±jasu230vnl"
+                _id  : "lvÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±jasu230vnl"
                 name: "new_avatar.png"
                 url : "https://aws3.amazon.com/asldkjalskd.png"
                 
@@ -197,7 +199,7 @@ paths:
                       url: "https://aws3.amazon.com/asldkjalsk123123d.png"
                 
               createdBy : 
-                _id : "asdlkjaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±sjdÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±123"
+                _id : "asdlkjaÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±sjdÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±123"
                 avatar : 
                   _id: "12i3ojsaldkjaslkd"
                   name : "avatar.jpg"
@@ -383,7 +385,7 @@ paths:
                 photos : 
                   - _id : "ljasldkejkqwes123"
                     name : "photo1.png"
-                    url : "https://aws3.amazon.com/asdÃƒÆ’Ã‚Â±alksdqweg.png"
+                    url : "https://aws3.amazon.com/asdÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±alksdqweg.png"
                   
                   - _id : "kqwe90u50384r5234"
                     name : "photo2.png"
@@ -494,7 +496,7 @@ paths:
                 
                 
               avatar: 
-                _id  : "lvÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±jasu230vnl"
+                _id  : "lvÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±jasu230vnl"
                 name: "new_avatar.png"
                 url : "https://aws3.amazon.com/asldkjalskd.png"
                 
@@ -514,7 +516,7 @@ paths:
                       url: "https://aws3.amazon.com/asldkjalsk123123d.png"
               
               createdBy : 
-                _id : "asdlkjaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±sjdÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±123"
+                _id : "asdlkjaÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±sjdÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±123"
                 avatar : 
                   _id: "12i3ojsaldkjaslkd"
                   name : "avatar.jpg"
@@ -715,7 +717,7 @@ paths:
                 photos : 
                   - _id : "ljasldkejkqwes123"
                     name : "photo1.png"
-                    url : "https://aws3.amazon.com/asdÃƒÆ’Ã‚Â±alksdqweg.png"
+                    url : "https://aws3.amazon.com/asdÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±alksdqweg.png"
                   
                   - _id : "kqwe90u50384r5234"
                     name : "photo2.png"
@@ -825,7 +827,7 @@ paths:
               objective : "The objective of this challenge"
                 
               avatar: 
-                _id  : "lvÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±jasu230vnl"
+                _id  : "lvÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±jasu230vnl"
                 name: "new_avatar.png"
                 url : "https://aws3.amazon.com/asldkjalskd.png"
                 
@@ -845,7 +847,7 @@ paths:
                       url: "https://aws3.amazon.com/asldkjalsk123123d.png"
               
               createdBy : 
-                _id : "asdlkjaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±sjdÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±123"
+                _id : "asdlkjaÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±sjdÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±123"
                 avatar : 
                   _id: "12i3ojsaldkjaslkd"
                   name : "avatar.jpg"
@@ -986,7 +988,7 @@ paths:
               objective : "The objective of this challenge"
                 
               avatar: 
-                _id  : "lvÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±jasu230vnl"
+                _id  : "lvÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±jasu230vnl"
                 name: "new_avatar.png"
                 url : "https://aws3.amazon.com/asldkjalskd.png"
                 
@@ -1006,7 +1008,7 @@ paths:
                       url: "https://aws3.amazon.com/asldkjalsk123123d.png"
               
               createdBy : 
-                _id : "asdlkjaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±sjdÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±123"
+                _id : "asdlkjaÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±sjdÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±123"
                 avatar : 
                   _id: "12i3ojsaldkjaslkd"
                   name : "avatar.jpg"
@@ -1140,7 +1142,7 @@ paths:
               objective : "The objective of this challenge"
                 
               avatar: 
-                _id  : "lvÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±jasu230vnl"
+                _id  : "lvÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±jasu230vnl"
                 name: "new_avatar.png"
                 url : "https://aws3.amazon.com/asldkjalskd.png"
                 
@@ -1160,7 +1162,7 @@ paths:
                       url: "https://aws3.amazon.com/asldkjalsk123123d.png"
               
               createdBy : 
-                _id : "asdlkjaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±sjdÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±123"
+                _id : "asdlkjaÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±sjdÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±123"
                 avatar : 
                   _id: "12i3ojsaldkjaslkd"
                   name : "avatar.jpg"
@@ -1294,7 +1296,7 @@ paths:
               objective : "The objective of this challenge"
                 
               avatar: 
-                _id  : "lvÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±jasu230vnl"
+                _id  : "lvÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±jasu230vnl"
                 name: "new_avatar.png"
                 url : "https://aws3.amazon.com/asldkjalskd.png"
                 
@@ -1314,7 +1316,7 @@ paths:
                       url: "https://aws3.amazon.com/asldkjalsk123123d.png"
               
               createdBy : 
-                _id : "asdlkjaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±sjdÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±123"
+                _id : "asdlkjaÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±sjdÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â±123"
                 avatar : 
                   _id: "12i3ojsaldkjaslkd"
                   name : "avatar.jpg"
