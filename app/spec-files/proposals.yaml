@@ -41,7 +41,7 @@ paths:
           in: body
           schema:
             challengeId : "lkasdlkj123k90098098"
-            userId      : "asd129askjclÃ±koihew"
+            userId      : "asd129askjclÃƒÂ±koihew"
             delivered   : "true/false"
             owner       : "true/false"
             admin       : "true/false"
@@ -59,20 +59,156 @@ paths:
             message : "List proposals"
             data      :
               objects : 
-                _id   : "asdklajqwe123123"
-                challenge : "asdlkj12nlvcxlÃ±9032"
-                user      : "asdlk1290231Ã±lkdaskj"
-                title       : "Some random title"
-                winner      : "true/false"
-                delivered   : "true/false"
-                files: 
-                  id  : "asdasd"
-                  name: "new_file.docx"
-                  url : "https://aws3.amazon.com/asldkjalskd.png"
-                  createdBy: {}
-                timestamps: 
-                  createdAt: "20-August-2014"
-                  updatedAt: "21-August-2014"
+               -  _id   : "asdklajqwe123123"
+                  editable: "true/false"
+                  challenge:
+                    _id   : "asdklajqwe123123"
+                    title : "title"
+                    description : "Some random description"
+                    startDate  : "Mon Nov 24 2014 22:15:07 GMT-0600 (CST)"
+                    endDate    : "Wed Nov 30 2014 16:20:50 GMT-0600 (CST)"
+                    status     : "open/close/created/finalists/winner/noWinner/ended"
+                    accessibility: "public/private"
+                    blocked : false/true
+                    specifications : "Description of all the points that the proposal must have"
+                    objective : "The objective of this challenge"
+
+                    avatar:
+                      _id  : "lvÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±jasu230vnl"
+                      name: "new_avatar.png"
+                      url : "https://aws3.amazon.com/asldkjalskd.png"
+
+                    background:
+                      _id  : "dsjkbk1op12d01dfasdad"
+                      name: "new_background.png"
+                      url : "https://aws3.amazon.com/asldkjalskd.png"
+
+                    rewards :
+                      - title: "Pack of books"
+                        description: "Contains a collection..."
+                        place: 1
+                        points : 200
+                        photos:
+                          - _id: "aqwlknsxczklnc"
+                            name: "photo1.png"
+                            url: "https://aws3.amazon.com/asldkjalsk123123d.png"
+            
+                    createdBy :
+                      _id : "asdlkjaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±sjdÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±123"
+                      avatar :
+                        _id: "12i3ojsaldkjaslkd"
+                        name : "avatar.jpg"
+                        url : "https://aws3.amazon.com/asldkjalsk123123d123123.png"
+                      firstName: "Leon"
+                      lastName: "S. Kennedy"
+                      email : "user@example.com"
+
+                    groups:
+                      - _id: "as123123ldkajs"
+                        name: "Grupo 1"
+                      - _id: "aslihdqlkwjel12j3"
+                        name: "Grupo 2"
+
+                    categories:
+                      - _id: "as123123ldkajsldkj1231343"
+                        name : "Social Media"
+                      - _id : "asda10knffkjb"
+                        name : "Development"
+
+                    priorities:
+                      - _id: "733hfsdfh3347sfjsdf"
+                        name: "cost"
+                        range: [100,200]
+                        priority: 1
+
+                      - _id : "asldhql3jlkjasd123"
+                        name : "duration"
+                        range: [50,100]
+                        priority : 2
+
+                      - _id : "12oi3upkfba"
+                        name : "experienceTime"
+                        range: [1,3]
+                        priority : 3
+
+                      - _id : "12o3u12pou3ad123"
+                        name : "patent"
+                        range : [true/false]
+                        priority : 4
+
+                      - _id : "123hlaksdlkasd"
+                        name : "outsourcing"
+                        range : [true/false]
+                        priority : 5
+
+                      - _id : "123iulaksdlakjsdrqwe"
+                        name : "businessName"
+                        range : [true/false]
+                        priority : 1
+
+                      - _id: "asp12oi3oi123dfsdf"
+                        name : "foreigner"
+                        range : [true/false]
+                        priority : 2
+
+                      - _id : "asdh3po24jnsfaa"
+                        name : "kind"
+                        range : ["empty", "patent", "secret", "industry", "prototype"]
+                        priority : 3
+
+                      - _id : "aslkd1p23udf"
+                        name : "country"
+                        range : ["Mexico", "EU", "Canada"]
+                        priority : 4
+
+                      - _id : "asdp9i243jkbs"
+                        name : "state"
+                        range : ["California", "Yucatan", "Oregon"]
+                        priority : 5
+
+                    files:
+                      - _id : "sddfl21kj3kjhasd"
+                        name: "new_file.docx"
+                        url : "https://aws3.amazon.com/asldkjalskd.png"
+
+                    timestamps:
+                      createdAt: "20-August-2014"
+                      updatedAt: "20-August-2014"
+        
+                  title: "Proposal's title"
+                  description: "A complete description of the proposal"
+                  delivered: "true/false"
+                  kind: "empty/patent/secret/industry/prototype"
+                  company:
+                    name : "The name of the company"
+                    foreigner: true/false
+                  cost : "0/1/...."
+                  patent: "true/false"
+                  outsourcing: "true/false"
+                  experience : "A breif description of his curriculum"
+                  duration : "Text that describe the duration of the project"          
+                  country: "EU/Mexico/Canada"
+                  state : "California/Oregon/Chiapas/Tamaulipas"
+                  experienceTime : "0/1/2/...."
+                  businessName: "true/false"
+              
+                  files :
+                    - _id : "sddfl21kj3kjhasd"
+                      name: "new_file.docx"
+                      url : "https://aws3.amazon.com/asldkjalskd.png"
+              
+                  timestamps: 
+                    createdAt: "20-August-2014"
+                    updatedAt: "21-August-2014"
+                  createdBy :
+                    _id : "asdlkjaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±sjdÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±123"
+                    avatar :
+                      _id: "12i3ojsaldkjaslkd"
+                      name : "avatar.jpg"
+                      url : "https://aws3.amazon.com/asldkjalsk123123d123123.png"
+                    firstName: "Claire"
+                    lastName: "Redfield"
+                    email : "user_consultant@example.com"
             success : true
             total   : 0
         500:
@@ -105,30 +241,155 @@ paths:
             message    : "Show Proposal"
             data      :
               _id   : "asdklajqwe123123"
-              challengeId : "asdlkj12nlvcxlÃ±9032"
-              userId  : "asdlk1290231Ã±lkdaskj"
-              title: "Some random title"
-              description: "Some random description"
-              winner: true/false
-              delivered: true/false
-              cost: "1/2/3.."
-              patent: true/false
-              outsourcing: true/false
-              experience: "Description of his curriculum"
-              businessName: true(persona moral)/false(persona fisica)
-              duration: "Text that describe the duration of the project"
-              type: "prototype/operative/license"
+              editable : "true/false"
+              challenge:
+                _id   : "asdklajqwe123123"
+                title : "title"
+                description : "Some random description"
+                startDate  : "Mon Nov 24 2014 22:15:07 GMT-0600 (CST)"
+                endDate    : "Wed Nov 30 2014 16:20:50 GMT-0600 (CST)"
+                status     : "open/close/created/finalists/winner/noWinner/ended"
+                accessibility: "public/private"
+                blocked : false/true
+                specifications : "Description of all the points that the proposal must have"
+                objective : "The objective of this challenge"
+
+                avatar:
+                  _id  : "lvÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±jasu230vnl"
+                  name: "new_avatar.png"
+                  url : "https://aws3.amazon.com/asldkjalskd.png"
+
+                background:
+                  _id  : "dsjkbk1op12d01dfasdad"
+                  name: "new_background.png"
+                  url : "https://aws3.amazon.com/asldkjalskd.png"
+
+                rewards :
+                  - title: "Pack of books"
+                    description: "Contains a collection..."
+                    place: 1
+                    points : 200
+                    photos:
+                      - _id: "aqwlknsxczklnc"
+                        name: "photo1.png"
+                        url: "https://aws3.amazon.com/asldkjalsk123123d.png"
+            
+                createdBy :
+                  _id : "asdlkjaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±sjdÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±123"
+                  avatar :
+                    _id: "12i3ojsaldkjaslkd"
+                    name : "avatar.jpg"
+                    url : "https://aws3.amazon.com/asldkjalsk123123d123123.png"
+                  firstName: "Leon"
+                  lastName: "S. Kennedy"
+                  email : "user@example.com"
+
+                groups:
+                  - _id: "as123123ldkajs"
+                    name: "Grupo 1"
+                  - _id: "aslihdqlkwjel12j3"
+                    name: "Grupo 2"
+
+                categories:
+                  - _id: "as123123ldkajsldkj1231343"
+                    name : "Social Media"
+                  - _id : "asda10knffkjb"
+                    name : "Development"
+
+                priorities:
+                  - _id: "733hfsdfh3347sfjsdf"
+                    name: "cost"
+                    range: [100,200]
+                    priority: 1
+
+                  - _id : "asldhql3jlkjasd123"
+                    name : "duration"
+                    range: [50,100]
+                    priority : 2
+
+                  - _id : "12oi3upkfba"
+                    name : "experienceTime"
+                    range: [1,3]
+                    priority : 3
+
+                  - _id : "12o3u12pou3ad123"
+                    name : "patent"
+                    range : [true/false]
+                    priority : 4
+
+                  - _id : "123hlaksdlkasd"
+                    name : "outsourcing"
+                    range : [true/false]
+                    priority : 5
+
+                  - _id : "123iulaksdlakjsdrqwe"
+                    name : "businessName"
+                    range : [true/false]
+                    priority : 1
+
+                  - _id: "asp12oi3oi123dfsdf"
+                    name : "foreigner"
+                    range : [true/false]
+                    priority : 2
+
+                  - _id : "asdh3po24jnsfaa"
+                    name : "kind"
+                    range : ["empty", "patent", "secret", "industry", "prototype"]
+                    priority : 3
+
+                  - _id : "aslkd1p23udf"
+                    name : "country"
+                    range : ["Mexico", "EU", "Canada"]
+                    priority : 4
+
+                  - _id : "asdp9i243jkbs"
+                    name : "state"
+                    range : ["California", "Yucatan", "Oregon"]
+                    priority : 5
+
+                files:
+                  - _id : "sddfl21kj3kjhasd"
+                    name: "new_file.docx"
+                    url : "https://aws3.amazon.com/asldkjalskd.png"
+
+                timestamps:
+                  createdAt: "20-August-2014"
+                  updatedAt: "20-August-2014"
+        
+              title: "Proposal's title"
+              description: "A complete description of the proposal"
+              delivered: "true/false"
+              kind: "empty/patent/secret/industry/prototype"
               company:
-                name: "Umbrella"
+                name : "The name of the company"
                 foreigner: true/false
-              files: 
-                id  : "asdasd"
-                name: "new_file.docx"
-                url : "https://aws3.amazon.com/asldkjalskd.png"
+              cost : "0/1/...."
+              patent: "true/false"
+              outsourcing: "true/false"
+              experience : "A breif description of his curriculum"
+              duration : "Text that describe the duration of the project"          
+              country: "EU/Mexico/Canada"
+              state : "California/Oregon/Chiapas/Tamaulipas"
+              experienceTime : "0/1/2/...."
+              businessName: "true/false"
+              
+              files :
+                - _id : "sddfl21kj3kjhasd"
+                  name: "new_file.docx"
+                  url : "https://aws3.amazon.com/asldkjalskd.png"
+              
               timestamps: 
                 createdAt: "20-August-2014"
                 updatedAt: "21-August-2014"
-              createdBy : {} 
+              createdBy :
+                _id : "asdlkjaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±sjdÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±123"
+                avatar :
+                  _id: "12i3ojsaldkjaslkd"
+                  name : "avatar.jpg"
+                  url : "https://aws3.amazon.com/asldkjalsk123123d123123.png"
+                firstName: "Claire"
+                lastName: "Redfield"
+                email : "user_consultant@example.com"
             success    : true
             total      : 0
         500:
@@ -163,7 +424,7 @@ paths:
 
 
             avatar:
-              _id  : "lvÃƒÆ’Ã‚Â±jasu230vnl"
+              _id  : "lvÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±jasu230vnl"
               name: "new_avatar.png"
               url : "https://aws3.amazon.com/asldkjalskd.png"
 
@@ -183,7 +444,7 @@ paths:
                     url: "https://aws3.amazon.com/asldkjalsk123123d.png"
             
             createdBy :
-              _id : "asdlkjaÃƒÆ’Ã‚Â±sjdÃƒÆ’Ã‚Â±123"
+              _id : "asdlkjaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±sjdÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±123"
               avatar :
                 _id: "12i3ojsaldkjaslkd"
                 name : "avatar.jpg"
@@ -305,7 +566,6 @@ paths:
           schema: 
             name : "The name of the company"
             foreigner: true/false
-          
           description: |
             A document with basic information of the 
             company who propose.
@@ -317,90 +577,249 @@ paths:
           schema : 
             type: integer
           description : |
-            A number more than 1 that express the 
+            A number more than 0 that express the 
             total cost of the proposal.
-          required : false
+          required : true
           
         - name: patent
           in: body
           schema: 
            type: boolean
-          description: "True or false"
-          required: false
+          description: |
+            A flag that indicates if the proposal is already patented
+          required: true
           
         - name: outsourcing
           in: body
           schema: 
            type: string
-          description: "true/false"
+          description: |
+            A flag that indicates if the proposal is going to be outsourced
+          required : true
+          
         - name: experience
           in: body
           schema: 
            type: string
-          description: "Description of his curriculum"
+          description: "A breif description of his curriculum"
+          required: false
+          
+        - name: duration
+          in: body
+          schema: 
+           type: string
+          description: "Text that describe the duration of the project"          
+
+        - name : country
+          in: body
+          schema:
+            type : string
+          description: |
+            The residence country of the user or company
+          required: true
+          
+        - name : state
+          in: body
+          schema: 
+            type: string
+          description : |
+            The residence state of the user or company
+          required: true
+          
+        - name : experienceTime 
+          in: body
+          schema: 
+            type: integer
+          description: |
+            A number that describes the experience of the user. Only positive numbers.
+          required: true
+        
         - name: businessName
           in: body
           schema: 
            type: string
           description: "true(persona moral)/false(persona fisica)"
-        - name: duration
-          in: body
-          schema: 
-           type: string
-          description: "Text that describe the duration of the project"
-        - name: type
-          in: body
-          schema: 
-           type: string
-          description: "prototype/operative/license"
+          required: true
 
         - name: files
           in: body
-          schema: 
-            id  : "asdasd"
-            name: "new_file.docx"
-            url : "https://aws3.amazon.com/asldkjalskd.png"
-            createdBy: {}
-          description: "[{'_id': 'asdas123d123', 'name': 'new_file.docx', 'url': 'https://aws3.amazon.com/asldkjalsk123d.docx'}...]"
-      responses:
-        200:
-          description: The system verifies the session of the current user.
           schema:
-            status  : 200
-            message : "Successful create participant"
-            data    :
-              _id   : "asdklajqwe123123"
-              challengeId : "asdlkj12nlvcxlÃ±9032"
-              userId  : "asdlk1290231Ã±lkdaskj"
-              title: "Some random title"
-              description: "Some random description"
-              winner: true/false
-              delivered: true/false
-              cost: "1/2/3.."
-              patent: true/false
-              outsourcing: true/false
-              experience: "Description of his curriculum"
-              businessName: true(persona moral)/false(persona fisica)
-              duration: "Text that describe the duration of the project"
-              type: "prototype/operative/license"
-              company:
-                name: "Umbrella"
-                foreigner: true/false
-              files: 
-                id  : "asdasd"
+            files: 
+              - _id : "sddfl21kj3kjhasd"
                 name: "new_file.docx"
                 url : "https://aws3.amazon.com/asldkjalskd.png"
+          description: |
+            An array of files.
+          required: false
+          
+      responses:
+        200:
+          description: If the user has a consultant role, then the proposal is created.
+          schema:
+            status  : 200
+            message : "Successful create proposal"
+            data    :
+              _id   : "asdklajqwe123123"
+              
+              challenge:
+                _id   : "asdklajqwe123123"
+                title : "title"
+                description : "Some random description"
+                startDate  : "Mon Nov 24 2014 22:15:07 GMT-0600 (CST)"
+                endDate    : "Wed Nov 30 2014 16:20:50 GMT-0600 (CST)"
+                status     : "open/close/created/finalists/winner/noWinner/ended"
+                accessibility: "public/private"
+                blocked : false/true
+                specifications : "Description of all the points that the proposal must have"
+                objective : "The objective of this challenge"
+
+                avatar:
+                  _id  : "lvÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±jasu230vnl"
+                  name: "new_avatar.png"
+                  url : "https://aws3.amazon.com/asldkjalskd.png"
+
+                background:
+                  _id  : "dsjkbk1op12d01dfasdad"
+                  name: "new_background.png"
+                  url : "https://aws3.amazon.com/asldkjalskd.png"
+
+                rewards :
+                  - title: "Pack of books"
+                    description: "Contains a collection..."
+                    place: 1
+                    points : 200
+                    photos:
+                      - _id: "aqwlknsxczklnc"
+                        name: "photo1.png"
+                        url: "https://aws3.amazon.com/asldkjalsk123123d.png"
+            
+                createdBy :
+                  _id : "asdlkjaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±sjdÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±123"
+                  avatar :
+                    _id: "12i3ojsaldkjaslkd"
+                    name : "avatar.jpg"
+                    url : "https://aws3.amazon.com/asldkjalsk123123d123123.png"
+                  firstName: "Leon"
+                  lastName: "S. Kennedy"
+                  email : "user@example.com"
+
+                groups:
+                  - _id: "as123123ldkajs"
+                    name: "Grupo 1"
+                  - _id: "aslihdqlkwjel12j3"
+                    name: "Grupo 2"
+
+                categories:
+                  - _id: "as123123ldkajsldkj1231343"
+                    name : "Social Media"
+                  - _id : "asda10knffkjb"
+                    name : "Development"
+
+                priorities:
+                  - _id: "733hfsdfh3347sfjsdf"
+                    name: "cost"
+                    range: [100,200]
+                    priority: 1
+
+                  - _id : "asldhql3jlkjasd123"
+                    name : "duration"
+                    range: [50,100]
+                    priority : 2
+
+                  - _id : "12oi3upkfba"
+                    name : "experienceTime"
+                    range: [1,3]
+                    priority : 3
+
+                  - _id : "12o3u12pou3ad123"
+                    name : "patent"
+                    range : [true/false]
+                    priority : 4
+
+                  - _id : "123hlaksdlkasd"
+                    name : "outsourcing"
+                    range : [true/false]
+                    priority : 5
+
+                  - _id : "123iulaksdlakjsdrqwe"
+                    name : "businessName"
+                    range : [true/false]
+                    priority : 1
+
+                  - _id: "asp12oi3oi123dfsdf"
+                    name : "foreigner"
+                    range : [true/false]
+                    priority : 2
+
+                  - _id : "asdh3po24jnsfaa"
+                    name : "kind"
+                    range : ["empty", "patent", "secret", "industry", "prototype"]
+                    priority : 3
+
+                  - _id : "aslkd1p23udf"
+                    name : "country"
+                    range : ["Mexico", "EU", "Canada"]
+                    priority : 4
+
+                  - _id : "asdp9i243jkbs"
+                    name : "state"
+                    range : ["California", "Yucatan", "Oregon"]
+                    priority : 5
+
+                files:
+                  - _id : "sddfl21kj3kjhasd"
+                    name: "new_file.docx"
+                    url : "https://aws3.amazon.com/asldkjalskd.png"
+
+                timestamps:
+                  createdAt: "20-August-2014"
+                  updatedAt: "20-August-2014"
+        
+              title: "Proposal's title"
+              description: "A complete description of the proposal"
+              delivered: "true/false"
+              kind: "empty/patent/secret/industry/prototype"
+              company:
+                name : "The name of the company"
+                foreigner: true/false
+              cost : "0/1/...."
+              patent: "true/false"
+              outsourcing: "true/false"
+              experience : "A breif description of his curriculum"
+              duration : "Text that describe the duration of the project"          
+              country: "EU/Mexico/Canada"
+              state : "California/Oregon/Chiapas/Tamaulipas"
+              experienceTime : "0/1/2/...."
+              businessName: "true/false"
+              
+              files :
+                - _id : "sddfl21kj3kjhasd"
+                  name: "new_file.docx"
+                  url : "https://aws3.amazon.com/asldkjalskd.png"
+              
               timestamps: 
                 createdAt: "20-August-2014"
                 updatedAt: "21-August-2014"
-              createdBy : {} 
+              createdBy :
+                _id : "asdlkjaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±sjdÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±123"
+                avatar :
+                  _id: "12i3ojsaldkjaslkd"
+                  name : "avatar.jpg"
+                  url : "https://aws3.amazon.com/asldkjalsk123123d123123.png"
+                firstName: "Claire"
+                lastName: "Redfield"
+                email : "user_consultant@example.com"
+        
             success : true
             total   : 0
+            
         401:
-          description: The user doesn't have permissions to create a user or Some is required or The challenge doesn't exists or You already create a proposal.
+          description: |
+            The user doesn't have permissions to create the proposal or
+            the user already create a proposal for that challenge.
           schema:
             status  : 401
-            message : "The user doesn't have permissions to create a user or Some is required or The challenge doesn't exists or You already create a proposal"
+            message : "The user doesn't have permissions/You already create a proposal for this challenge"
             data    : {}
             success : false
             total   : 0
@@ -420,75 +839,130 @@ paths:
         <b>Preconditions:</b> The user must be sign in into the server and must have an consultant role.<br>
         <b>Postconditions:</b> The information will be update.
       parameters:
-        - name: challengeId
-          in: body
-          schema:
-           type: string
-          description: "asdlkj12nlvcxlÃ±9032"
         - name: title
           in: body
           schema: 
            type: string
-          description: "Some random title"
+          description: "Title"
+          required: true
+          
         - name: description
           in: body
           schema: 
            type: string
           description: "Some random description"
+          required : true
+          
         - name: delivered
           in: body
           schema: 
-           type: string
-          description: "true/false"
-        - name: cost
+           type: boolean
+          description: |
+            True when the user wants to send his proposal
+            to the admin. The default value is false.
+          required: false
+          
+        - name : kind
+          in: body
+          schema:
+            type : string
+          description: |
+            The options are "empty", "patent", "secret",
+            "industry" and "prototype"
+          required: false
+          
+        - name: company
           in: body
           schema: 
-           type: string
-          description: "1/2/3"
+            name : "The name of the company"
+            foreigner: true/false
+          description: |
+            A document with basic information of the 
+            company who propose.
+            
+          required: false
+          
+        - name : cost
+          in: body
+          schema : 
+            type: integer
+          description : |
+            A number more than 0 that express the 
+            total cost of the proposal.
+          required : true
+          
         - name: patent
           in: body
           schema: 
-           type: string
-          description: "true/false"
+           type: boolean
+          description: |
+            A flag that indicates if the proposal is already patented
+          required: true
+          
         - name: outsourcing
           in: body
           schema: 
            type: string
-          description: "true/false"
+          description: |
+            A flag that indicates if the proposal is going to be outsourced
+          required : true
+          
         - name: experience
           in: body
           schema: 
            type: string
-          description: "Description of his curriculum"
+          description: "A breif description of his curriculum"
+          required: false
+          
+        - name: duration
+          in: body
+          schema: 
+           type: string
+          description: "Text that describe the duration of the project"          
+
+        - name : country
+          in: body
+          schema:
+            type : string
+          description: |
+            The residence country of the user or company
+          required: true
+          
+        - name : state
+          in: body
+          schema: 
+            type: string
+          description : |
+            The residence state of the user or company
+          required: true
+          
+        - name : experienceTime 
+          in: body
+          schema: 
+            type: integer
+          description: |
+            A number that describes the experience of the user. Only positive numbers.
+          required: true
+        
         - name: businessName
           in: body
           schema: 
            type: string
           description: "true(persona moral)/false(persona fisica)"
-        - name: duration
-          in: body
-          schema: 
-           type: string
-          description: "Text that describe the duration of the project"
-        - name: type
-          in: body
-          schema: 
-           type: string
-          description: "prototype/operative/license"
-        - name: company
-          in: body
-          schema: 
-           name: Umbrella
-           foreigner: true/false
-          description: "{'name': 'Umbrella', 'foreigner': 'true/false'}"
+          required: true
+
         - name: files
           in: body
-          schema: 
-            id  : "asdasd"
-            name: "new_file.docx"
-            url : "https://aws3.amazon.com/asldkjalskd.png"
-            createdBy: {}
-          description: "[{'_id': 'asdas123d123', 'name': 'new_file.docx', 'url': 'https://aws3.amazon.com/asldkjalsk123d.docx'}...]"
+          schema:
+            files: 
+              - _id : "sddfl21kj3kjhasd"
+                name: "new_file.docx"
+                url : "https://aws3.amazon.com/asldkjalskd.png"
+          description: |
+            An array of files.
+          required: false
+        
+        
       tags:
         - Proposals
       responses:
@@ -496,33 +970,159 @@ paths:
           description: The system verifies the session of the current user. 
           schema:
             status  : 200
-            message : "Successful Update Proposal"
+            message : "Successful update proposal"
             data    :
               _id   : "asdklajqwe123123"
-              challengeId : "asdlkj12nlvcxlÃ±9032"
-              userId  : "asdlk1290231Ã±lkdaskj"
-              title: "Some random title"
-              description: "Some random description"
-              winner: true/false
-              delivered: true/false
-              cost: "1/2/3.."
-              patent: true/false
-              outsourcing: true/false
-              experience: "Description of his curriculum"
-              businessName: true(persona moral)/false(persona fisica)
-              duration: "Text that describe the duration of the project"
-              type: "prototype/operative/license"
+              
+              challenge:
+                _id   : "asdklajqwe123123"
+                title : "title"
+                description : "Some random description"
+                startDate  : "Mon Nov 24 2014 22:15:07 GMT-0600 (CST)"
+                endDate    : "Wed Nov 30 2014 16:20:50 GMT-0600 (CST)"
+                status     : "open/close/created/finalists/winner/noWinner/ended"
+                accessibility: "public/private"
+                blocked : false/true
+                specifications : "Description of all the points that the proposal must have"
+                objective : "The objective of this challenge"
+
+                avatar:
+                  _id  : "lvÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±jasu230vnl"
+                  name: "new_avatar.png"
+                  url : "https://aws3.amazon.com/asldkjalskd.png"
+
+                background:
+                  _id  : "dsjkbk1op12d01dfasdad"
+                  name: "new_background.png"
+                  url : "https://aws3.amazon.com/asldkjalskd.png"
+
+                rewards :
+                  - title: "Pack of books"
+                    description: "Contains a collection..."
+                    place: 1
+                    points : 200
+                    photos:
+                      - _id: "aqwlknsxczklnc"
+                        name: "photo1.png"
+                        url: "https://aws3.amazon.com/asldkjalsk123123d.png"
+            
+                createdBy :
+                  _id : "asdlkjaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±sjdÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±123"
+                  avatar :
+                    _id: "12i3ojsaldkjaslkd"
+                    name : "avatar.jpg"
+                    url : "https://aws3.amazon.com/asldkjalsk123123d123123.png"
+                  firstName: "Leon"
+                  lastName: "S. Kennedy"
+                  email : "user@example.com"
+
+                groups:
+                  - _id: "as123123ldkajs"
+                    name: "Grupo 1"
+                  - _id: "aslihdqlkwjel12j3"
+                    name: "Grupo 2"
+
+                categories:
+                  - _id: "as123123ldkajsldkj1231343"
+                    name : "Social Media"
+                  - _id : "asda10knffkjb"
+                    name : "Development"
+
+                priorities:
+                  - _id: "733hfsdfh3347sfjsdf"
+                    name: "cost"
+                    range: [100,200]
+                    priority: 1
+
+                  - _id : "asldhql3jlkjasd123"
+                    name : "duration"
+                    range: [50,100]
+                    priority : 2
+
+                  - _id : "12oi3upkfba"
+                    name : "experienceTime"
+                    range: [1,3]
+                    priority : 3
+
+                  - _id : "12o3u12pou3ad123"
+                    name : "patent"
+                    range : [true/false]
+                    priority : 4
+
+                  - _id : "123hlaksdlkasd"
+                    name : "outsourcing"
+                    range : [true/false]
+                    priority : 5
+
+                  - _id : "123iulaksdlakjsdrqwe"
+                    name : "businessName"
+                    range : [true/false]
+                    priority : 1
+
+                  - _id: "asp12oi3oi123dfsdf"
+                    name : "foreigner"
+                    range : [true/false]
+                    priority : 2
+
+                  - _id : "asdh3po24jnsfaa"
+                    name : "kind"
+                    range : ["empty", "patent", "secret", "industry", "prototype"]
+                    priority : 3
+
+                  - _id : "aslkd1p23udf"
+                    name : "country"
+                    range : ["Mexico", "EU", "Canada"]
+                    priority : 4
+
+                  - _id : "asdp9i243jkbs"
+                    name : "state"
+                    range : ["California", "Yucatan", "Oregon"]
+                    priority : 5
+
+                files:
+                  - _id : "sddfl21kj3kjhasd"
+                    name: "new_file.docx"
+                    url : "https://aws3.amazon.com/asldkjalskd.png"
+
+                timestamps:
+                  createdAt: "20-August-2014"
+                  updatedAt: "20-August-2014"
+        
+              title: "Proposal's title"
+              description: "A complete description of the proposal"
+              delivered: "true/false"
+              kind: "empty/patent/secret/industry/prototype"
               company:
-                name: "Umbrella"
+                name : "The name of the company"
                 foreigner: true/false
-              files: 
-                id  : "asdasd"
-                name: "new_file.docx"
-                url : "https://aws3.amazon.com/asldkjalskd.png"
+              cost : "0/1/...."
+              patent: "true/false"
+              outsourcing: "true/false"
+              experience : "A breif description of his curriculum"
+              duration : "Text that describe the duration of the project"          
+              country: "EU/Mexico/Canada"
+              state : "California/Oregon/Chiapas/Tamaulipas"
+              experienceTime : "0/1/2/...."
+              businessName: "true/false"
+              
+              files :
+                - _id : "sddfl21kj3kjhasd"
+                  name: "new_file.docx"
+                  url : "https://aws3.amazon.com/asldkjalskd.png"
+              
               timestamps: 
                 createdAt: "20-August-2014"
                 updatedAt: "21-August-2014"
-              createdBy : {} 
+              createdBy :
+                _id : "asdlkjaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±sjdÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±123"
+                avatar :
+                  _id: "12i3ojsaldkjaslkd"
+                  name : "avatar.jpg"
+                  url : "https://aws3.amazon.com/asldkjalsk123123d123123.png"
+                firstName: "Claire"
+                lastName: "Redfield"
+                email : "user_consultant@example.com"
+        
             success : true
             total   : 0
         401:
@@ -550,7 +1150,9 @@ paths:
           in: body
           schema:
            type: string
-          description: asdasd21323123asd  
+          description: "The _id of the proposal"
+          required: true
+          
       tags:
         - Proposals
       responses:
@@ -561,30 +1163,155 @@ paths:
             message    : "Succesfull delete Proposal"
             data      :
               _id   : "asdklajqwe123123"
-              challengeId : "asdlkj12nlvcxlÃ±9032"
-              userId  : "asdlk1290231Ã±lkdaskj"
-              title: "Some random title"
-              description: "Some random description"
-              winner: true/false
-              delivered: true/false
-              cost: "1/2/3.."
-              patent: true/false
-              outsourcing: true/false
-              experience: "Description of his curriculum"
-              businessName: true(persona moral)/false(persona fisica)
-              duration: "Text that describe the duration of the project"
-              type: "prototype/operative/license"
+              
+              challenge:
+                _id   : "asdklajqwe123123"
+                title : "title"
+                description : "Some random description"
+                startDate  : "Mon Nov 24 2014 22:15:07 GMT-0600 (CST)"
+                endDate    : "Wed Nov 30 2014 16:20:50 GMT-0600 (CST)"
+                status     : "open/close/created/finalists/winner/noWinner/ended"
+                accessibility: "public/private"
+                blocked : false/true
+                specifications : "Description of all the points that the proposal must have"
+                objective : "The objective of this challenge"
+
+                avatar:
+                  _id  : "lvÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±jasu230vnl"
+                  name: "new_avatar.png"
+                  url : "https://aws3.amazon.com/asldkjalskd.png"
+
+                background:
+                  _id  : "dsjkbk1op12d01dfasdad"
+                  name: "new_background.png"
+                  url : "https://aws3.amazon.com/asldkjalskd.png"
+
+                rewards :
+                  - title: "Pack of books"
+                    description: "Contains a collection..."
+                    place: 1
+                    points : 200
+                    photos:
+                      - _id: "aqwlknsxczklnc"
+                        name: "photo1.png"
+                        url: "https://aws3.amazon.com/asldkjalsk123123d.png"
+            
+                createdBy :
+                  _id : "asdlkjaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±sjdÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±123"
+                  avatar :
+                    _id: "12i3ojsaldkjaslkd"
+                    name : "avatar.jpg"
+                    url : "https://aws3.amazon.com/asldkjalsk123123d123123.png"
+                  firstName: "Leon"
+                  lastName: "S. Kennedy"
+                  email : "user@example.com"
+
+                groups:
+                  - _id: "as123123ldkajs"
+                    name: "Grupo 1"
+                  - _id: "aslihdqlkwjel12j3"
+                    name: "Grupo 2"
+
+                categories:
+                  - _id: "as123123ldkajsldkj1231343"
+                    name : "Social Media"
+                  - _id : "asda10knffkjb"
+                    name : "Development"
+
+                priorities:
+                  - _id: "733hfsdfh3347sfjsdf"
+                    name: "cost"
+                    range: [100,200]
+                    priority: 1
+
+                  - _id : "asldhql3jlkjasd123"
+                    name : "duration"
+                    range: [50,100]
+                    priority : 2
+
+                  - _id : "12oi3upkfba"
+                    name : "experienceTime"
+                    range: [1,3]
+                    priority : 3
+
+                  - _id : "12o3u12pou3ad123"
+                    name : "patent"
+                    range : [true/false]
+                    priority : 4
+
+                  - _id : "123hlaksdlkasd"
+                    name : "outsourcing"
+                    range : [true/false]
+                    priority : 5
+
+                  - _id : "123iulaksdlakjsdrqwe"
+                    name : "businessName"
+                    range : [true/false]
+                    priority : 1
+
+                  - _id: "asp12oi3oi123dfsdf"
+                    name : "foreigner"
+                    range : [true/false]
+                    priority : 2
+
+                  - _id : "asdh3po24jnsfaa"
+                    name : "kind"
+                    range : ["empty", "patent", "secret", "industry", "prototype"]
+                    priority : 3
+
+                  - _id : "aslkd1p23udf"
+                    name : "country"
+                    range : ["Mexico", "EU", "Canada"]
+                    priority : 4
+
+                  - _id : "asdp9i243jkbs"
+                    name : "state"
+                    range : ["California", "Yucatan", "Oregon"]
+                    priority : 5
+
+                files:
+                  - _id : "sddfl21kj3kjhasd"
+                    name: "new_file.docx"
+                    url : "https://aws3.amazon.com/asldkjalskd.png"
+
+                timestamps:
+                  createdAt: "20-August-2014"
+                  updatedAt: "20-August-2014"
+        
+              title: "Proposal's title"
+              description: "A complete description of the proposal"
+              delivered: "true/false"
+              kind: "empty/patent/secret/industry/prototype"
               company:
-                name: "Umbrella"
+                name : "The name of the company"
                 foreigner: true/false
-              files: 
-                id  : "asdasd"
-                name: "new_file.docx"
-                url : "https://aws3.amazon.com/asldkjalskd.png"
+              cost : "0/1/...."
+              patent: "true/false"
+              outsourcing: "true/false"
+              experience : "A breif description of his curriculum"
+              duration : "Text that describe the duration of the project"          
+              country: "EU/Mexico/Canada"
+              state : "California/Oregon/Chiapas/Tamaulipas"
+              experienceTime : "0/1/2/...."
+              businessName: "true/false"
+              
+              files :
+                - _id : "sddfl21kj3kjhasd"
+                  name: "new_file.docx"
+                  url : "https://aws3.amazon.com/asldkjalskd.png"
+              
               timestamps: 
                 createdAt: "20-August-2014"
                 updatedAt: "21-August-2014"
-              createdBy : {} 
+              createdBy :
+                _id : "asdlkjaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±sjdÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±123"
+                avatar :
+                  _id: "12i3ojsaldkjaslkd"
+                  name : "avatar.jpg"
+                  url : "https://aws3.amazon.com/asldkjalsk123123d123123.png"
+                firstName: "Claire"
+                lastName: "Redfield"
+                email : "user_consultant@example.com"
             success    : true
             total      : 0
         401:
