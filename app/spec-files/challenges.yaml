@@ -651,13 +651,6 @@ paths:
           description: "Wed Nov 30 2014 16:20:50 GMT-0600 (CST)"
           required : false
           
-        - name: status
-          in: body
-          schema: 
-           type: integer
-          description: "open/close/created"
-          required : false
-          
         - name: accessibility
           in: body
           schema: 
