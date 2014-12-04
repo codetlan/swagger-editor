@@ -17,6 +17,7 @@ PhonicsApp.config(function ($provide) {
                           exampleFiles: [
                               'challenges.yaml',
                               'comments.yaml',
+                              'conversations.yaml',
                               'ideas.yaml',
                               'interests.yaml',
                               'categories.yaml',

@@ -1,0 +1,368 @@
+swagger: '2.0'
+info:
+  title: Intrinno API
+  description: Intrinno API
+  version: "1.0.0"
+  # the domain of the service
+host: intrinno.mx:9000
+  # array of all schemes that your API supports
+schemes:
+  - http
+  - https
+# will be prefixed to all paths
+basePath: /app/spec-files
+produces:
+  - application/json
+paths:
+  /conversations/index:
+    post:
+      summary: List Conversations
+      tags:
+        - Conversations
+      parameters:
+      
+        - name: page
+          in: body
+          schema:
+           type: integer
+          description: The count starts from 0.
+          required : true
+          
+        - name: conversationsPerPage
+          in: body
+          schema: 
+           type: integer
+          description: "The conversations that are going to be show per page"
+          required: true
+          
+        - name: filter
+          in: body
+          schema: 
+            filter: 
+              conversationsOn: "groups/challenges/finalists/winners/parties"
+          description : "The option conversationsOn returns only conversations of tipe groups, challenges, etc."
+          required: false
+          
+      responses:
+        200:
+          description: List conversations
+          schema:
+            status  : 200
+            message : "List conversations"
+            data      :
+              objects : 
+                - _id   : "asdklajqwe123123"
+                  conversationableType : "group"
+                  conversationableId   : "alskdk1n2k3sadmnqwe"
+                  title: "Title of the conversation 1"
+                  createdBy: {}
+                  timestamps: 
+                    createdAt : "random date"
+                    updatedAt : "random date"
+                - _id   : "asldjl1n2l3j"
+                  conversationableType : "party"
+                  conversationableId   : "asl123asdmn12i3"
+                  title: "Title of the conversation 2"
+                  createdBy: {}
+                  timestamps: 
+                    createdAt : "random date"
+                    updatedAt : "random date"
+            success : true
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /conversations/create:
+    post:
+      summary: Create Conversation
+      tags:
+        - Conversations
+      parameters:
+      
+        - name: conversationableId
+          in: body
+          schema:
+           type: string
+          description: The _id of the challenge or group
+          required : false
+          
+        - name: conversationableType
+          in: body
+          schema: 
+           type: string
+          description: |
+            The conversations types are: "challenge", "groups", "finalists", "winners" and "party"
+          required: true
+          
+        - name: usersIds
+          in: body
+          schema: 
+            usersIds:
+              - "asdl1lknlandas12"
+              - "asldjwlkjelknalsnkd"
+              - "12o3iuohdsfkjba"
+              
+          description : "And array that contains the usersIds, if and only if the conversationableType is party "
+          required: false
+        
+        - name : title
+          in: body
+          schema :
+            type: string
+          description: "The title that is going to save with the conversation"
+          required: true
+          
+      responses:
+        200:
+          description: Create conversations
+          schema:
+            status  : 200
+            message : "Conversation created"
+            data      :
+              _id   : "asdklajqwe123123"
+              conversationableType : "group"
+              conversationableId   : "alskdk1n2k3sadmnqwe"
+              title: "Title of the conversation 1"
+              createdBy: {}
+              timestamps: 
+                createdAt : "random date"
+                updatedAt : "random date"
+            success : true
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /conversations/update:
+    post:
+      summary: Update Conversation
+      tags:
+        - Conversations
+      parameters:
+      
+        - name: _id
+          in: body
+          schema:
+           type: string
+          description: The _id of the conversation
+          required : true
+
+        - name : title
+          in: body
+          schema :
+            type: string
+          description: "The title that is going to save with the conversation"
+          required: false
+          
+      responses:
+        200:
+          description: Update conversations
+          schema:
+            status  : 200
+            message : "Conversation updated"
+            data      :
+              _id   : "asdklajqwe123123"
+              conversationableType : "group"
+              conversationableId   : "alskdk1n2k3sadmnqwe"
+              title: "Title of the conversation 1"
+              createdBy: {}
+              timestamps: 
+                createdAt : "random date"
+                updatedAt : "random date"
+            success : true
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /conversations/delete:
+    post:
+      summary: Delete Conversation
+      tags:
+        - Conversations
+      parameters:
+      
+        - name: _id
+          in: body
+          schema:
+           type: string
+          description: The _id of the conversation
+          required : true
+          
+      responses:
+        200:
+          description: Delete conversations
+          schema:
+            status  : 200
+            message : "Conversation deleted"
+            data      :
+              _id   : "asdklajqwe123123"
+              conversationableType : "group"
+              conversationableId   : "alskdk1n2k3sadmnqwe"
+              title: "Title of the conversation 1"
+              createdBy: {}
+              timestamps: 
+                createdAt : "random date"
+                updatedAt : "random date"
+            success : true
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /conversations/users/index:
+    post:
+      summary: List Conversations
+      tags:
+        - Conversations
+      parameters:
+      
+        - name: page
+          in: body
+          schema:
+           type: integer
+          description: The count starts from 0.
+          required : true
+          
+        - name: usersPerPage
+          in: body
+          schema: 
+           type: integer
+          description: "The users that are going to be show per page"
+          required: true
+          
+        - name: _id
+          in: body
+          schema: 
+            type: string
+          description : "The _id of the conversation"
+          required: true
+          
+      responses:
+        200:
+          description: List users of the conversation
+          schema:
+            status  : 200
+            message : "List users"
+            data      :
+              objects : 
+                - _id   : "asdklajqwe123123"
+                  user  : 
+                    _id : "asjkdkjlk12lk3j"
+                    firstName: "Fist Name"
+                    lastName: "Last Name"
+                  conversation: "asdhasjnd123123"
+            success : true
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /conversations/users/add:
+    post:
+      summary: Add users to the conversation
+      tags:
+        - Conversations
+      parameters:
+          
+        - name: _id
+          in: body
+          schema: 
+            type: string
+          description : "The _id of the conversation"
+          required: true
+          
+        - name: usersIds
+          in: body
+          schema : 
+            usersIds:
+              - "asdklqlwjelk123asd"
+              - "asdjhnlnajblmasd"
+          description: "An array of the _id of the users that are going to be add to the conversations"
+          required: true
+          
+      responses:
+        200:
+          description: Add users to the conversation
+          schema:
+            status  : 200
+            message : "Users added"
+            data      : 
+            success : true
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /conversations/users/remove:
+    post:
+      summary: Add users to the conversation
+      tags:
+        - Conversations
+      parameters:
+          
+        - name: _id
+          in: body
+          schema: 
+            type: string
+          description : "The _id of the conversation"
+          required: true
+          
+        - name: usersIds
+          in: body
+          schema : 
+            usersIds:
+              - "asdklqlwjelk123asd"
+              - "asdjhnlnajblmasd"
+          description: "An array of the _id of the users that are going to be remove to the conversations"
+          required: true
+          
+      responses:
+        200:
+          description: Add users to the conversation
+          schema:
+            status  : 200
+            message : "Users removed"
+            data      : 
+            success : true
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
