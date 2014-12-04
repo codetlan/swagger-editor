@@ -14,19 +14,33 @@ basePath: /app/spec-files
 produces:
   - application/json
 paths:
-  /configuration/saveTerms:
+  /configuration/saveConfigurations:
     post:
-      summary: Save Terms of Services (admin)
+      summary: Save Terms and Privacy of Services (admin)
       description: |
         <b>Preconditions:</b> The user must be sign in into the server and must have an admin role.<br>
-        <b>Postconditions:</b> There will be a new terms of services record into the database.
+        <b>Postconditions:</b> There will be a new terms and privacy of services record into the database.
       parameters:
         - name: terms
           in: body
           schema:
-           title: "Some random title"
-           description: "Some random description"
-          description: "{'terms':{'title': 'Some random title', 'description': 'Some random description'}}" 
+           terms : 
+            title: "Title 1"
+            description: "Description 1"
+            
+          description : "This field contains an object that describes the terms"
+          required : false
+          
+        - name : privacy
+          in: body
+          schema:
+            privacy :
+              title : "Title 2"
+              description : "Description 2"
+          required: false
+        
+          description: "This field contains an object that describes the privacy"
+          
       tags:
         - Configurations
       responses:
@@ -36,10 +50,15 @@ paths:
             status     : 200
             message    : "Create or Update Terms of services"
             data       : 
-              objects:
                 _id   : "as123123ldkajsldkj1231231"
-                title : "Some random title"
-                description: "Some random description"
+                terms :
+                  title : "Title 1"
+                  description: "Description 1"
+                  
+                privacy :
+                  title : "Title 2"
+                  description : "Description 2"
+                  
                 timestamps: 
                  createdAt: "20-August-2014"
                  updatedAt: "21-August-2014"
@@ -61,3 +80,50 @@ paths:
             data    : {}
             success : false
             total   : 0
+      
+  /configuration/showConfigurations:
+    post:
+      summary: Show Terms and Privacy of Services (admin)
+      description: |
+        <b>Preconditions:</b> The user must be sign in into the server and must have an admin role.<br>
+          
+      tags:
+        - Configurations
+      responses:
+        200:
+          description: Create or Update Terms of services
+          schema:
+            status     : 200
+            message    : "Create or Update Terms of services"
+            data       : 
+                _id   : "as123123ldkajsldkj1231231"
+                terms :
+                  title : "Title 1"
+                  description: "Description 1"
+                  
+                privacy :
+                  title : "Title 2"
+                  description : "Description 2"
+                  
+                timestamps: 
+                 createdAt: "20-August-2014"
+                 updatedAt: "21-August-2014"
+            success    : true
+            total      : 0
+        401:
+          description: The system can't find an active session
+          schema:
+            status  : 401
+            message : "You do not have permissions or Some is required"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+
