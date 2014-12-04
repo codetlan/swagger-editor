@@ -20,21 +20,37 @@ paths:
       tags:
         - Comments
       parameters:
+      
         - name: page
           in: body
           schema:
            type: integer
-          description: "1"
+          description: The count starts from 0.
+          required : true
+          
         - name: commentsPerPage
           in: body
           schema: 
            type: integer
-          description: "20"
+          description: "The comments that are going to be show per page"
+          required: true
+          
+          
         - name: commentableId
           in: body
           schema:
            type: "string"
-          description: "lkasdlkj123k90098098c098"
+          description: "The _id of the document that is going to be commented"
+          required: true
+          
+        - name: filter
+          in: body
+          schema: 
+            filter: 
+              desc: true/false
+          description : "The options desc returns the list comments in descending order"
+          required: false
+          
       responses:
         200:
           description: List comments
@@ -43,14 +59,22 @@ paths:
             message : "List comments"
             data      :
               objects : 
-                id   : "asdklajqwe123123"
-                text : "Text message"
-                files: 
-                  _id: "asdas123d123"
-                  name: "new_file.docx" 
-                  url: "https://aws3.amazon.com/asldkjalsk123d.docx"                   likeable: true
-                createdBy: {}
-                commentsBelow: "1,2,3"
+                - _id   : "asdklajqwe123123"
+                  text : "Text message"
+                  files: 
+                    _id: "asdas123d123"
+                    name: "new_file.docx" 
+                    url: "https://aws3.amazon.com/asldkjalsk123d.docx"
+                  likeable: true/false
+                  editable : true/false
+                  likes : 15
+                  reported: false
+                  blocked: false
+                  createdBy: {}
+                  timestamps: 
+                    createdAt : "random date"
+                    updatedAt : "random date"
+                  commentsBelow: "1/2/3"
             success : true
             total   : 0
         500:
@@ -68,27 +92,38 @@ paths:
       tags:
         - Comments
       parameters:
+      
         - name: commentableType
           in: body
           schema:
            type: string
-          description: "change/comment"
+          description: |
+            The options are "challenge", "comment", "conversations" and "idea".
+          required : true
+          
         - name: commentableId
           in: body
           schema:
            type: string
-          description: "2312masldkqwd12"
-        - name: files
-          in: body
-          schema:
-           name: new_file.docx
-           url: https://aws3.amazon.com/asldkjalsk123d.docx
-          description: "opened/created"
+          description: "The _id of the document that is going to be commented"
+          required: true
+          
         - name: text
           in: body
           schema: 
             type: "string"
           description: "Text message"
+          required: true  
+        
+        - name: files
+          in: body
+          schema:
+            _id: "askjhqkwejasd"
+            name: new_file.docx
+            url: https://aws3.amazon.com/asldkjalsk123d.docx
+          description: "The files that are going to be attached to the comment"
+          required: false
+          
       responses:
         200:
           description: The system verifies the session of the current user.
@@ -97,17 +132,22 @@ paths:
             message : "Successful Comment created"
             data    :
               _id   : "asdklajqwe123123"
-              text : "Some message"
+              text : "Text message"
+              
               files: 
-                _id: "12lasdlajsñldjkasd"
-                name: "new_file.docx"
+                _id: "asdas123d123"
+                name: "new_file.docx" 
                 url: "https://aws3.amazon.com/asldkjalsk123d.docx"
-              commentsBelow: "1,2,3"
-              likes: 0
+              likeable: true
+              likes : 0
               reported: false
+              blocked: false
+              createdBy: {}
               timestamps: 
-                createdAt: "20-August-2014"
-                updatedAt: "21-August-2014"
+                createdAt : "random date"
+                updatedAt : "random date"
+              commentsBelow: "0"
+              
             success : true
             total   : 0
         401:
@@ -131,17 +171,29 @@ paths:
     post:
       summary: Update Comment
       parameters:
+        
+        - name: _id
+          in: body
+          schema: 
+            type: string
+          description: "The _id of the comment that is going to be update"
+          required: true
+        
         - name: files
           in: body
           schema:
            name: new_file.docx
            url: https://aws3.amazon.com/asldkjalsk123d.docx
-          description: "opened/created"
+          description: "The files that are going to be attached to the comment"
+          required: false
+          
         - name: text
           in: body
           schema: 
             type: "string"
-          description: "Text message"
+          description: "New text message"
+          required: false
+          
       tags:
         - Comments
       responses:
@@ -152,17 +204,21 @@ paths:
             message : "Successful Update Comment"
             data    :
               _id   : "asdklajqwe123123"
-              text : "Some message"
+              text : "Text message"
+              
               files: 
-                _id: "12lasdlajsñldjkasd"
-                name: "new_file.docx"
+                _id: "asdas123d123"
+                name: "new_file.docx" 
                 url: "https://aws3.amazon.com/asldkjalsk123d.docx"
-              commentsBelow: "1,2,3"
-              likes: 2
+              likes : 0
               reported: false
+              blocked: false
+              createdBy: {}
               timestamps: 
-                createdAt: "20-August-2014"
-                updatedAt: "21-August-2014"
+                createdAt : "random date"
+                updatedAt : "random date"
+              commentsBelow: "0"
+              
             success : true
             total   : 0
         401:
@@ -190,7 +246,9 @@ paths:
           in: body
           schema:
            type: string
-          description: "as123123ldkajsldkj1231231"
+          description: "The _id of the comment that is going to recieve a like or is going to be unlike it"
+          required: true
+          
       tags:
         - Comment
       responses:
@@ -203,10 +261,11 @@ paths:
               _id   : "asdklajqwe123123"
               text : "Some message"
               files: 
-                _id: "12lasdlajsñldjkasd"
+                _id: "12lasdlajsÃ±ldjkasd"
                 name: "new_file.docx"
                 url: "https://aws3.amazon.com/asldkjalsk123d.docx"
-              commentsBelow: "1,2,3"
+              commentsBelow: "1/2/3"
+              likeable: true/false
               likes: 2
               reported: false
               timestamps: 
@@ -225,42 +284,50 @@ paths:
             
   /comments/index/reported:
     post:
-      summary: Reported Comment
+      summary: Reported Comments
       parameters:
         - name: page
           in: body
           schema:
            type: string
-          description: "1"
+          description: The count starts from 0.
+          required: true
+          
         - name: commentsPerPage
           in: body
           schema:
            type: string
-          description: "20"  
+          description: The comments that are going to be show per page
+          required: true
+          
       tags:
         - Comments
       responses:
         200:
-          description: List messages
+          description: List comments
           schema:
-            status     : 200
-            message    : "List Messages"
+            status  : 200
+            message : "List comments"
             data      :
-              objects:
-                _id   : "asdklajqwe123123"
-                text : "Some message"
-                files: 
-                 _id: "12lasdlajsñldjkasd"
-                 name: "new_file.docx"
-                 url: "https://aws3.amazon.com/asldkjalsk123d.docx"
-                commentsBelow: "1,2,3"
-                likes: 2
-                reported: false
-                timestamps: 
-                  createdAt: "20-August-2014"
-                  updatedAt: "21-August-2014"
-            success    : true
-            total      : 0
+              objects : 
+                - _id   : "asdklajqwe123123"
+                  text : "Text message"
+                  files: 
+                    _id: "asdas123d123"
+                    name: "new_file.docx" 
+                    url: "https://aws3.amazon.com/asldkjalsk123d.docx"
+                  likeable: true/false
+                  editable : true/false
+                  likes : 15
+                  reported: true
+                  blocked: false
+                  createdBy: {}
+                  timestamps: 
+                    createdAt : "random date"
+                    updatedAt : "random date"
+                  commentsBelow: "1/2/3"
+            success : true
+            total   : 0
         500:
           description: Some internal error occurs
           schema:
@@ -268,6 +335,7 @@ paths:
             message : "Some internal error ocurrs"
             data    : {}
             success : false
+            total   : 0
             total   : 0
   
   /comments/report:
@@ -278,35 +346,41 @@ paths:
           in: body
           schema:
            type: string
-          description: asdasd21323123asd  
+          description: The _id of the comment to be reported
+          required: true
+          
       tags:
         - Comments
       responses:
         200:
-          description: Comment report
+          description: The system verifies the session of the current user. 
           schema:
-            status     : 200
-            message    : "Comment report"
-            data      :
+            status  : 200
+            message : "Successful Update Comment"
+            data    :
               _id   : "asdklajqwe123123"
-              text : "Some message"
+              text : "Text message"
+              
               files: 
-               _id: "12lasdlajsñldjkasd"
-               name: "new_file.docx"
-               url: "https://aws3.amazon.com/asldkjalsk123d.docx"
-              commentsBelow: "1,2,3"
-              likes: 2
+                _id: "asdas123d123"
+                name: "new_file.docx" 
+                url: "https://aws3.amazon.com/asldkjalsk123d.docx"
+              likes : 0
               reported: true
+              blocked: false
+              createdBy: {}
               timestamps: 
-                createdAt: "20-August-2014"
-                updatedAt: "21-August-2014"
-            success    : true
-            total      : 0
+                createdAt : "random date"
+                updatedAt : "random date"
+              commentsBelow: "0"
+              
+            success : true
+            total   : 0
         401:
-          description: The user doesn't have permissions or record not found.
+          description: The system can't find an active session
           schema:
             status  : 401
-            message : "The user doesn't have permissions or record not found"
+            message : "You do not have permissions"
             data    : {}
             success : false
             total   : 0
@@ -327,35 +401,41 @@ paths:
           in: body
           schema:
            type: string
-          description: asdasd21323123asd 
+          description: The _id of the comment to be unreported
+          required: true
+          
       tags:
         - Comments
       responses:
         200:
-          description: Unreport Comment
+          description: The system verifies the session of the current user. 
           schema:
-            status     : 200
-            message    : "Unreport Comment"
-            data      :
+            status  : 200
+            message : "Successful Update Comment"
+            data    :
               _id   : "asdklajqwe123123"
-              text : "Some message"
+              text : "Text message"
+              
               files: 
-               _id: "12lasdlajsñldjkasd"
-               name: "new_file.docx"
-               url: "https://aws3.amazon.com/asldkjalsk123d.docx"
-              commentsBelow: "1,2,3"
-              likes: 2
+                _id: "asdas123d123"
+                name: "new_file.docx" 
+                url: "https://aws3.amazon.com/asldkjalsk123d.docx"
+              likes : 0
               reported: false
+              blocked: false
+              createdBy: {}
               timestamps: 
-                createdAt: "20-August-2014"
-                updatedAt: "21-August-2014"
-            success    : true
-            total      : 0
+                createdAt : "random date"
+                updatedAt : "random date"
+              commentsBelow: "0"
+              
+            success : true
+            total   : 0
         401:
-          description: The user doesn't have permissions or record not found.
+          description: The system can't find an active session
           schema:
             status  : 401
-            message : "The user doesn't have permissions or record not found"
+            message : "You do not have permissions"
             data    : {}
             success : false
             total   : 0
@@ -367,3 +447,60 @@ paths:
             data    : {}
             success : false
             total   : 0
+            
+  /comments/blocked:
+    post:
+      summary: Block a Comment
+      
+      parameters:
+        - name: _id
+          in: body
+          schema:
+           type: string
+          description: The _id of the comment to be blocked
+          required: true
+          
+      tags:
+        - Comments
+      responses:
+        200:
+          description: The system verifies the session of the current user. 
+          schema:
+            status  : 200
+            message : "Successful Update Comment"
+            data    :
+              _id   : "asdklajqwe123123"
+              text : "Text message"
+              
+              files: 
+                _id: "asdas123d123"
+                name: "new_file.docx" 
+                url: "https://aws3.amazon.com/asldkjalsk123d.docx"
+              likes : 0
+              reported: true
+              blocked: true
+              createdBy: {}
+              timestamps: 
+                createdAt : "random date"
+                updatedAt : "random date"
+              commentsBelow: "0"
+              
+            success : true
+            total   : 0
+        401:
+          description: The system can't find an active session
+          schema:
+            status  : 401
+            message : "You do not have permissions"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
