@@ -76,7 +76,7 @@ paths:
                 
                 
                   avatar: 
-                    _id  : "aslkdjalksjdjasu230vnl"
+                    _id  : "lvaskjdl1k239u0asd"
                     name: "new_avatar.png"
                     url : "https://aws3.amazon.com/asldkjalskd.png"
                 
@@ -96,7 +96,7 @@ paths:
                           url: "https://aws3.amazon.com/asldkjalsk123123d.png"
                 
                   createdBy : 
-                    _id : "asdlkja212lk3j1233"
+                    _id : "asdlkjaslkjdlj231"
                     avatar : 
                       _id: "12i3ojsaldkjaslkd"
                       name : "avatar.jpg"
@@ -178,7 +178,7 @@ paths:
               objective : "The objective of this challenge"
                 
               avatar: 
-                _id  : "lvasdasdjasu230vnl"
+                _id  : "lvasklj1l2hj3qasd"
                 name: "new_avatar.png"
                 url : "https://aws3.amazon.com/asldkjalskd.png"
                 
@@ -198,7 +198,7 @@ paths:
                       url: "https://aws3.amazon.com/asldkjalsk123123d.png"
                 
               createdBy : 
-                _id : "asdlkjaasdasdqwek123123"
+                _id : "asdlkjaaskjqlkwnasd"
                 avatar : 
                   _id: "12i3ojsaldkjaslkd"
                   name : "avatar.jpg"
@@ -377,7 +377,7 @@ paths:
                 photos : 
                   - _id : "ljasldkejkqwes123"
                     name : "photo1.png"
-                    url : "https://aws3.amazon.com/asdasdqwe12312312ln3ls.jpg"
+                    url : "https://aws3.amazon.com/aasñdjlqknelknasd.png"
                   
                   - _id : "kqwe90u50384r5234"
                     name : "photo2.png"
@@ -488,7 +488,7 @@ paths:
                 
                 
               avatar: 
-                _id  : "lvjaqlwkejq12asu230vnl"
+                _id  : "lvaskdjk1h23joas"
                 name: "new_avatar.png"
                 url : "https://aws3.amazon.com/asldkjalskd.png"
                 
@@ -508,7 +508,7 @@ paths:
                       url: "https://aws3.amazon.com/asldkjalsk123123d.png"
               
               createdBy : 
-                _id : "asdlkja1alskd2312312323"
+                _id : "asdlkjaslkdlqhwlekj"
                 avatar : 
                   _id: "12i3ojsaldkjaslkd"
                   name : "avatar.jpg"
@@ -650,7 +650,7 @@ paths:
            format: date
           description: "Wed Nov 30 2014 16:20:50 GMT-0600 (CST)"
           required : false
-          
+
         - name: accessibility
           in: body
           schema: 
@@ -702,7 +702,7 @@ paths:
                 photos : 
                   - _id : "ljasldkejkqwes123"
                     name : "photo1.png"
-                    url : "https://aws3.amazon.com/asdasldkals123weg.png"
+                    url : "https://aws3.amazon.com/asdaslkjdlkqjwe.png"
                   
                   - _id : "kqwe90u50384r5234"
                     name : "photo2.png"
@@ -812,7 +812,7 @@ paths:
               objective : "The objective of this challenge"
                 
               avatar: 
-                _id  : "lvasldkjllkjalskjdlk112"
+                _id  : "lvaslkdjl1kjlkasd"
                 name: "new_avatar.png"
                 url : "https://aws3.amazon.com/asldkjalskd.png"
                 
@@ -977,7 +977,7 @@ paths:
               objective : "The objective of this challenge"
                 
               avatar: 
-                _id  : "laslkjqlwej12n312asd"
+                _id  : "laslkdlqnjb1923"
                 name: "new_avatar.png"
                 url : "https://aws3.amazon.com/asldkjalskd.png"
                 
@@ -997,7 +997,7 @@ paths:
                       url: "https://aws3.amazon.com/asldkjalsk123123d.png"
               
               createdBy : 
-                _id : "asdlkjasñ1l2k3j12a"
+                _id : "asdlkjaasdkjlkqne123"
                 avatar : 
                   _id: "12i3ojsaldkjaslkd"
                   name : "avatar.jpg"
@@ -1131,7 +1131,7 @@ paths:
               objective : "The objective of this challenge"
                 
               avatar: 
-                _id  : "lvasdñk1ñ2m3asdas"
+                _id  : "laslkj1kwjblvkhkbkjnsd"
                 name: "new_avatar.png"
                 url : "https://aws3.amazon.com/asldkjalskd.png"
                 
@@ -1151,7 +1151,7 @@ paths:
                       url: "https://aws3.amazon.com/asldkjalsk123123d.png"
               
               createdBy : 
-                _id : "asdlkjasqwklnlskmdasd"
+                _id : "asdlkjaaslkjhdkl1na"
                 avatar : 
                   _id: "12i3ojsaldkjaslkd"
                   name : "avatar.jpg"
@@ -1285,7 +1285,7 @@ paths:
               objective : "The objective of this challenge"
                 
               avatar: 
-                _id  : "lv2sdl123lknasldknasd30vnl"
+                _id  : "lvaslkdjlansdkansd"
                 name: "new_avatar.png"
                 url : "https://aws3.amazon.com/asldkjalskd.png"
                 
@@ -1305,7 +1305,7 @@ paths:
                       url: "https://aws3.amazon.com/asldkjalsk123123d.png"
               
               createdBy : 
-                _id : "asdlkjaasldkjqlwk1we"
+                _id : "asdlkjaaskldjlkajqwe"
                 avatar : 
                   _id: "12i3ojsaldkjaslkd"
                   name : "avatar.jpg"
@@ -1465,6 +1465,12 @@ paths:
                   proposal: 
                     _id: "54124324f956f2f604d8f0cb"
                     title: "Some random title"
+                    
+                  isFinalist : "true/false"
+                    
+                  winner : "true/false"
+                  
+                  place : "1/.../20"
             success : true
             total   : 0
         500:
@@ -1472,6 +1478,102 @@ paths:
           schema:
             status  : 500
             message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+
+  /challenges/users/finalists:
+    post:
+      summary: Edit the finalists of a challenge
+      tags:
+        - Challenges
+      parameters:
+        - name: challengeId
+          in: body
+          schema:
+           type: string
+          description: "The challengeId of the new finalists"
+          required: true
+          
+        - name: usersIds
+          in: body
+          schema: 
+           usersIds:
+            - "asdlkjaslkjqlwkjeasdasd"
+            - "asdljql3123hs309480239kwejh"
+          description: The ids of the users to set or unset like finalists.
+          required: true
+          
+        - name : finalist
+          in: body
+          schema: 
+            type : boolean
+          description : |
+            True if all the users are going to be finalists, false if all the users
+            aren't going to be finalists
+          required: true
+          
+      responses:
+        200:
+          description: List of participants
+          schema:
+            status  : 200
+            message : "Finalists updated"
+            data    :
+              objects : []
+            success : true
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error occurs"
+            data    : {}
+            success : false
+            total   : 0
+
+  /challenges/users/winners:
+    post:
+      summary: Edit the winners of a challenge
+      tags:
+        - Challenges
+      parameters:
+        - name: challengeId
+          in: body
+          schema:
+           type: string
+          description: "The challengeId of the new finalists"
+          required: true
+          
+        - name: users
+          in: body
+          schema: 
+           users:
+            - userId : "jlkajsdlk123asd"
+              winner : "false"
+              
+            - userId : "asdljql3123hs309480239kwejh"
+              winner: true
+              place : "1"
+              
+          description: The ids of the users to set or unset like finalists.
+          required: true
+
+      responses:
+        200:
+          description: List of participants
+          schema:
+            status  : 200
+            message : "Winners updated"
+            data    :
+              objects : []
+            success : true
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error occurs"
             data    : {}
             success : false
             total   : 0
