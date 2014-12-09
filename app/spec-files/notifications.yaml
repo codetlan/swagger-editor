@@ -1,7 +1,44 @@
 swagger: '2.0'
 info:
   title: Intrinno API
-  description: Intrinno API
+  description: |
+    The value kind of every notification is a number from 0 to 11, that represents each of the following cases: <p>
+    <ul>
+    <li> <b>0</b>  : There is a new challenge where the consultant can participate. (notificationableType is challenge) </li>
+    
+    <li> <b>1</b>  : There is a new idea.  (notificationableType is "idea") </li>
+    
+    <li> <b>2</b>  : The user was chosen as a finalist of a challenge. (notificationableType is "challenge") </li>
+    
+    <li> <b>3</b>  : The user was chosen as a winner of a challenge. (notificationableType is "challenge") </li>
+    
+    <li> <b>4</b>  : A conversation was created where the user can comment. (notificationableType is "conversation") </li>
+    
+    <li> <b>5</b> : A comment was created for a message where the user is participant. 
+                    (notificationableType is "conversation")</li>
+    
+    <li> <b>6</b>  : Some user commented on a challenge where the user is participant or owner. 
+                    (notificationableType is "challenge") </li>
+                    
+    <li> <b>7</b>  : Some user reported a comment. (there is no notificationableType and notificationableId)</li>
+    
+    <li> <b>8</b>  : Some user click on the like button of an idea that the user posted. 
+                    (notificationableType is "idea") </li>
+                    
+    <li> <b>9</b>  : Some user click on the like button of a comment that the user posted in a challenge. 
+                    (notificationableType is "challenge") </li>
+                    
+    <li> <b>10</b>  : Some user click on the like button of a comment that the user posted in a idea. 
+                    (notificationableType is "idea") </li>
+                    
+    <li> <b>11</b> : Some user click on the like button of a comment that the user posted in a comment. 
+                    (notificationableType is "comment") </li> </li>
+    
+    </ul>
+    
+    <b>NOTE</b> : Every notification has two users, "user" and "createdBy", the field user indicates who is the owner to 
+    the notification and the field createdBy indicates who did the action that throws the notification.
+    
   version: "1.0.0"
   # the domain of the service
 host: intrinno.mx:9000
