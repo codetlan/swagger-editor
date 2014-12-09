@@ -129,6 +129,7 @@ paths:
               conversationableType : "group"
               conversationableId   : "alskdk1n2k3sadmnqwe"
               title: "Title of the conversation 1"
+              usersOnConversation: 5
               createdBy: {}
               timestamps: 
                 createdAt : "random date"
