@@ -1,0 +1,265 @@
+swagger: '2.0'
+info:
+  title: Intrinno API
+  description: Intrinno API
+  version: "1.0.0"
+  # the domain of the service
+host: intrinno.mx:9000
+  # array of all schemes that your API supports
+schemes:
+  - http
+  - https
+# will be prefixed to all paths
+basePath: /app/spec-files
+produces:
+  - application/json
+paths:
+  /notifications/index:
+    post:
+      summary: List Notifications
+      tags:
+        - Notifications
+      parameters:
+      
+        - name: page
+          in: body
+          schema:
+           type: integer
+          description: The count starts from 0.
+          required : true
+          
+        - name: notificationsPerPage
+          in: body
+          schema: 
+           type: integer
+          description: "The notifications that are going to be show per page"
+          required: true
+          
+      responses:
+        200:
+          description: List notifications
+          schema:
+            status  : 200
+            message : "List notifications"
+            data      :
+              objects : 
+                - _id   : "asdklajqwe123123"
+                  notificationableType : "challenge"
+                  conversationableId   : "alskdk1n2k3sadmnqwe"
+                  read : false
+                  blocked : false
+                  kind    : 0
+                  user  :
+                    firstName : "User"
+                    lastName  : "Example"
+                    avatar    : {}
+                  createdBy:
+                    firstName : "User 2"
+                    lastName : "Example 2"
+                    avatar : {}
+                  timestamps: 
+                    createdAt : "random date"
+                    updatedAt : "random date"
+                    
+                - _id   : "asldjl1n2l3j"
+                  notificationableType : "idea"
+                  notificationableId   : "asl123asdmn12i3"
+                  read : true
+                  blocked : false
+                  kind    : 2
+                  user  :
+                    firstName : "User"
+                    lastName  : "Example"
+                    avatar    : {}
+                  createdBy:
+                    firstName : "User 2"
+                    lastName : "Example 2"
+                    avatar : {}
+                  timestamps: 
+                    createdAt : "random date"
+                    updatedAt : "random date"
+            success : true
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /notifications/read:
+    post:
+      summary: Update notification
+      tags:
+        - Notifications
+      parameters:
+      
+        - name: _id
+          in: body
+          schema:
+           type: string
+          description: The _id of the notification
+          required : true
+          
+      responses:
+        200:
+          description: Update notifications
+          schema:
+            status  : 200
+            message : "Notification updated"
+            data      :
+              _id   : "asldjl1n2l3j"
+              notificationableType : "idea"
+              notificationableId   : "asl123asdmn12i3"
+              read : true
+              blocked : false
+              kind    : 2
+              user  :
+                firstName : "User"
+                lastName  : "Example"
+                avatar    : {}
+              createdBy:
+                firstName : "User 2"
+                lastName : "Example 2"
+                avatar : {}
+              timestamps: 
+                createdAt : "random date"
+                updatedAt : "random date"
+            success : true
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /messages/index:
+    post:
+      summary: List Messages
+      tags:
+        - Messages
+      parameters:
+      
+        - name: page
+          in: body
+          schema:
+           type: integer
+          description: The count starts from 0.
+          required : true
+          
+        - name: messagesPerPage
+          in: body
+          schema: 
+           type: integer
+          description: "The messages that are going to be show per page"
+          required: true
+          
+      responses:
+        200:
+          description: List messages
+          schema:
+            status  : 200
+            message : "List messages"
+            data      :
+              objects : 
+                - _id   : "asdklajqwe123123"
+                  notificationableType : "conversation"
+                  conversationableId   : "alskdk1n2k3sadmnqwe"
+                  read : false
+                  blocked : false
+                  kind    : 0
+                  user  :
+                    firstName : "User"
+                    lastName  : "Example"
+                    avatar    : {}
+                  createdBy:
+                    firstName : "User 2"
+                    lastName : "Example 2"
+                    avatar : {}
+                  timestamps: 
+                    createdAt : "random date"
+                    updatedAt : "random date"
+                    
+                - _id   : "asldjl1n2l3j"
+                  notificationableType : "conversation"
+                  notificationableId   : "asl123asdmn12i3"
+                  read : true
+                  blocked : false
+                  kind    : 2
+                  user  :
+                    firstName : "User"
+                    lastName  : "Example"
+                    avatar    : {}
+                  createdBy:
+                    firstName : "User 2"
+                    lastName : "Example 2"
+                    avatar : {}
+                  timestamps: 
+                    createdAt : "random date"
+                    updatedAt : "random date"
+            success : true
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /messages/read:
+    post:
+      summary: Update message
+      tags:
+        - Messages
+      parameters:
+      
+        - name: _id
+          in: body
+          schema:
+           type: string
+          description: The _id of the message
+          required : true
+          
+      responses:
+        200:
+          description: Update messages
+          schema:
+            status  : 200
+            message : "Message updated"
+            data      :
+              _id   : "asldjl1n2l3j"
+              notificationableType : "conversation"
+              notificationableId   : "asl123asdmn12i3"
+              read : true
+              blocked : false
+              kind    : 2
+              user  :
+                firstName : "User"
+                lastName  : "Example"
+                avatar    : {}
+              createdBy:
+                    firstName : "User 2"
+                    lastName : "Example 2"
+                    avatar : {}
+              timestamps: 
+                createdAt : "random date"
+                updatedAt : "random date"
+            success : true
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+ 

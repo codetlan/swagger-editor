@@ -1,4 +1,4 @@
-'use strict';
+app/scripts/enums/defaults.js0;95;c'use strict';
 
 PhonicsApp.config(function ($provide) {
     $provide.constant('defaults',
@@ -24,6 +24,7 @@ PhonicsApp.config(function ($provide) {
                               'groups.yaml',
                               'configurations.yaml',
                               'files.yaml'
+                              'notifications.yaml',
                               'proposals.yaml',
                               'sessions.yaml',                              
                               'users.yaml'
