@@ -20,7 +20,7 @@ info:
     <li> <b>6</b>  : Some user commented on a challenge where the user is participant or owner. 
                     (notificationableType is "challenge") </li>
                     
-    <li> <b>7</b>  : Some user reported a comment. (there is no notificationableType and notificationableId)</li>
+    <li> <b>7</b>  : Some user reported a comment. (there is no notificationableType and notificationableId) (pendiente de implementar por que faltan cosas por definir)</li>
     
     <li> <b>8</b>  : Some user click on the like button of an idea that the user posted. 
                     (notificationableType is "idea") </li>
@@ -33,6 +33,9 @@ info:
                     
     <li> <b>11</b> : Some user click on the like button of a comment that the user posted in a comment. 
                     (notificationableType is "comment") </li> </li>
+                    
+    <li> <b>12</b>  : Some user commented on an idea where the user is participant or owner. 
+                    (notificationableType is "idea") (esta llamada no esta implementada, require hacer unos cambios mÃ¡s pesados)</li>
     
     </ul>
     
