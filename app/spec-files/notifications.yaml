@@ -20,7 +20,7 @@ info:
     <li> <b>6</b>  : Some user commented on a challenge where the user is participant or owner. 
                     (notificationableType is "challenge") </li>
                     
-    <li> <b>7</b>  : Some user reported a comment. (there is no notificationableType and notificationableId) (pendiente de implementar por que faltan cosas por definir)</li>
+    <li> <b>7</b>  : Some user reported a comment. (there is no notificationableType and notificationableId)</li>
     
     <li> <b>8</b>  : Some user click on the like button of an idea that the user posted. 
                     (notificationableType is "idea") </li>
@@ -35,7 +35,7 @@ info:
                     (notificationableType is "comment") </li> </li>
                     
     <li> <b>12</b>  : Some user commented on an idea where the user is participant or owner. 
-                    (notificationableType is "idea") (esta llamada no esta implementada, require hacer unos cambios mÃ¡s pesados)</li>
+                    (notificationableType is "idea") (NO IMPLEMENTED YET)</li>
     
     </ul>
     
@@ -85,7 +85,7 @@ paths:
               objects : 
                 - _id   : "asdklajqwe123123"
                   notificationableType : "challenge"
-                  conversationableId   : "alskdk1n2k3sadmnqwe"
+                  notificationableId   : "alskdk1n2k3sadmnqwe"
                   read : false
                   blocked : false
                   kind    : 0
@@ -209,7 +209,7 @@ paths:
               objects : 
                 - _id   : "asdklajqwe123123"
                   notificationableType : "conversation"
-                  conversationableId   : "alskdk1n2k3sadmnqwe"
+                  notificationableId   : "alskdk1n2k3sadmnqwe"
                   read : false
                   blocked : false
                   kind    : 0
