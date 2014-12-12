@@ -1,0 +1,494 @@
+swagger: '2.0'
+info:
+  title: Intrinno API
+  description: Intrinno API
+  version: "1.0.0"
+  # the domain of the service
+host: intrinno.mx:9000
+  # array of all schemes that your API supports
+schemes:
+  - http
+  - https
+# will be prefixed to all paths
+basePath: /app/spec-files
+produces:
+  - application/json
+paths:
+  /rewards/index:
+    post:
+      summary: List Rewards
+      description : |
+        <b>Postconditions:</b> List all public or private rewards that the user can see.
+      tags:
+        - Rewards
+      parameters:
+        - name: page
+          in: body
+          required : true
+          schema:
+           type: integer
+           minimum: 0
+          description: "The count start from 0"
+        - name: rewardsPerPage
+          in: body
+          required : true
+          schema:
+           type: integer
+           minimum : 1
+           maximum : 50
+          description: "We only list 1-50 elements, no less no more"
+        - name: filter
+          in: body
+          required : false
+          schema:
+            filter          :
+              admin         : true/false
+              title         : "Some random title"
+              groups        : [Group id 1, Group id 2]
+              blocked       : "true/false"
+              amount        : 5000
+              pointsNeeded  : 54
+          description: |
+            All the fields of filter are optionals. The flag admin indicates if the
+            request is used for an admin user
+          required: false
+      responses:
+        200:
+          description: There was no error on the server
+          schema:
+            status  : 200
+            message : "List rewards"
+            data      :
+              objects :
+                - _id   : "asdklajqwe123123"
+                  title : "Title"
+                  description : "Some random description"
+                  blocked : false/true
+                  amount : 5000
+                  pointsNeeded : 54
+
+                  createdBy :
+                    _id : "asdlkjaslkjdlj231"
+                    avatar :
+                      _id: "12i3ojsaldkjaslkd"
+                      name : "avatar.jpg"
+                      url : "https://aws3.amazon.com/asldkjalsk123123d123123.png"
+                    firstName: "Leon"
+                    lastName: "S. Kennedy"
+                    email : "user@example.com"
+
+                  groups:
+                    - _id: "as123123ldkajs"
+                      name: "Grupo 1"
+                    - _id: "aslihdqlkwjel12j3"
+                      name: "Grupo 2"
+
+                  photos:
+                    - _id : "asdasdq2w3e4r5t6y7u8i9"
+                      name: "photo1.jpg"
+                      url : "https://aws3.amazon.com/asdasdq2w3e4r5t6y7u8i9.png"
+                    - _id : "ukttfytugfjy54678fhgf"
+                      name: "photo2.jpg"
+                      url : "https://aws3.amazon.com/ukttfytugfjy54678fhgf.png"
+
+                  timestamps:
+                    createdAt: "11-December-2014"
+                    updatedAt: "11-December-2014"
+            success : true
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+
+  /rewards/show/:
+    post:
+      summary: Show Reward
+      description: |
+        <b>Postconditions</b>: Show the reward only if the user have permissions to see it. <br>
+        If the reward is blocked only the admin can see it.
+      parameters:
+        - name: _id
+          in: body
+          required : true
+          schema:
+           type: string
+          description: For example  "lo234oyaslkhsd97mnv123"
+          required : true
+      tags:
+        - Rewards
+      responses:
+        200:
+          description: There was no error on the server
+          schema:
+            status     : 200
+            message    : "Show reward"
+            data      :
+              _id   : "asdklajqwe123123"
+              title : "Title"
+              description : "Some random description"
+              blocked : false/true
+              amount : 5000
+              pointsNeeded : 54
+
+              createdBy :
+                _id : "asdlkjaslkjdlj231"
+                avatar :
+                  _id: "12i3ojsaldkjaslkd"
+                  name : "avatar.jpg"
+                  url : "https://aws3.amazon.com/asldkjalsk123123d123123.png"
+                firstName: "Leon"
+                lastName: "S. Kennedy"
+                email : "user@example.com"
+
+              groups:
+                - _id: "as123123ldkajs"
+                  name: "Grupo 1"
+                - _id: "aslihdqlkwjel12j3"
+                  name: "Grupo 2"
+
+              photos:
+                - _id : "asdasdq2w3e4r5t6y7u8i9"
+                  name: "photo1.jpg"
+                  url : "https://aws3.amazon.com/asdasdq2w3e4r5t6y7u8i9.png"
+                - _id : "ukttfytugfjy54678fhgf"
+                  name: "photo2.jpg"
+                  url : "https://aws3.amazon.com/ukttfytugfjy54678fhgf.png"
+
+              timestamps:
+                createdAt: "11-December-2014"
+                updatedAt: "11-December-2014"
+            success    : true
+            total      : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+
+  /rewards/create/:
+    post:
+      summary: Create Challenge (admin)
+      description: |
+        <b>Preconditions:</b> The user must be sign in into the server and must have an admin role.<br>
+        <b>Postconditions:</b> There will be a new reward record into the database.
+      parameters:
+        - name: title
+          in: body
+          schema:
+            type: string
+          description: "The title of every reward must have a length in this range [10...140]"
+          required: true
+
+        - name: description
+          in: body
+          schema:
+            type: string
+          description: "The description must have a length greater than 140"
+          required : true
+
+        - name: amount
+          in: body
+          schema:
+            type: number
+          description: "The amount of each reward"
+          required : true
+
+        - name: pointsNeeded
+          in: body
+          schema:
+            type: number
+          description: "The points needed to have this reward"
+          required : true
+
+        - name: groups
+          in: body
+          schema:
+           groups:
+            - _id : "asdk3091203uiasd"
+              name : "Group name 1"
+            - _id : "12o9prkldfnb"
+              name : "Group name 2"
+          description: The group ids must exist.
+          required : false
+
+        - name: photos
+          in: body
+          schema:
+           photos:
+            - _id: asdas123d123
+              name: photo1.jpg
+              url: https://aws3.amazon.com/asdas123d123.jpg
+          description : "The photos of tis reward"
+          required : false
+
+      tags:
+        - Rewards
+      responses:
+        200:
+          description: The reward was created, here is an example.
+          schema:
+            status     : 200
+            message    : "Successful create Reward"
+            data      :
+              _id   : "asdklajqwe123123"
+              title : "Title"
+              description : "Some random description"
+              blocked : false/true
+              amount : 5000
+              pointsNeeded : 54
+
+              createdBy :
+                _id : "asdlkjaslkjdlj231"
+                avatar :
+                  _id: "12i3ojsaldkjaslkd"
+                  name : "avatar.jpg"
+                  url : "https://aws3.amazon.com/asldkjalsk123123d123123.png"
+                firstName: "Leon"
+                lastName: "S. Kennedy"
+                email : "user@example.com"
+
+              groups:
+                - _id: "as123123ldkajs"
+                  name: "Grupo 1"
+                - _id: "aslihdqlkwjel12j3"
+                  name: "Grupo 2"
+
+              photos:
+                - _id : "asdasdq2w3e4r5t6y7u8i9"
+                  name: "photo1.jpg"
+                  url : "https://aws3.amazon.com/asdasdq2w3e4r5t6y7u8i9.png"
+                - _id : "ukttfytugfjy54678fhgf"
+                  name: "photo2.jpg"
+                  url : "https://aws3.amazon.com/ukttfytugfjy54678fhgf.png"
+
+              timestamps:
+                createdAt: "11-December-2014"
+                updatedAt: "11-December-2014"
+            success    : true
+            total      : 0
+        401:
+          description: The user doesn't have permissions to create a reward.
+          schema:
+            status  : 401
+            message : "You do not have permissions"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+
+  /rewards/update/:
+    post:
+      summary: Update Reward Information
+      description: |
+        <b>Preconditions:</b> The user must be sign in into the server and must have an admin role.<br>
+        <b>Postconditions:</b> The information will be update.
+      parameters:
+        - name: _id
+          in: body
+          schema:
+           type: string
+          description: "as123123ldkajsldkj1231231"
+          required : true
+
+        - name: title
+          in: body
+          schema:
+            type: string
+          description: "The title of every reward must have a length in this range [10...140]"
+          required: true
+
+        - name: description
+          in: body
+          schema:
+            type: string
+          description: "The description must have a length greater than 140"
+          required : true
+
+        - name: amount
+          in: body
+          schema:
+            type: number
+          description: "The amount of each reward"
+          required : true
+
+        - name: pointsNeeded
+          in: body
+          schema:
+            type: number
+          description: "The points needed to have this reward"
+          required : true
+
+        - name: groups
+          in: body
+          schema:
+           groups:
+            - _id : "asdk3091203uiasd"
+              name : "Group name 1"
+            - _id : "12o9prkldfnb"
+              name : "Group name 2"
+          description: The group ids must exist.
+          required : false
+
+        - name: photos
+          in: body
+          schema:
+           photos:
+            - _id: asdas123d123
+              name: photo1.jpg
+              url: https://aws3.amazon.com/asdas123d123.jpg
+          description : "The photos of tis reward"
+          required : false
+
+      tags:
+        - Rewards
+      responses:
+        200:
+          description: The reward was succesfully updated
+          schema:
+            status  : 200
+            message : "Successful Update Reward"
+            data      :
+              _id   : "asdklajqwe123123"
+              title : "Title"
+              description : "Some random description"
+              blocked : false/true
+              amount : 5000
+              pointsNeeded : 54
+
+              createdBy :
+                _id : "asdlkjaslkjdlj231"
+                avatar :
+                  _id: "12i3ojsaldkjaslkd"
+                  name : "avatar.jpg"
+                  url : "https://aws3.amazon.com/asldkjalsk123123d123123.png"
+                firstName: "Leon"
+                lastName: "S. Kennedy"
+                email : "user@example.com"
+
+              groups:
+                - _id: "as123123ldkajs"
+                  name: "Grupo 1"
+                - _id: "aslihdqlkwjel12j3"
+                  name: "Grupo 2"
+
+              photos:
+                - _id : "asdasdq2w3e4r5t6y7u8i9"
+                  name: "photo1.jpg"
+                  url : "https://aws3.amazon.com/asdasdq2w3e4r5t6y7u8i9.png"
+                - _id : "ukttfytugfjy54678fhgf"
+                  name: "photo2.jpg"
+                  url : "https://aws3.amazon.com/ukttfytugfjy54678fhgf.png"
+
+              timestamps:
+                createdAt: "11-December-2014"
+                updatedAt: "11-December-2014"
+            success    : true
+            total      : 0
+        401:
+          description: The user doesn't have permissions to update a reward.
+          schema:
+            status  : 401
+            message : "You do not have permissions"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+
+  /rewards/blocked/:
+    post:
+      summary: Blocked Reward
+      description: |
+        <b>Preconditions:</b> The user must be sign in into the server and must have an admin role.<br>
+        <b>Postconditions:</b> Some reward will be blocked.
+      parameters:
+        - name: _id
+          in: body
+          schema:
+           type: string
+          description: asdklajqwe123123
+          required: true
+
+      tags:
+        - Rewards
+      responses:
+        200:
+          description: The system verifies the session of the current user and his role
+          schema:
+            status     : 200
+            message    : "Reward updated"
+            data      :
+              _id   : "asdklajqwe123123"
+              title : "Title"
+              description : "Some random description"
+              blocked : true
+              amount : 5000
+              pointsNeeded : 54
+
+              createdBy :
+                _id : "asdlkjaslkjdlj231"
+                avatar :
+                  _id: "12i3ojsaldkjaslkd"
+                  name : "avatar.jpg"
+                  url : "https://aws3.amazon.com/asldkjalsk123123d123123.png"
+                firstName: "Leon"
+                lastName: "S. Kennedy"
+                email : "user@example.com"
+
+              groups:
+                - _id: "as123123ldkajs"
+                  name: "Grupo 1"
+                - _id: "aslihdqlkwjel12j3"
+                  name: "Grupo 2"
+
+              photos:
+                - _id : "asdasdq2w3e4r5t6y7u8i9"
+                  name: "photo1.jpg"
+                  url : "https://aws3.amazon.com/asdasdq2w3e4r5t6y7u8i9.png"
+                - _id : "ukttfytugfjy54678fhgf"
+                  name: "photo2.jpg"
+                  url : "https://aws3.amazon.com/ukttfytugfjy54678fhgf.png"
+
+              timestamps:
+                createdAt: "11-December-2014"
+                updatedAt: "11-December-2014"
+            success    : true
+            total      : 0
+        401:
+          description: The user doesn't have permissions to update a reward.
+          schema:
+            status  : 401
+            message : "You do not have permissions"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+
