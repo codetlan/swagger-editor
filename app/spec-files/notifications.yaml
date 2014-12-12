@@ -25,16 +25,14 @@ info:
     <li> <b>8</b>  : Some user click on the like button of an idea that the user posted. 
                     (notificationableType is "idea") </li>
                     
-    <li> <b>9</b>  : Some user click on the like button of a comment that the user posted in a challenge. 
+    <li> <b>9</b>  : Some user click on the like button of a comment (or a comment of a comment) that the user posted in a challenge. 
                     (notificationableType is "challenge") </li>
                     
-    <li> <b>10</b>  : Some user click on the like button of a comment that the user posted in a idea. 
+    <li> <b>10</b>  : Some user click on the like button of a comment (or a comment of a comment)
+    that the user posted in a idea. 
                     (notificationableType is "idea") </li>
                     
-    <li> <b>11</b> : Some user click on the like button of a comment that the user posted in a comment. 
-                    (notificationableType is "comment") </li> </li>
-                    
-    <li> <b>12</b>  : Some user commented on an idea where the user is participant or owner. 
+    <li> <b>11</b>  : Some user commented on an idea where the user is participant or owner. 
                     (notificationableType is "idea") (NO IMPLEMENTED YET)</li>
     
     </ul>
