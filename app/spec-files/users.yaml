@@ -167,8 +167,33 @@ paths:
         - name: group
           in: body
           schema:
-           groupId: asdlk1290231ñlkdaskj
+           _id: asdlk1290231Ã±lkdaskj
            name   : New group
+           
+        - name : settings
+          in : body
+          schema : 
+            settings :
+              notifications : 
+                0 : true/false
+                1 : true/false
+                2 : true/false
+                3 : true/false
+                6 : true/false
+                7 : true/false
+                8 : true/false
+                9 : true/false
+                10 : true/false
+              
+              messages :
+                5 : true/false
+                6 : true/false
+            
+          description: | 
+            The meaning of every number are describe in 
+            the notifications.yaml file.
+          required: false
+                
       responses:
         200:
           description: Update User
@@ -196,8 +221,24 @@ paths:
                period : 2013-
                company: Bussiness Stuff
               group:
-               groupId: asdlk1290231ñlkdaskj
+               _id: asdlk1290231Ã±lkdaskj
                name   : New group
+              
+              settings:
+                notifications : 
+                  0 : true/false
+                  1 : true/false
+                  2 : true/false
+                  3 : true/false
+                  6 : true/false
+                  7 : true/false
+                  8 : true/false
+                  9 : true/false
+                  10 : true/false
+              
+                messages :
+                  5 : true/false
+                  6 : true/false
             success : true
             total   : 0
         401:
@@ -251,7 +292,7 @@ paths:
                period : 2013-
                company: Bussiness Stuff
               group:
-               groupId: asdlk1290231ñlkdaskj
+               _id: asdlk1290231Ã±lkdaskj
                name   : New group
             success : true
             total   : 0
