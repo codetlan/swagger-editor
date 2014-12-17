@@ -47,8 +47,16 @@ paths:
               blocked       : "true/false"
               accessibility : "public/private"
               title         : "Some random title"
-              groups        : [Group id 1, Group id 2]
-              categories    : [Category id 1, Category id 2]
+              groups        : 
+                - _id : "asdlkjqlwkejasd"
+                  name : "Group 1"
+                - _id : "asdÃ±qweasldm"
+                  name : "Group 2"
+              categories    : 
+                - _id : "laskjdlkqjwe"
+                  name : "Category 1"
+                - _id : "asaldkqlwesad"
+                  name : "Category 2"
           description: |
             All the fields of filter are optionals. The flag admin indicates if the
             request is used for an admin user
@@ -377,7 +385,7 @@ paths:
                 photos : 
                   - _id : "ljasldkejkqwes123"
                     name : "photo1.png"
-                    url : "https://aws3.amazon.com/aasñdjlqknelknasd.png"
+                    url : "https://aws3.amazon.com/aasÃ±djlqknelknasd.png"
                   
                   - _id : "kqwe90u50384r5234"
                     name : "photo2.png"
