@@ -80,6 +80,7 @@ paths:
             status  : 200
             message : "List notifications"
             data      :
+              unRead : 15
               objects : 
                 - _id   : "asdklajqwe123123"
                   notificationableType : "challenge"
@@ -204,6 +205,7 @@ paths:
             status  : 200
             message : "List messages"
             data      :
+              unRead : 15
               objects : 
                 - _id   : "asdklajqwe123123"
                   notificationableType : "conversation"
