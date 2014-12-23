@@ -14,29 +14,40 @@ basePath: /app/spec-files
 produces:
   - application/json
 paths:
-  /files/create:
+  /images/create:
     post:
-      summary: Upload Files
+      summary: Upload Images
       description: |
         <b>Preconditions:</b> The user must be sign in into the server.<br>
         <b>Postconditions:</b> The system will create a new File document.
       parameters:
-        - name: fileUpload
+        - name: name
           in: body
           schema:
-           fileData: "fileData"
-          description: "{fileData}" 
+            type: string
+          description: "Full name of the original image"
+          required: true
+        
+        - name: base64
+          in: body
+          schema:
+            type: string
+          description: "Full string of the encrypted image"
+          required: true  
+          
       tags:
-        - Files
+        - Images
       responses:
         200:
-          description: Upload File
+          description: Upload Image
           schema:
             status     : 200
             message    : "Succesful upload"
             data       : 
-              _id   : "as123123ldkajsldkj1231231"
-              url   : "https://intrinno.s3.amazonaws.com/qlwoi13nsdnjzxcjqwelkj123kjbp12oihfddkjbaASLKJlkjalsdkj.png"
+                _id   : "as123123ldkajsldkj1231231"
+                name  : "original.png"
+                base64: "asldkjasldkjalsnkdlansdasd"
+                  
             success    : true
             total      : 0
         500:

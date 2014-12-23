@@ -37,9 +37,54 @@ paths:
             privacy :
               title : "Title 2"
               description : "Description 2"
+          description: "This field contains an object that describes the privacy"
+          required: false
+          
+        - name : landing
+          in: body
+          schema:
+            landing:
+              title : "Intrinno"
+              description : "For the company's sakes"
+          description : |
+            Here we put a brief description of the
+            site and the title of the site.
+          required : false
+          
+        - name : logo
+          in: body
+          schema:
+            image:
+              _id : "alsdjalskjdlaksd"
+              name : "logo.png"
+              base64: "asdkjalsdjqwne lqmlwe nlasndlas "
+          description : |
+            The object image that returns the call 
+            "images/create"
           required: false
         
-          description: "This field contains an object that describes the privacy"
+        - name : background
+          in: body
+          schema:
+            image:
+              _id : "alsdjalskjdlaksd"
+              name : "background.png"
+              base64: "kfgjlsnfd,zxc.zmx.,md.aqwe"
+          description : |
+            The object image that returns the call 
+            "images/create"
+          required: false
+          
+        - name : socialNetworks
+          in: body
+          schema:
+            socialNetworks:
+              facebook: "@facebook"
+              twitter : "@twitter"
+              email   : "contact@example.com"
+          description : |
+            The object that contains all socialNetworks.
+          required: false
           
       tags:
         - Configurations
@@ -58,6 +103,25 @@ paths:
                 privacy :
                   title : "Title 2"
                   description : "Description 2"
+                
+                landing:
+                  title : "Intrinno"
+                  description : "For the company's sakes"
+                
+                logo:  
+                  _id : "alsdjalskjdlaksd"
+                  name : "logo.png"
+                  base64: "asdkjalsdjqwnelqmlwenlasndlas"
+                  
+                background:
+                  _id : "alsdjalskjdlaksd"
+                  name : "background.png"
+                  base64: "kfgjlsnfd,zxc.zmx.,md.aqwe"
+                  
+                socialNetworks:
+                  facebook: "@facebook"
+                  twitter : "@twitter"
+                  email   : "contact@example.com"
                   
                 timestamps: 
                  createdAt: "20-August-2014"
@@ -94,7 +158,7 @@ paths:
           description: Create or Update Terms of services
           schema:
             status     : 200
-            message    : "Create or Update Terms of services"
+            message    : "Show Terms of services"
             data       : 
                 _id   : "as123123ldkajsldkj1231231"
                 terms :
@@ -104,6 +168,25 @@ paths:
                 privacy :
                   title : "Title 2"
                   description : "Description 2"
+                
+                landing:
+                  title : "Intrinno"
+                  description : "For the company's sakes"
+                
+                logo:  
+                  _id : "alsdjalskjdlaksd"
+                  name : "logo.png"
+                  base64: "asdkjalsdjqwnelqmlwenlasndlas"
+                  
+                background:
+                  _id : "alsdjalskjdlaksd"
+                  name : "background.png"
+                  base64: "kfgjlsnfd,zxc.zmx.,md.aqwe"
+                  
+                socialNetworks:
+                  facebook: "@facebook"
+                  twitter : "@twitter"
+                  email   : "contact@example.com"
                   
                 timestamps: 
                  createdAt: "20-August-2014"

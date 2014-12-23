@@ -19,6 +19,7 @@ PhonicsApp.config(function ($provide) {
                               'comments.yaml',
                               'conversations.yaml',
                               'ideas.yaml',
+                              'images.yaml',
                               'interests.yaml',
                               'categories.yaml',
                               'groups.yaml',
