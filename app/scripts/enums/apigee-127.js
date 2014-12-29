@@ -15,18 +15,19 @@ PhonicsApp.config(function ($provide) {
 
                           examplesFolder: '/spec-files/',
                           exampleFiles: [
+                              'categories.yaml',
                               'challenges.yaml',
                               'comments.yaml',
+                              'configurations.yaml',
                               'conversations.yaml',
+                              'files.yaml',
+                              'groups.yaml',
                               'ideas.yaml',
                               'images.yaml',
-                              'interests.yaml',
-                              'categories.yaml',
-                              'groups.yaml',
-                              'configurations.yaml',
-                              'files.yaml'
+                              'interests.yaml',                                                             
                               'notifications.yaml',
                               'proposals.yaml',
+                              'rewards.yaml',
                               'sessions.yaml',                              
                               'users.yaml'
                           ],
