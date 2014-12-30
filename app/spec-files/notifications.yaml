@@ -41,7 +41,9 @@ info:
     </ul>
     
     <b>NOTE</b> : Every notification has two users, "user" and "createdBy", the field user indicates who is the owner to 
-    the notification and the field createdBy indicates who did the action that throws the notification.
+    the notification and the field createdBy indicates who did the action that throws the notification. <p>
+    There exists two channels, "messages" and "notifications"
+    
     
   version: "1.0.0"
   # the domain of the service
