@@ -32,7 +32,10 @@ info:
     that the user posted in a idea. 
                     (notificationableType is "idea") </li>
                     
-    <li> <b>11</b>  : Some user commented on an idea where the user is participant or owner. 
+    <li> <b>11</b>  : Some consultant reclaim one reward and the notification is created for the admin.
+                    (notificationableType is "rewardsUsers") </li>
+                    
+    <li> <b>12</b>  : Some user commented on an idea where the user is participant or owner. 
                     (notificationableType is "idea") (NO IMPLEMENTED YET)</li>
     
     </ul>
