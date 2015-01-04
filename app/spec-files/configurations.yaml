@@ -54,7 +54,7 @@ paths:
         - name : logo
           in: body
           schema:
-            image:
+            logo:
               _id : "alsdjalskjdlaksd"
               name : "logo.png"
               base64: "asdkjalsdjqwne lqmlwe nlasndlas "
@@ -66,7 +66,7 @@ paths:
         - name : background
           in: body
           schema:
-            image:
+            logo:
               _id : "alsdjalskjdlaksd"
               name : "background.png"
               base64: "kfgjlsnfd,zxc.zmx.,md.aqwe"
