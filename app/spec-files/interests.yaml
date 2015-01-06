@@ -42,6 +42,7 @@ paths:
                 name : "Oficina"
                 blocked      : false
                 background: 
+                  _id: lasdkahsjdhaksjdhkasjd
                   name: "background.jpg"
                   url : "https://aws3.amazon.com/asldkjalskd.png"
                 timestamps: 
@@ -71,7 +72,8 @@ paths:
           description: "Oficina"
         - name: background
           in: body
-          schema: 
+          schema:
+            _id : aklsjdlakjsldkjasldkj
             name: "new_background.png"
             url : "https://aws3.amazon.com/asldkjalskd.png"
           description: "{'name': 'new_background.png', 'url': 'https://aws3.amazon.com/asldkjalsk123d.docx'}"
@@ -85,6 +87,7 @@ paths:
               _id   : "asdklajqwe123123"
               name : "Oficina"
               background: 
+                _id : alksjdlakjsdlkjaslkdj
                 name: "background.jpg"
                 url : "https://aws3.amazon.com/asldkjalskd.png"
               blocked: false
@@ -118,7 +121,7 @@ paths:
           in: body
           schema:
            type: string
-          description: "asdlkj12nlvcxlñ9032"
+          description: "asdlkj12nlvcxlÃ±9032"
         - name: name
           in: body
           schema: 
@@ -127,9 +130,10 @@ paths:
         - name: background
           in: body
           schema: 
+            _id : aslkdjalskjdlakjsdlkasd
             name: "background.jpg"
             url : "https://aws3.amazon.com/asldkjalskd.png"
-          description: "{'name': 'background.jpg', 'url': 'https://…..'}"
+          description: "{'name': 'background.jpg', 'url': 'https://â€¦..'}"
       tags:
         - Interests
       responses:
@@ -142,6 +146,7 @@ paths:
               _id   : "asdklajqwe123123"
               name : "Oficina"
               background: 
+                _id: aklsdjlaksjdlkjkh1kj2asd
                 name: "background.jpg"
                 url : "https://aws3.amazon.com/asldkjalskd.png"
               blocked: false
@@ -188,6 +193,7 @@ paths:
               _id   : "asdklajqwe123123"
               name : "Oficina"
               background: 
+                _id: askldjaÃ±lsjdÃ±laskd
                 name: "background.jpg"
                 url : "https://aws3.amazon.com/asldkjalskd.png"
               blocked: false
@@ -226,6 +232,7 @@ paths:
               _id   : "asdklajqwe123123"
               name : "Oficina"
               background: 
+                _id: aljshdkashdkjhasjdh
                 name: "background.jpg"
                 url : "https://aws3.amazon.com/asldkjalskd.png"
               blocked: false
