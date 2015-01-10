@@ -1,0 +1,410 @@
+swagger: '2.0'
+info:
+  title: Intrinno API
+  description: Intrinno API
+  version: "1.0.0"
+  # the domain of the service
+host: intrinno.mx:9000
+  # array of all schemes that your API supports
+schemes:
+  - http
+  - https
+# will be prefixed to all paths
+basePath: /app/spec-files
+produces:
+  - application/json
+paths:
+  /ideas/index:
+    post:
+      summary: List Ideas
+      tags:
+        - Ideas
+      parameters:
+        - name: page
+          in: body
+          schema:
+           type: integer
+          description: "1"
+        - name: ideasPerPage
+          in: body
+          schema: 
+           type: integer
+          description: "20"
+        - name: filter
+          in: body
+          schema:
+           _id: "asdklajqwe123123"
+          description: "{'interest' : 'Id model interest'}"
+      responses:
+        200:
+          description: List ideas
+          schema:
+            status  : 200
+            message : "List ideas"
+            data      :
+              objects : 
+                title   : "asdklajqwe123123"
+                description : "Some description"
+                status: false
+                interest: 
+                 _id: "12lasdlajsñldjkasd"
+                 name: Some name
+                likes: 0
+                blocked: false
+            success : true
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /ideas/create/:
+    post:
+      summary: Create Ideas
+      tags:
+        - Ideas
+      parameters:
+        - name: title
+          in: body
+          schema:
+           type: string
+          description: "ejemplo"
+        - name: description
+          in: body
+          schema:
+           type: string
+          description: "Some random description"
+        - name: status
+          in: body
+          schema:
+           type: string
+          description: "opened/created"
+        - name: interest
+          in: body
+          schema: 
+            _id: "asdklajqwe123123"
+          description: "{'_id': '12lasdlajsñldjkasd'}"
+      responses:
+        200:
+          description: The system verifies the session of the current user.
+          schema:
+            status  : 200
+            message : "Successful Idea created"
+            data    :
+              title   : "asdklajqwe123123"
+              description : "Some description"
+              status: false
+              interest: 
+                _id: "12lasdlajsñldjkasd"
+                name: Some name
+              likes: 0
+              blocked: false
+            success : true
+            total   : 0
+        401:
+          description: The user doesn't have permissions to create
+          schema:
+            status  : 401
+            message : "The user doesn't have permissions to create"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /ideas/update/:
+    post:
+      summary: Update Ideas
+      parameters:
+        - name: _id
+          in: body
+          schema:
+           type: string
+          description: "asdlkj12nlvcxlñ9032"
+        - name: title
+          in: body
+          schema:
+           type: string
+          description: "ejemplo"
+        - name: description
+          in: body
+          schema:
+           type: string
+          description: "Some random description"
+        - name: status
+          in: body
+          schema:
+           type: string
+          description: "opened/created"
+        - name: interest
+          in: body
+          schema: 
+            _id: "asdklajqwe123123"
+          description: "{'_id': '12lasdlajsñldjkasd'}"
+      tags:
+        - Interests
+      responses:
+        200:
+          description: The system verifies the session of the current user. 
+          schema:
+            status  : 200
+            message : "Successful Update Proposal"
+            data    :
+              title   : "asdklajqwe123123"
+              description : "Some description"
+              status: false
+              interest: 
+                _id: "12lasdlajsñldjkasd"
+                name: Some name
+              likes: 0
+              blocked: false
+            success : true
+            total   : 0
+        401:
+          description: The system can't find an active session
+          schema:
+            status  : 401
+            message : "You do not have permissions"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /ideas/show:
+    post:
+      summary: Show Idea
+      parameters:
+        - name: _id
+          in: body
+          schema:
+           type: string
+          description: "as123123ldkajsldkj1231231"
+      tags:
+        - Idea
+      responses:
+        200:
+          description: The system verifies the session of the current user. 
+          schema:
+            status     : 200
+            message    : "Show idea"
+            data      :
+              title   : "asdklajqwe123123"
+              description : "Some description"
+              status: false
+              interest: 
+                _id: "12lasdlajsñldjkasd"
+                name: Some name
+              likes: 0
+              blocked: false
+            success    : true
+            total      : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /ideas/blocked:
+    post:
+      summary: Blocked Idea
+      parameters:
+        - name: _id
+          in: body
+          schema:
+           type: string
+          description: asdasd21323123asd  
+      tags:
+        - Ideas
+      responses:
+        200:
+          description: Interest unblocked
+          schema:
+            status     : 200
+            message    : "Interest unblocked"
+            data      :
+              title   : "asdklajqwe123123"
+              description : "Some description"
+              status: false
+              interest: 
+                _id: "12lasdlajsñldjkasd"
+                name: Some name
+              likes: 0
+              blocked: false
+            success    : true
+            total      : 0
+        401:
+          description: The user doesn't have permissions or record not found.
+          schema:
+            status  : 401
+            message : "The user doesn't have permissions or record not found"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+  
+  /ideas/unblocked:
+    post:
+      summary: Unblocked Idea
+      parameters:
+        - name: _id
+          in: body
+          schema:
+           type: string
+          description: asdasd21323123asd  
+      tags:
+        - Ideas
+      responses:
+        200:
+          description: Ideas unblocked
+          schema:
+            status     : 200
+            message    : "Ideas unblocked"
+            data      :
+              title   : "asdklajqwe123123"
+              description : "Some description"
+              status: false
+              interest: 
+                _id: "12lasdlajsñldjkasd"
+                name: Some name
+              likes: 0
+              blocked: false
+            success    : true
+            total      : 0
+        401:
+          description: The user doesn't have permissions or record not found.
+          schema:
+            status  : 401
+            message : "The user doesn't have permissions or record not found"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /ideas/setStatus:
+    post:
+      summary: Set Status Idea
+      parameters:
+        - name: _id
+          in: body
+          schema:
+           type: string
+          description: asdasd21323123asd  
+        - name: status
+          in: body
+          schema:
+           type: string
+          description: winner/opened/created  
+      tags:
+        - Ideas
+      responses:
+        200:
+          description: Ideas updated status
+          schema:
+            status     : 200
+            message    : "Idea updated status"
+            data      :
+              title   : "asdklajqwe123123"
+              description : "Some description"
+              status: false
+              interest: 
+                _id: "12lasdlajsñldjkasd"
+                name: Some name
+              likes: 0
+              blocked: false
+            success    : true
+            total      : 0
+        401:
+          description: The user doesn't have permissions or record not found.
+          schema:
+            status  : 401
+            message : "The user doesn't have permissions or record not found"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /ideas/like:
+    post:
+      summary: Like Idea
+      parameters:
+        - name: _id
+          in: body
+          schema:
+           type: string
+          description: asdasd21323123asd
+      tags:
+        - Ideas
+      responses:
+        200:
+          description: Idea like
+          schema:
+            status     : 200
+            message    : "Idea like"
+            data      :
+              title   : "asdklajqwe123123"
+              description : "Some description"
+              status: false
+              interest: 
+                _id: "12lasdlajsñldjkasd"
+                name: Some name
+              likes: 1
+              blocked: false
+            success    : true
+            total      : 0
+        401:
+          description: The user doesn't have permissions or record not found.
+          schema:
+            status  : 401
+            message : "The user doesn't have permissions or record not found"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0

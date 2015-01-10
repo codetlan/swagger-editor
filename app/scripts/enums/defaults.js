@@ -26,6 +26,7 @@ PhonicsApp.config(function ($provide) {
                               'images.yaml',
                               'interests.yaml',
                               'notifications.yaml',
+                              'packages.yaml',
                               'proposals.yaml',
                               'rewards.yaml',
                               'sessions.yaml',                              
