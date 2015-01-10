@@ -14,43 +14,71 @@ basePath: /app/spec-files
 produces:
   - application/json
 paths:
-  /ideas/index:
+  /packages/index:
     post:
-      summary: List Ideas
+      summary: List Packages
+      description : |  
+        <b>Postconditions:</b> List all the packages
+        published by the superadmin.
       tags:
-        - Ideas
+        - Packages
       parameters:
         - name: page
           in: body
+          required : true
           schema:
            type: integer
-          description: "1"
-        - name: ideasPerPage
+           minimum: 0
+          description: "The count start from 0"
+        - name: packagesPerPage
           in: body
+          required : true
           schema: 
            type: integer
-          description: "20"
+           minimum : 1
+           maximum : 50
+          description: "We only list 1-50 elements, no less no more"
         - name: filter
           in: body
+          required : false
           schema:
-           _id: "asdklajqwe123123"
-          description: "{'interest' : 'Id model interest'}"
+            filter          :
+              title         : "Name"
+          description: |
+            All the fields of filter are optionals.
+          required: false
       responses:
         200:
-          description: List ideas
+          description: The was no error on the server
           schema:
             status  : 200
-            message : "List ideas"
+            message : "List packages"
             data      :
               objects : 
-                title   : "asdklajqwe123123"
-                description : "Some description"
-                status: false
-                interest: 
-                 _id: "12lasdlajsñldjkasd"
-                 name: Some name
-                likes: 0
-                blocked: false
+                - _id: "54ae1c640b33d0f8145c62a2"
+                  name: "Default name"
+                  description: "Package number one"
+                  activeChallenges: 6
+                  amount: 11000
+                  currency: "MXN"
+                  expiryCount: 1
+                  status: "active"
+                  timestamps: 
+                    createdAt: "2015-01-08T05:57:56.120Z"
+                    updatedAt: "2015-01-08T05:57:56.120Z"
+                    
+                - _id: "54ae1c6c0b33d0f8145c62a3"
+                  name: "Default Name"
+                  description: "Package number two"
+                  activeChallenges: 6
+                  amount: 16000
+                  currency: "MXN"
+                  expiryCount: 6
+                  status: "active"
+                  timestamps:
+                    createdAt: "2015-01-08T05:58:04.074Z"
+                    updatedAt: "2015-01-08T06:01:38.839Z"
+                    
             success : true
             total   : 0
         500:
@@ -62,116 +90,157 @@ paths:
             success : false
             total   : 0
             
-  /ideas/create/:
+  /packages/show/:
     post:
-      summary: Create Ideas
-      tags:
-        - Ideas
-      parameters:
-        - name: title
-          in: body
-          schema:
-           type: string
-          description: "ejemplo"
-        - name: description
-          in: body
-          schema:
-           type: string
-          description: "Some random description"
-        - name: status
-          in: body
-          schema:
-           type: string
-          description: "opened/created"
-        - name: interest
-          in: body
-          schema: 
-            _id: "asdklajqwe123123"
-          description: "{'_id': '12lasdlajsñldjkasd'}"
-      responses:
-        200:
-          description: The system verifies the session of the current user.
-          schema:
-            status  : 200
-            message : "Successful Idea created"
-            data    :
-              title   : "asdklajqwe123123"
-              description : "Some description"
-              status: false
-              interest: 
-                _id: "12lasdlajsñldjkasd"
-                name: Some name
-              likes: 0
-              blocked: false
-            success : true
-            total   : 0
-        401:
-          description: The user doesn't have permissions to create
-          schema:
-            status  : 401
-            message : "The user doesn't have permissions to create"
-            data    : {}
-            success : false
-            total   : 0
-        500:
-          description: Some internal error occurs
-          schema:
-            status  : 500
-            message : "Some internal error ocurrs"
-            data    : {}
-            success : false
-            total   : 0
-            
-  /ideas/update/:
-    post:
-      summary: Update Ideas
+      summary: Show Packages
+      description: |
+        <b>Postconditions</b>: Show the Package only if
+        its status is active or the user is the 
+        superadmin.<br>
       parameters:
         - name: _id
           in: body
+          required : true
           schema:
            type: string
-          description: "asdlkj12nlvcxlñ9032"
-        - name: title
+          description: For example  "lo234oyaslkhsd97mnv123"
+          required : true
+      tags:
+        - Packages
+      responses:
+        200:
+          description: The were no error
+          schema:
+            status     : 200
+            message    : "Show package"
+            data      :
+              _id: "54ae1c6c0b33d0f8145c62a3"
+              name: "Nombre de prueba"
+              description: "Paquete de prueba numero"
+              activeChallenges: 6
+              amount: 16000
+              currency: "MXN"
+              expiryCount: 6
+              status: "active"
+              timestamps:
+                createdAt: "2015-01-08T05:58:04.074Z"
+                updatedAt: "2015-01-08T06:01:38.839Z"
+            success    : true
+            total      : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /packages/create/:
+    post:
+      summary: Create Package (superadmin)
+      description: |
+        <b>Preconditions:</b> The user must be sign in
+        into the server and must have a superadmin 
+        role.<br>
+        
+        <b>Postconditions:</b> There will be a new
+        package record into the database.
+        
+      parameters:
+        - name: name
           in: body
-          schema:
-           type: string
-          description: "ejemplo"
+          schema: 
+            type: string
+          description: "The name of every package must have a length in this range [2...50]"
+          required: true 
+        
         - name: description
           in: body
           schema:
-           type: string
-          description: "Some random description"
-        - name: status
+            type: string
+          description: "The description must have a length greater than 10"
+          required : true
+          
+        - name : status
           in: body
-          schema:
-           type: string
-          description: "opened/created"
-        - name: interest
+          schema : 
+            type: string
+          description: |
+            The possible status are "active" and
+            "inactive". By defualt the system will set
+            "inactive" if non status is passed in the
+            JSON.
+          required: false
+          
+        - name: activeChallenges
           in: body
           schema: 
-            _id: "asdklajqwe123123"
-          description: "{'_id': '12lasdlajsñldjkasd'}"
+            type: integer
+            min: 1
+            max : 100
+          description: |
+            The number of active challenges that the 
+            admin user can have.
+            Between 1 and 100
+          required : true
+          
+        - name: amount
+          in: body
+          schema: 
+            type: integer
+            min : 300
+          description: |
+            Is an integer that represents the amount of
+            the payments and is represented in cents.
+            The minimum value is 300
+          required : true
+          
+        - name: currency
+          in: body
+          schema: 
+            type: string
+          description: |
+            The only option for now is "MXN"
+          required: true
+          
+        - name: expiryCount
+          in: body
+          schema:
+            type: number
+            min : 1
+            max : 6
+          description: |
+            The number of payments scheduled before 
+            the subscription ends.
+          required : true
+             
+              
       tags:
-        - Interests
+        - Payments
       responses:
         200:
-          description: The system verifies the session of the current user. 
+          description: The payments was created, here is an example. 
           schema:
-            status  : 200
-            message : "Successful Update Proposal"
-            data    :
-              title   : "asdklajqwe123123"
-              description : "Some description"
-              status: false
-              interest: 
-                _id: "12lasdlajsñldjkasd"
-                name: Some name
-              likes: 0
-              blocked: false
-            success : true
-            total   : 0
+            status     : 200
+            message    : "Successful create Payment"
+            data      :
+              _id: "54b1a1541d4dd3181abf9aac"
+              status: "inactive"
+              name: "Name proof"
+              description: "Description number one"
+              activeChallenges: 6
+              amount: 1000
+              currency: "MXN"
+              expiryCount: 1
+              timestamps: 
+                createdAt: "2015-01-10T22:01:56.128Z"
+                updatedAt: "2015-01-10T22:01:56.128Z"
+
+            success    : true
+            total      : 0
         401:
-          description: The system can't find an active session
+          description: The user doesn't have permissions to create a package.
           schema:
             status  : 401
             message : "You do not have permissions"
@@ -187,216 +256,118 @@ paths:
             success : false
             total   : 0
             
-  /ideas/show:
+  /packages/update/:
     post:
-      summary: Show Idea
+      summary: Update Challenge Information
+      description: |
+        <b>Preconditions:</b> The user must be sign in
+        into the server and must have a superadmin 
+        role.<br>
+        <b>Postconditions:</b> The information will be
+        update.
+        
       parameters:
         - name: _id
           in: body
           schema:
            type: string
           description: "as123123ldkajsldkj1231231"
-      tags:
-        - Idea
-      responses:
-        200:
-          description: The system verifies the session of the current user. 
-          schema:
-            status     : 200
-            message    : "Show idea"
-            data      :
-              title   : "asdklajqwe123123"
-              description : "Some description"
-              status: false
-              interest: 
-                _id: "12lasdlajsñldjkasd"
-                name: Some name
-              likes: 0
-              blocked: false
-            success    : true
-            total      : 0
-        500:
-          description: Some internal error occurs
-          schema:
-            status  : 500
-            message : "Some internal error ocurrs"
-            data    : {}
-            success : false
-            total   : 0
-            
-  /ideas/blocked:
-    post:
-      summary: Blocked Idea
-      parameters:
-        - name: _id
+          required : true
+        
+        - name: name
+          in: body
+          schema: 
+            type: string
+          description: "The name of every package must have a length in this range [2...50]"
+          required: false
+        
+        - name: description
           in: body
           schema:
-           type: string
-          description: asdasd21323123asd  
-      tags:
-        - Ideas
-      responses:
-        200:
-          description: Interest unblocked
-          schema:
-            status     : 200
-            message    : "Interest unblocked"
-            data      :
-              title   : "asdklajqwe123123"
-              description : "Some description"
-              status: false
-              interest: 
-                _id: "12lasdlajsñldjkasd"
-                name: Some name
-              likes: 0
-              blocked: false
-            success    : true
-            total      : 0
-        401:
-          description: The user doesn't have permissions or record not found.
-          schema:
-            status  : 401
-            message : "The user doesn't have permissions or record not found"
-            data    : {}
-            success : false
-            total   : 0
-        500:
-          description: Some internal error occurs
-          schema:
-            status  : 500
-            message : "Some internal error ocurrs"
-            data    : {}
-            success : false
-            total   : 0
-  
-  /ideas/unblocked:
-    post:
-      summary: Unblocked Idea
-      parameters:
-        - name: _id
+            type: string
+          description: "The description must have a length greater than 10"
+          required : false
+          
+        - name : status
+          in: body
+          schema : 
+            type: string
+          description: |
+            The possible status are "active" and
+            "inactive". By defualt the system will set
+            "inactive" if non status is passed in the
+            JSON.
+          required: false
+          
+        - name: activeChallenges
+          in: body
+          schema: 
+            type: integer
+            min: 1
+            max : 100
+          description: |
+            The number of active challenges that the 
+            admin user can have.
+            Between 1 and 100
+          required : false
+          
+        - name: amount
+          in: body
+          schema: 
+            type: integer
+            min : 300
+          description: |
+            Is an integer that represents the amount of
+            the payments and is represented in cents.
+            The minimum value is 300
+          required : false
+          
+        - name: currency
+          in: body
+          schema: 
+            type: string
+          description: |
+            The only option for now is "MXN"
+          required: false
+          
+        - name: expiryCount
           in: body
           schema:
-           type: string
-          description: asdasd21323123asd  
+            type: number
+            min : 1
+            max : 6
+          description: |
+            The number of payments scheduled before 
+            the subscription ends.
+          required : false
+          
       tags:
-        - Ideas
+        - Packages
       responses:
         200:
-          description: Ideas unblocked
+          description: The Package was succesfully updated
           schema:
-            status     : 200
-            message    : "Ideas unblocked"
+            status  : 200
+            message : "Successful Update Package"
             data      :
-              title   : "asdklajqwe123123"
-              description : "Some description"
-              status: false
-              interest: 
-                _id: "12lasdlajsñldjkasd"
-                name: Some name
-              likes: 0
-              blocked: false
+              _id: "54b1a1541d4dd3181abf9aac"
+              status: "inactive"
+              name: "Name proof"
+              description: "Description number one"
+              activeChallenges: 6
+              amount: 1000
+              currency: "MXN"
+              expiryCount: 1
+              timestamps: 
+                createdAt: "2015-01-10T22:01:56.128Z"
+                updatedAt: "2015-01-10T22:01:56.128Z"
             success    : true
             total      : 0
         401:
-          description: The user doesn't have permissions or record not found.
+          description: The user doesn't have permissions to update a package.
           schema:
             status  : 401
-            message : "The user doesn't have permissions or record not found"
-            data    : {}
-            success : false
-            total   : 0
-        500:
-          description: Some internal error occurs
-          schema:
-            status  : 500
-            message : "Some internal error ocurrs"
-            data    : {}
-            success : false
-            total   : 0
-            
-  /ideas/setStatus:
-    post:
-      summary: Set Status Idea
-      parameters:
-        - name: _id
-          in: body
-          schema:
-           type: string
-          description: asdasd21323123asd  
-        - name: status
-          in: body
-          schema:
-           type: string
-          description: winner/opened/created  
-      tags:
-        - Ideas
-      responses:
-        200:
-          description: Ideas updated status
-          schema:
-            status     : 200
-            message    : "Idea updated status"
-            data      :
-              title   : "asdklajqwe123123"
-              description : "Some description"
-              status: false
-              interest: 
-                _id: "12lasdlajsñldjkasd"
-                name: Some name
-              likes: 0
-              blocked: false
-            success    : true
-            total      : 0
-        401:
-          description: The user doesn't have permissions or record not found.
-          schema:
-            status  : 401
-            message : "The user doesn't have permissions or record not found"
-            data    : {}
-            success : false
-            total   : 0
-        500:
-          description: Some internal error occurs
-          schema:
-            status  : 500
-            message : "Some internal error ocurrs"
-            data    : {}
-            success : false
-            total   : 0
-            
-  /ideas/like:
-    post:
-      summary: Like Idea
-      parameters:
-        - name: _id
-          in: body
-          schema:
-           type: string
-          description: asdasd21323123asd
-      tags:
-        - Ideas
-      responses:
-        200:
-          description: Idea like
-          schema:
-            status     : 200
-            message    : "Idea like"
-            data      :
-              title   : "asdklajqwe123123"
-              description : "Some description"
-              status: false
-              interest: 
-                _id: "12lasdlajsñldjkasd"
-                name: Some name
-              likes: 1
-              blocked: false
-            success    : true
-            total      : 0
-        401:
-          description: The user doesn't have permissions or record not found.
-          schema:
-            status  : 401
-            message : "The user doesn't have permissions or record not found"
+            message : "You do not have permissions"
             data    : {}
             success : false
             total   : 0
