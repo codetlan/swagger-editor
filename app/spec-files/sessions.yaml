@@ -29,12 +29,23 @@ paths:
            type: string
           description: user@example.com
           required: true
+          
         - name: password
           in: body
           schema: 
            type: string
           description: "Password has a length greater than 5 - 'lkasjd%1,.0$AS'"
           required: true
+          
+        - name: role
+          in: body
+          schema: 
+           type: string
+          description: |
+            Valid options are "admin" and "consultant"
+          required: false
+          
+          
       responses:
         200:
           description: Password reset
@@ -195,6 +206,10 @@ paths:
               lastName: "Last Name"
               role: "admin/consultant"
               avatar: "avatar"
+              cards : 
+                - "asdaslkdlkjqwesad"
+                - "123u909809uasidhas"
+                - "askhqwkejkbasdbamnsb"
             success : true
             total   : 0
         
