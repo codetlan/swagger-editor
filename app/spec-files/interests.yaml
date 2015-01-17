@@ -25,11 +25,23 @@ paths:
           schema:
            type: integer
           description: "1"
+          required: true
+        
         - name: interestsPerPage
           in: body
           schema: 
            type: integer
           description: "20"
+          required: true
+          
+        - name: filter
+          in: body
+          schema :
+            admin :  true
+            search : "Interest 1"
+          description: "All fields are optional"
+          required: false
+          
       responses:
         200:
           description: List interests
@@ -121,7 +133,7 @@ paths:
           in: body
           schema:
            type: string
-          description: "asdlkj12nlvcxlÃ±9032"
+          description: "asdlkj12nlvcxlÃƒÂ±9032"
         - name: name
           in: body
           schema: 
@@ -133,7 +145,7 @@ paths:
             _id : aslkdjalskjdlakjsdlkasd
             name: "background.jpg"
             url : "https://aws3.amazon.com/asldkjalskd.png"
-          description: "{'name': 'background.jpg', 'url': 'https://â€¦..'}"
+          description: "{'name': 'background.jpg', 'url': 'https://Ã¢â‚¬Â¦..'}"
       tags:
         - Interests
       responses:
@@ -193,7 +205,7 @@ paths:
               _id   : "asdklajqwe123123"
               name : "Oficina"
               background: 
-                _id: askldjaÃ±lsjdÃ±laskd
+                _id: askldjaÃƒÂ±lsjdÃƒÂ±laskd
                 name: "background.jpg"
                 url : "https://aws3.amazon.com/asldkjalskd.png"
               blocked: false
