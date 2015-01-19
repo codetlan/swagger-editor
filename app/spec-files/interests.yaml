@@ -50,9 +50,10 @@ paths:
             message : "List interests"
             data      :
               objects : 
-                _id   : "asdklajqwe123123"
+              - _id   : "asdklajqwe123123"
                 name : "Oficina"
                 blocked      : false
+                ideas: 10
                 background: 
                   _id: lasdkahsjdhaksjdhkasjd
                   name: "background.jpg"
@@ -124,7 +125,49 @@ paths:
             data    : {}
             success : false
             total   : 0
-            
+
+  /interests/show:
+    post:
+      summary: Show Interests
+      tags:
+        - Interests
+      parameters:
+        - name: _id
+          in: body
+          schema:
+           type: string
+          description: "ashdjahskdbansmdbas123"
+          required: true
+          
+      responses:
+        200:
+          description: Show interests
+          schema:
+            status  : 200
+            message : "Show interests"
+            data      :
+              _id   : "ashdjahskdbansmdbas123"
+              name : "Oficina"
+              blocked      : false
+              ideas: 10
+              background: 
+                _id: lasdkahsjdhaksjdhkasjd
+                name: "background.jpg"
+                url : "https://aws3.amazon.com/asldkjalskd.png"
+              timestamps: 
+                createdAt: "20-August-2014"
+                updatedAt: "21-August-2014"
+            success : true
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+
   /interests/update/:
     post:
       summary: Update Interest
@@ -133,7 +176,7 @@ paths:
           in: body
           schema:
            type: string
-          description: "asdlkj12nlvcxlÃƒÂ±9032"
+          description: "asdlkj12nlvcxlÃƒÆ’Ã‚Â±9032"
         - name: name
           in: body
           schema: 
@@ -145,7 +188,7 @@ paths:
             _id : aslkdjalskjdlakjsdlkasd
             name: "background.jpg"
             url : "https://aws3.amazon.com/asldkjalskd.png"
-          description: "{'name': 'background.jpg', 'url': 'https://Ã¢â‚¬Â¦..'}"
+          description: "{'name': 'background.jpg', 'url': 'https://ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦..'}"
       tags:
         - Interests
       responses:
@@ -205,7 +248,7 @@ paths:
               _id   : "asdklajqwe123123"
               name : "Oficina"
               background: 
-                _id: askldjaÃƒÂ±lsjdÃƒÂ±laskd
+                _id: askldjaÃƒÆ’Ã‚Â±lsjdÃƒÆ’Ã‚Â±laskd
                 name: "background.jpg"
                 url : "https://aws3.amazon.com/asldkjalskd.png"
               blocked: false

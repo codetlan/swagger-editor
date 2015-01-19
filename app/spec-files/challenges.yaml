@@ -50,7 +50,7 @@ paths:
               groups        : 
                 - _id : "asdlkjqlwkejasd"
                   name : "Group 1"
-                - _id : "asdÃ±qweasldm"
+                - _id : "asdÃƒÂ±qweasldm"
                   name : "Group 2"
               categories    : 
                 - _id : "laskjdlkqjwe"
@@ -73,6 +73,7 @@ paths:
                 - _id   : "asdklajqwe123123"
                   title : "Title"
                   editable : "true/false"
+                  proposals : 10
                   description : "Some random description"
                   startDate  : "Mon Nov 24 2014 22:15:07 GMT-0600 (CST)"
                   endDate    : "Wed Nov 30 2014 16:20:50 GMT-0600 (CST)"
@@ -176,6 +177,7 @@ paths:
               _id   : "lo234oyaslkhsd97mnv123"
               title : "Title"
               editable : "true/false"
+              proposals   : 10
               description : "Some random description"
               startDate  : "Mon Nov 24 2014 22:15:07 GMT-0600 (CST)"
               endDate    : "Wed Nov 30 2014 16:20:50 GMT-0600 (CST)"
@@ -385,7 +387,7 @@ paths:
                 photos : 
                   - _id : "ljasldkejkqwes123"
                     name : "photo1.png"
-                    url : "https://aws3.amazon.com/aasÃ±djlqknelknasd.png"
+                    url : "https://aws3.amazon.com/aasÃƒÂ±djlqknelknasd.png"
                   
                   - _id : "kqwe90u50384r5234"
                     name : "photo2.png"
