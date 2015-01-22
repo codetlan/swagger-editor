@@ -103,10 +103,19 @@ paths:
         - name: avatar
           in: body
           schema:
-           _id  : asdasd
-           name : new_avatar.png
-           url  : https://aws3.amazon.com/asldkjalskd.png
-          description: "{'_id': 'asdasd', 'name': 'new_avatar.png', 'url': 'https://aws3.amazon.com/asldkjalskd.png'}"
+            _id: "54c15b0e1df63960216b2b77"
+            name: "My_Eyes.jpg"
+            urlx100: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx100"
+            urlx60: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx60"
+            urlx32: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx32"
+            urlx22: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx22"
+            urlx36: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx36"
+            urlx26: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx26"
+            urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+            
+            timestamps:
+              createdAt: "2015-01-22T20:18:22.033Z"
+              updatedAt: "2015-01-22T20:18:22.033Z"
         - name: bio
           in: body
           schema: 
@@ -167,7 +176,7 @@ paths:
         - name: group
           in: body
           schema:
-           _id: asdlk1290231Ã±lkdaskj
+           _id: asdlk1290231ÃƒÂ±lkdaskj
            name   : New group
            
         - name : settings
@@ -205,9 +214,14 @@ paths:
               firstName: Name
               lastName : Last Name
               avatar   : 
-               _id : asdasd
-               name: new_avatar.png
-               url : https://aws3.amazon.com/asldkjalskd.png
+                urlx100: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx100"
+                urlx60: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx60"
+                urlx32: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx32"
+                urlx22: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx22"
+                urlx36: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx36"
+                urlx26: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx26"
+                urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+                name: "My_Eyes.jpg"
               bio       : Some random text
               linkedin  : "@user1234ca"
               twitter   : "@user1234ca"
@@ -221,7 +235,7 @@ paths:
                period : 2013-
                company: Bussiness Stuff
               group:
-               _id: asdlk1290231Ã±lkdaskj
+               _id: asdlk1290231ÃƒÂ±lkdaskj
                name   : New group
               
               settings:
@@ -292,7 +306,7 @@ paths:
                period : 2013-
                company: Bussiness Stuff
               group:
-               _id: asdlk1290231Ã±lkdaskj
+               _id: asdlk1290231ÃƒÂ±lkdaskj
                name   : New group
             success : true
             total   : 0
@@ -382,6 +396,58 @@ paths:
              email     : user@example.com
              firstName : Name
              lastName  : Last Name
+            success    : true
+            total      : 0
+        401:
+          description: The user doesn't have permissions to unblocked a user or The email doesn't exist.
+          schema:
+            status  : 401
+            message : "You do not have permissions or Record not found"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+
+  /users/images/create:
+    post:
+      summary: Creates images avatars for a user
+      description: |
+        <b>Preconditions:</b> The user must be sign in into the server.<br>
+        <b>Postconditions:</b> Some images will be created.
+      parameters:
+        - name: fileUpload
+          in: body
+          schema:
+            type: string
+          description: The image
+      tags:
+        - Users
+      responses:
+        200:
+          description: Successful uploaded
+          schema:
+            status     : 200
+            message    : "Successful uploaded"
+            data       : 
+              _id       : asdasd21323123asd
+              urlx100   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx100"
+              urlx60    : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx60"
+              urlx32: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx32"
+              urlx22: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx22"
+              urlx36: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx36"
+              urlx26: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx26"
+              urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+              name: "My_Eyes.jpg"
+              timestamps : 
+                createdAt : "11-Agust-12"
+                updatedAt : "11-September-12"
             success    : true
             total      : 0
         401:
