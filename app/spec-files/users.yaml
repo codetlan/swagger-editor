@@ -176,7 +176,7 @@ paths:
         - name: group
           in: body
           schema:
-           _id: asdlk1290231ÃƒÂ±lkdaskj
+           _id: asdlk1290231ÃƒÆ’Ã‚Â±lkdaskj
            name   : New group
            
         - name : settings
@@ -235,7 +235,7 @@ paths:
                period : 2013-
                company: Bussiness Stuff
               group:
-               _id: asdlk1290231ÃƒÂ±lkdaskj
+               _id: asdlk1290231ÃƒÆ’Ã‚Â±lkdaskj
                name   : New group
               
               settings:
@@ -290,9 +290,14 @@ paths:
               firstName: Name
               lastName : Last Name
               avatar   : 
-               _id : asdasd
-               name: new_avatar.png
-               url : https://aws3.amazon.com/asldkjalskd.png
+                urlx100: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx100"
+                urlx60: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx60"
+                urlx32: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx32"
+                urlx22: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx22"
+                urlx36: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx36"
+                urlx26: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx26"
+                urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+                name: "My_Eyes.jpg"
               bio       : Some random text
               linkedin  : "@user1234ca"
               twitter   : "@user1234ca"
@@ -306,7 +311,7 @@ paths:
                period : 2013-
                company: Bussiness Stuff
               group:
-               _id: asdlk1290231ÃƒÂ±lkdaskj
+               _id: asdlk1290231ÃƒÆ’Ã‚Â±lkdaskj
                name   : New group
             success : true
             total   : 0
