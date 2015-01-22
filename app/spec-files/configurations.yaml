@@ -14,7 +14,7 @@ basePath: /app/spec-files
 produces:
   - application/json
 paths:
-  /configuration/saveConfigurations:
+  /configurations/saveConfigurations:
     post:
       summary: Save Terms and Privacy of Services (admin)
       description: |
@@ -55,9 +55,13 @@ paths:
           in: body
           schema:
             logo:
-              _id : "alsdjalskjdlaksd"
-              name : "logo.png"
-              base64: "asdkjalsdjqwne lqmlwe nlasndlas "
+              _id       : asdasd21323123asd
+              urlxautox50   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlxautox50"
+              urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+              name: "My_Eyes.jpg"
+              timestamps : 
+                createdAt : "11-Agust-12"
+                updatedAt : "11-September-12"
           description : |
             The object image that returns the call 
             "images/create"
@@ -66,10 +70,14 @@ paths:
         - name : background
           in: body
           schema:
-            logo:
-              _id : "alsdjalskjdlaksd"
-              name : "background.png"
-              base64: "kfgjlsnfd,zxc.zmx.,md.aqwe"
+            background:
+              _id       : asdasd21323123asd
+              urlx1000xauto   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx1000xauto"
+              urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+              name: "My_Eyes.jpg"
+              timestamps : 
+                createdAt : "11-Agust-12"
+                updatedAt : "11-September-12"
           description : |
             The object image that returns the call 
             "images/create"
@@ -109,14 +117,14 @@ paths:
                   description : "For the company's sakes"
                 
                 logo:  
-                  _id : "alsdjalskjdlaksd"
-                  name : "logo.png"
-                  base64: "asdkjalsdjqwnelqmlwenlasndlas"
-                  
+                  urlxautox50   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlxautox50"
+                  urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+                  name: "My_Eyes.jpg"
+                                
                 background:
-                  _id : "alsdjalskjdlaksd"
-                  name : "background.png"
-                  base64: "kfgjlsnfd,zxc.zmx.,md.aqwe"
+                  urlx1000xauto   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx1000xauto"
+                  urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+                  name: "My_Eyes.jpg"
                   
                 socialNetworks:
                   facebook: "@facebook"
@@ -145,7 +153,7 @@ paths:
             success : false
             total   : 0
       
-  /configuration/showConfigurations:
+  /configurations/showConfigurations:
     post:
       summary: Show Terms and Privacy of Services (admin)
       description: |
@@ -174,14 +182,14 @@ paths:
                   description : "For the company's sakes"
                 
                 logo:  
-                  _id : "alsdjalskjdlaksd"
-                  name : "logo.png"
-                  base64: "asdkjalsdjqwnelqmlwenlasndlas"
-                  
+                  urlxautox50   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlxautox50"
+                  urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+                  name: "My_Eyes.jpg"
+                                
                 background:
-                  _id : "alsdjalskjdlaksd"
-                  name : "background.png"
-                  base64: "kfgjlsnfd,zxc.zmx.,md.aqwe"
+                  urlx1000xauto   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx1000xauto"
+                  urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+                  name: "My_Eyes.jpg"
                   
                 socialNetworks:
                   facebook: "@facebook"
@@ -210,3 +218,97 @@ paths:
             success : false
             total   : 0
 
+
+  /configurations/background/create:
+    post:
+      summary: Creates images backgrounds for the configuration
+      description: |
+        <b>Preconditions:</b> The user must be sign in into the server and be an admin.<br>
+        <b>Postconditions:</b> Some images will be created.
+      parameters:
+        - name: fileUpload
+          in: body
+          schema:
+            type: string
+          description: The image
+      tags:
+        - Users
+      responses:
+        200:
+          description: Successful uploaded
+          schema:
+            status     : 200
+            message    : "Successful uploaded"
+            data       : 
+              _id       : asdasd21323123asd
+              urlx1000xauto   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx1000xauto"
+              urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+              name: "My_Eyes.jpg"
+              timestamps : 
+                createdAt : "11-Agust-12"
+                updatedAt : "11-September-12"
+            success    : true
+            total      : 0
+        401:
+          description: The user doesn't have permissions to unblocked a user or The email doesn't exist.
+          schema:
+            status  : 401
+            message : "You do not have permissions or Record not found"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+
+  /configurations/avatar/create:
+    post:
+      summary: Creates images avatars for the configurations
+      description: |
+        <b>Preconditions:</b> The user must be sign in into the server and be an admin.<br>
+        <b>Postconditions:</b> Some images will be created.
+      parameters:
+        - name: fileUpload
+          in: body
+          schema:
+            type: string
+          description: The image
+      tags:
+        - Users
+      responses:
+        200:
+          description: Successful uploaded
+          schema:
+            status     : 200
+            message    : "Successful uploaded"
+            data       : 
+              _id       : asdasd21323123asd
+              urlxautox50   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlxautox50"
+              urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+              name: "My_Eyes.jpg"
+              timestamps : 
+                createdAt : "11-Agust-12"
+                updatedAt : "11-September-12"
+            success    : true
+            total      : 0
+        401:
+          description: The user doesn't have permissions to unblocked a user or The email doesn't exist.
+          schema:
+            status  : 401
+            message : "You do not have permissions or Record not found"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0

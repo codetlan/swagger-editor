@@ -1,4 +1,4 @@
-gger: '2.0'
+swagger: "2.0"
 info:
   title: Intrinno API
   description: Intrinno API
@@ -50,7 +50,7 @@ paths:
               groups        : 
                 - _id : "asdlkjqlwkejasd"
                   name : "Group 1"
-                - _id : "asdÃƒÆ’Ã‚Â±qweasldm"
+                - _id : "asdÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±qweasldm"
                   name : "Group 2"
               categories    : 
                 - _id : "laskjdlkqjwe"
@@ -396,7 +396,7 @@ paths:
                 photos : 
                   - _id : "ljasldkejkqwes123"
                     name : "photo1.png"
-                    url : "https://aws3.amazon.com/aasÃƒÆ’Ã‚Â±djlqknelknasd.png"
+                    url : "https://aws3.amazon.com/aasÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±djlqknelknasd.png"
                   
                   - _id : "kqwe90u50384r5234"
                     name : "photo2.png"
