@@ -45,9 +45,14 @@ paths:
               objects : 
                 title   : "asdklajqwe123123"
                 description : "Some description"
+                avatar: 
+                urlx1000xauto   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx1000xauto"
+                urlx360x160: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx360x160"
+                urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+                name: "My_Eyes.jpg"
                 status: false
                 interest: 
-                 _id: "12lasdlajsñldjkasd"
+                 _id: "12lasdlajsÃ±ldjkasd"
                  name: Some name
                 likes: 0
                 blocked: false
@@ -73,21 +78,43 @@ paths:
           schema:
            type: string
           description: "ejemplo"
+          required: true
+          
         - name: description
           in: body
           schema:
            type: string
           description: "Some random description"
+          required: true
+          
         - name: status
           in: body
           schema:
            type: string
           description: "opened/created"
+          required: true
+          
         - name: interest
           in: body
           schema: 
             _id: "asdklajqwe123123"
-          description: "{'_id': '12lasdlajsñldjkasd'}"
+          description: "{'_id': '12lasdlajsÃ±ldjkasd'}"
+          required: true
+          
+        - name: avatar
+          in: body
+          schema: 
+            _id       : asdasd21323123asd
+            urlx1000xauto   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx1000xauto"
+            urlx360x160: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx360x160"
+            urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+            name: "My_Eyes.jpg"
+            timestamps : 
+              createdAt : "11-Agust-12"
+              updatedAt : "11-September-12"
+          description: "The image avatar"
+          required: false
+          
       responses:
         200:
           description: The system verifies the session of the current user.
@@ -97,9 +124,15 @@ paths:
             data    :
               title   : "asdklajqwe123123"
               description : "Some description"
+              avatar: 
+                urlx1000xauto   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx1000xauto"
+                urlx360x160: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx360x160"
+                urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+                name: "My_Eyes.jpg"
+                
               status: false
               interest: 
-                _id: "12lasdlajsñldjkasd"
+                _id: "12lasdlajsÃ±ldjkasd"
                 name: Some name
               likes: 0
               blocked: false
@@ -130,27 +163,51 @@ paths:
           in: body
           schema:
            type: string
-          description: "asdlkj12nlvcxlñ9032"
+          description: "asdlkj12nlvcxlÃ±9032"
+          required: true
+          
         - name: title
           in: body
           schema:
            type: string
           description: "ejemplo"
+          required: false
+          
         - name: description
           in: body
           schema:
            type: string
           description: "Some random description"
+          required: false
+          
         - name: status
           in: body
           schema:
            type: string
           description: "opened/created"
+          required: false
+          
         - name: interest
           in: body
           schema: 
             _id: "asdklajqwe123123"
-          description: "{'_id': '12lasdlajsñldjkasd'}"
+          description: "{'_id': '12lasdlajsÃ±ldjkasd'}"
+          required: false
+          
+        - name: avatar
+          in: body
+          schema: 
+            _id       : asdasd21323123asd
+            urlx1000xauto   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx1000xauto"
+            urlx360x160: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx360x160"
+            urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+            name: "My_Eyes.jpg"
+            timestamps : 
+              createdAt : "11-Agust-12"
+              updatedAt : "11-September-12"
+          description: "The image avatar"
+          required: false
+          
       tags:
         - Interests
       responses:
@@ -162,9 +219,14 @@ paths:
             data    :
               title   : "asdklajqwe123123"
               description : "Some description"
+              avatar: 
+                urlx1000xauto   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx1000xauto"
+                urlx360x160: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx360x160"
+                urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+                name: "My_Eyes.jpg"
               status: false
               interest: 
-                _id: "12lasdlajsñldjkasd"
+                _id: "12lasdlajsÃ±ldjkasd"
                 name: Some name
               likes: 0
               blocked: false
@@ -207,9 +269,14 @@ paths:
             data      :
               title   : "asdklajqwe123123"
               description : "Some description"
+              avatar: 
+                urlx1000xauto   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx1000xauto"
+                urlx360x160: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx360x160"
+                urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+                name: "My_Eyes.jpg"
               status: false
               interest: 
-                _id: "12lasdlajsñldjkasd"
+                _id: "12lasdlajsÃ±ldjkasd"
                 name: Some name
               likes: 0
               blocked: false
@@ -244,9 +311,14 @@ paths:
             data      :
               title   : "asdklajqwe123123"
               description : "Some description"
+              avatar: 
+                urlx1000xauto   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx1000xauto"
+                urlx360x160: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx360x160"
+                urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+                name: "My_Eyes.jpg"
               status: false
               interest: 
-                _id: "12lasdlajsñldjkasd"
+                _id: "12lasdlajsÃ±ldjkasd"
                 name: Some name
               likes: 0
               blocked: false
@@ -289,9 +361,14 @@ paths:
             data      :
               title   : "asdklajqwe123123"
               description : "Some description"
+              avatar: 
+                urlx1000xauto   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx1000xauto"
+                urlx360x160: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx360x160"
+                urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+                name: "My_Eyes.jpg"
               status: false
               interest: 
-                _id: "12lasdlajsñldjkasd"
+                _id: "12lasdlajsÃ±ldjkasd"
                 name: Some name
               likes: 0
               blocked: false
@@ -339,9 +416,14 @@ paths:
             data      :
               title   : "asdklajqwe123123"
               description : "Some description"
+              avatar: 
+                urlx1000xauto   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx1000xauto"
+                urlx360x160: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx360x160"
+                urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+                name: "My_Eyes.jpg"
               status: false
               interest: 
-                _id: "12lasdlajsñldjkasd"
+                _id: "12lasdlajsÃ±ldjkasd"
                 name: Some name
               likes: 0
               blocked: false
@@ -384,9 +466,14 @@ paths:
             data      :
               title   : "asdklajqwe123123"
               description : "Some description"
+              avatar: 
+                urlx1000xauto   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx1000xauto"
+                urlx360x160: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx360x160"
+                urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+                name: "My_Eyes.jpg"
               status: false
               interest: 
-                _id: "12lasdlajsñldjkasd"
+                _id: "12lasdlajsÃ±ldjkasd"
                 name: Some name
               likes: 1
               blocked: false
@@ -397,6 +484,54 @@ paths:
           schema:
             status  : 401
             message : "The user doesn't have permissions or record not found"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+            
+  /ideas/images/create:
+    post:
+      summary: Creates images avatars for a user
+      description: |
+        <b>Preconditions:</b> The user must be sign in into the server and be a consultant.<br>
+        <b>Postconditions:</b> Some images will be created.
+      parameters:
+        - name: fileUpload
+          in: body
+          schema:
+            type: string
+          description: The image
+      tags:
+        - Users
+      responses:
+        200:
+          description: Successful uploaded
+          schema:
+            status     : 200
+            message    : "Successful uploaded"
+            data       : 
+              _id       : asdasd21323123asd
+              urlx1000xauto   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx1000xauto"
+              urlx360x160: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx360x160"
+              urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+              name: "My_Eyes.jpg"
+              timestamps : 
+                createdAt : "11-Agust-12"
+                updatedAt : "11-September-12"
+            success    : true
+            total      : 0
+        401:
+          description: The user doesn't have permissions to unblocked a user or The email doesn't exist.
+          schema:
+            status  : 401
+            message : "You do not have permissions or Record not found"
             data    : {}
             success : false
             total   : 0
