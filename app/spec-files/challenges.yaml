@@ -1,4 +1,4 @@
-swagger: '2.0'
+gger: '2.0'
 info:
   title: Intrinno API
   description: Intrinno API
@@ -50,7 +50,7 @@ paths:
               groups        : 
                 - _id : "asdlkjqlwkejasd"
                   name : "Group 1"
-                - _id : "asdÃƒÂ±qweasldm"
+                - _id : "asdÃƒÆ’Ã‚Â±qweasldm"
                   name : "Group 2"
               categories    : 
                 - _id : "laskjdlkqjwe"
@@ -188,14 +188,16 @@ paths:
               objective : "The objective of this challenge"
                 
               avatar: 
-                _id  : "lvasklj1l2hj3qasd"
-                name: "new_avatar.png"
-                url : "https://aws3.amazon.com/asldkjalskd.png"
-                
+                _id       : asdasd21323123asd
+                urlx360x160   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx360x160"
+                urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+                name: "My_Eyes.jpg"
+                            
               background: 
-                _id  : "dsjkbk1op12d01dfasdad"
-                name: "new_background.png"
-                url : "https://aws3.amazon.com/asldkjalskd.png"
+                _id       : asdasd21323123asd
+                urlx1000xauto   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx1000xauto"
+                urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+                name: "My_Eyes.jpg"
                   
               rewards : 
                 - title: "Pack of books"
@@ -360,21 +362,28 @@ paths:
         - name: avatar
           in: body
           schema: 
-            _id: "kajshdlkj1l23hlkasjd"
-            name: "new_avatar.png"
-            url: "https://aws3.amazon.com/asldkjalskd.png"
+            _id       : asdasd21323123asd
+            urlx360x160   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx360x160"
+            urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+            name: "My_Eyes.jpg"
+            timestamps : 
+              createdAt : "11-Agust-12"
+              updatedAt : "11-September-12"
           description: "The object that returns files/create"
-          required: true
+          required: false
           
         - name: background
           in: body
           schema: 
-            _id: "asdasdlkjalskdjlaksjd"
-            name: "new_background.png"
-            url: "https://aws3.amazon.com/asldkjalskd.png"
-            
+            _id       : asdasd21323123asd
+            urlx1000xauto   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx1000xauto"
+            urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+            name: "My_Eyes.jpg"
+            timestamps : 
+              createdAt : "11-Agust-12"
+              updatedAt : "11-September-12"
           description: "The object that returns files/create"
-          required : true
+          required : false
           
         - name : rewards
           in: body 
@@ -387,7 +396,7 @@ paths:
                 photos : 
                   - _id : "ljasldkejkqwes123"
                     name : "photo1.png"
-                    url : "https://aws3.amazon.com/aasÃƒÂ±djlqknelknasd.png"
+                    url : "https://aws3.amazon.com/aasÃƒÆ’Ã‚Â±djlqknelknasd.png"
                   
                   - _id : "kqwe90u50384r5234"
                     name : "photo2.png"
@@ -498,14 +507,16 @@ paths:
                 
                 
               avatar: 
-                _id  : "lvaskdjk1h23joas"
-                name: "new_avatar.png"
-                url : "https://aws3.amazon.com/asldkjalskd.png"
-                
+                _id       : asdasd21323123asd
+                urlx360x160   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx360x160"
+                urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+                name: "My_Eyes.jpg"
+                            
               background: 
-                _id  : "dsjkbk1op12d01dfasdad"
-                name: "new_background.png"
-                url : "https://aws3.amazon.com/asldkjalskd.png"
+                _id       : asdasd21323123asd
+                urlx1000xauto   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx1000xauto"
+                urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+                name: "My_Eyes.jpg"
                   
               rewards : 
                 - title: "Pack of books"
@@ -520,9 +531,9 @@ paths:
               createdBy : 
                 _id : "asdlkjaslkdlqhwlekj"
                 avatar : 
-                  _id: "12i3ojsaldkjaslkd"
-                  name : "avatar.jpg"
-                  url : "https://aws3.amazon.com/asldkjalsk123123d123123.png"
+                  urlx360x160   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx360x160"
+                  urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+                  name: "My_Eyes.jpg"
                 firstName: "Leon"
                 lastName: "S. Kennedy"
                 email : "user@example.com"
@@ -685,18 +696,28 @@ paths:
         - name: avatar
           in: body
           schema: 
-            _id: "kajshdlkj1l23hlkasjd"
-            name: "new_avatar.png"
-            url: "https://aws3.amazon.com/asldkjalskd.png"
+            _id       : asdasd21323123asd
+            urlx360x160   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx360x160"
+            urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+            name: "My_Eyes.jpg"
+            timestamps : 
+              createdAt : "11-Agust-12"
+              updatedAt : "11-September-12"
           description: "The object that returns files/create"
           required: false
           
         - name: background
           in: body
           schema: 
-            _id: "asdasdlkjalskdjlaksjd"
-            name: "new_background.png"
-            url: "https://aws3.amazon.com/asldkjalskd.png"
+            _id       : asdasd21323123asd
+            urlx1000xauto   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx1000xauto"
+            urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+            name: "My_Eyes.jpg"
+            timestamps : 
+              createdAt : "11-Agust-12"
+              updatedAt : "11-September-12"
+          description: "The object that returns files/create"
+          required : false
             
           description: "The object that returns files/create"
           required : false
@@ -822,14 +843,16 @@ paths:
               objective : "The objective of this challenge"
                 
               avatar: 
-                _id  : "lvaslkdjl1kjlkasd"
-                name: "new_avatar.png"
-                url : "https://aws3.amazon.com/asldkjalskd.png"
-                
+                _id       : asdasd21323123asd
+                urlx360x160   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx360x160"
+                urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+                name: "My_Eyes.jpg"
+                            
               background: 
-                _id  : "dsjkbk1op12d01dfasdad"
-                name: "new_background.png"
-                url : "https://aws3.amazon.com/asldkjalskd.png"
+                _id       : asdasd21323123asd
+                urlx1000xauto   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx1000xauto"
+                urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+                name: "My_Eyes.jpg"
                   
               rewards : 
                 - title: "Pack of books"
@@ -987,14 +1010,16 @@ paths:
               objective : "The objective of this challenge"
                 
               avatar: 
-                _id  : "laslkdlqnjb1923"
-                name: "new_avatar.png"
-                url : "https://aws3.amazon.com/asldkjalskd.png"
-                
+                _id       : asdasd21323123asd
+                urlx360x160   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx360x160"
+                urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+                name: "My_Eyes.jpg"
+                            
               background: 
-                _id  : "dsjkbk1op12d01dfasdad"
-                name: "new_background.png"
-                url : "https://aws3.amazon.com/asldkjalskd.png"
+                _id       : asdasd21323123asd
+                urlx1000xauto   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx1000xauto"
+                urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+                name: "My_Eyes.jpg"
                   
               rewards : 
                 - title: "Pack of books"
@@ -1141,14 +1166,16 @@ paths:
               objective : "The objective of this challenge"
                 
               avatar: 
-                _id  : "laslkj1kwjblvkhkbkjnsd"
-                name: "new_avatar.png"
-                url : "https://aws3.amazon.com/asldkjalskd.png"
-                
+                _id       : asdasd21323123asd
+                urlx360x160   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx360x160"
+                urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+                name: "My_Eyes.jpg"
+                            
               background: 
-                _id  : "dsjkbk1op12d01dfasdad"
-                name: "new_background.png"
-                url : "https://aws3.amazon.com/asldkjalskd.png"
+                _id       : asdasd21323123asd
+                urlx1000xauto   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx1000xauto"
+                urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+                name: "My_Eyes.jpg"
                   
               rewards : 
                 - title: "Pack of books"
@@ -1295,14 +1322,16 @@ paths:
               objective : "The objective of this challenge"
                 
               avatar: 
-                _id  : "lvaslkdjlansdkansd"
-                name: "new_avatar.png"
-                url : "https://aws3.amazon.com/asldkjalskd.png"
-                
+                _id       : asdasd21323123asd
+                urlx360x160   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx360x160"
+                urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+                name: "My_Eyes.jpg"
+                            
               background: 
-                _id  : "dsjkbk1op12d01dfasdad"
-                name: "new_background.png"
-                url : "https://aws3.amazon.com/asldkjalskd.png"
+                _id       : asdasd21323123asd
+                urlx1000xauto   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx1000xauto"
+                urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+                name: "My_Eyes.jpg"
                   
               rewards : 
                 - title: "Pack of books"
@@ -1584,6 +1613,100 @@ paths:
           schema:
             status  : 500
             message : "Some internal error occurs"
+            data    : {}
+            success : false
+            total   : 0
+
+  /challenges/background/create:
+    post:
+      summary: Creates images backgrounds for the challenge
+      description: |
+        <b>Preconditions:</b> The user must be sign in into the server and be an admin.<br>
+        <b>Postconditions:</b> Some images will be created.
+      parameters:
+        - name: fileUpload
+          in: body
+          schema:
+            type: string
+          description: The image
+      tags:
+        - Users
+      responses:
+        200:
+          description: Successful uploaded
+          schema:
+            status     : 200
+            message    : "Successful uploaded"
+            data       : 
+              _id       : asdasd21323123asd
+              urlx1000xauto   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx1000xauto"
+              urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+              name: "My_Eyes.jpg"
+              timestamps : 
+                createdAt : "11-Agust-12"
+                updatedAt : "11-September-12"
+            success    : true
+            total      : 0
+        401:
+          description: The user doesn't have permissions to unblocked a user or The email doesn't exist.
+          schema:
+            status  : 401
+            message : "You do not have permissions or Record not found"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+
+  /challenges/avatar/create:
+    post:
+      summary: Creates images avatars for the challenge
+      description: |
+        <b>Preconditions:</b> The user must be sign in into the server and be an admin.<br>
+        <b>Postconditions:</b> Some images will be created.
+      parameters:
+        - name: fileUpload
+          in: body
+          schema:
+            type: string
+          description: The image
+      tags:
+        - Users
+      responses:
+        200:
+          description: Successful uploaded
+          schema:
+            status     : 200
+            message    : "Successful uploaded"
+            data       : 
+              _id       : asdasd21323123asd
+              urlx360x160   : "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_urlx360x160"
+              urlOriginal: "https://intrinno.s3.amazonaws.com/KsQ45uyHKcNXP1KUQ9zwpAU8WldRP1V7IQlHsSjmT7nB66IGhN54c15b0e1df63960216b2b77_original"
+              name: "My_Eyes.jpg"
+              timestamps : 
+                createdAt : "11-Agust-12"
+                updatedAt : "11-September-12"
+            success    : true
+            total      : 0
+        401:
+          description: The user doesn't have permissions to unblocked a user or The email doesn't exist.
+          schema:
+            status  : 401
+            message : "You do not have permissions or Record not found"
+            data    : {}
+            success : false
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
             data    : {}
             success : false
             total   : 0
