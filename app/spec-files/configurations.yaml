@@ -268,7 +268,7 @@ paths:
 
   /configurations/avatar/create:
     post:
-      summary: Creates images avatars for the configurations
+      summary: Creates images logo for the configurations
       description: |
         <b>Preconditions:</b> The user must be sign in into the server and be an admin.<br>
         <b>Postconditions:</b> Some images will be created.
