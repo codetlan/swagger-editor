@@ -41,7 +41,7 @@ paths:
               role    : "admin/consultant"
               blocked : "true/false"
               group   : "Some random group"
-              serch   : "Some random name" 
+              search   : "Some random name" 
           description: "'filter': {role: 'admin/consultant', 'blocked': true/false, 'group': 'Some random group', 'search': 'Some random name'"
           required: true
       responses:
@@ -55,6 +55,7 @@ paths:
                 _id   : "asdklajqwe123123"
                 email : "user@example.com"
                 role  : "admin/consultant"
+                active : "true/false"
                 avatar: 
                   id  : "asdasd"
                   name: "new_avatar.png"
@@ -176,7 +177,7 @@ paths:
         - name: group
           in: body
           schema:
-           _id: asdlk1290231ÃƒÆ’Ã‚Â±lkdaskj
+           _id: asdlk129023ajsdhasdhaksjdh
            name   : New group
            
         - name : settings
@@ -235,7 +236,7 @@ paths:
                period : 2013-
                company: Bussiness Stuff
               group:
-               _id: asdlk1290231ÃƒÆ’Ã‚Â±lkdaskj
+               _id: asdlk12qewjasdashdkajshd
                name   : New group
               
               settings:
@@ -311,7 +312,7 @@ paths:
                period : 2013-
                company: Bussiness Stuff
               group:
-               _id: asdlk1290231ÃƒÆ’Ã‚Â±lkdaskj
+               _id: asdlk129023asiduausydguasgd
                name   : New group
             success : true
             total   : 0
