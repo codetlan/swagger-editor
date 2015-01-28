@@ -47,10 +47,11 @@ paths:
               blocked       : "true/false"
               accessibility : "public/private"
               title         : "Some random title"
+              order         : "desc/asc"
               groups        : 
                 - _id : "asdlkjqlwkejasd"
                   name : "Group 1"
-                - _id : "asdÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±qweasldm"
+                - _id : "asdiuhaksjdhaksjdkajshd"
                   name : "Group 2"
               categories    : 
                 - _id : "laskjdlkqjwe"
@@ -396,7 +397,7 @@ paths:
                 photos : 
                   - _id : "ljasldkejkqwes123"
                     name : "photo1.png"
-                    url : "https://aws3.amazon.com/aasÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â±djlqknelknasd.png"
+                    url : "https://aws3.amazon.com/aa213asjdhvasjhelknasd.png"
                   
                   - _id : "kqwe90u50384r5234"
                     name : "photo2.png"
