@@ -34,6 +34,7 @@ paths:
           in: body
           schema:
            _id: "asdklajqwe123123"
+           title : "String to search"
           description: "{'interest' : 'Id model interest'}"
       responses:
         200:
@@ -52,7 +53,7 @@ paths:
                 name: "My_Eyes.jpg"
                 status: false
                 interest: 
-                 _id: "12lasdlajsÃ±ldjkasd"
+                 _id: "12lasdlashdasdjkasd"
                  name: Some name
                 likes: 0
                 blocked: false
@@ -98,7 +99,7 @@ paths:
           in: body
           schema: 
             _id: "asdklajqwe123123"
-          description: "{'_id': '12lasdlajsÃ±ldjkasd'}"
+          description: "{'_id': '12lasdlasddjkasd'}"
           required: true
           
         - name: avatar
@@ -132,7 +133,7 @@ paths:
                 
               status: false
               interest: 
-                _id: "12lasdlajsÃ±ldjkasd"
+                _id: "12lasdlaasdldjkasd"
                 name: Some name
               likes: 0
               blocked: false
@@ -163,7 +164,7 @@ paths:
           in: body
           schema:
            type: string
-          description: "asdlkj12nlvcxlÃ±9032"
+          description: "asdlkj12nlvcxlashd9032"
           required: true
           
         - name: title
@@ -191,7 +192,7 @@ paths:
           in: body
           schema: 
             _id: "asdklajqwe123123"
-          description: "{'_id': '12lasdlajsÃ±ldjkasd'}"
+          description: "{'_id': '12lasdlajasjhdldjkasd'}"
           required: false
           
         - name: avatar
@@ -226,7 +227,7 @@ paths:
                 name: "My_Eyes.jpg"
               status: false
               interest: 
-                _id: "12lasdlajsÃ±ldjkasd"
+                _id: "12lasdlajsasdhldjkasd"
                 name: Some name
               likes: 0
               blocked: false
@@ -276,7 +277,7 @@ paths:
                 name: "My_Eyes.jpg"
               status: false
               interest: 
-                _id: "12lasdlajsÃ±ldjkasd"
+                _id: "12lasdlajsasdjhldjkasd"
                 name: Some name
               likes: 0
               blocked: false
@@ -318,7 +319,7 @@ paths:
                 name: "My_Eyes.jpg"
               status: false
               interest: 
-                _id: "12lasdlajsÃ±ldjkasd"
+                _id: "12lasdlajsasjhdldjkasd"
                 name: Some name
               likes: 0
               blocked: false
@@ -368,7 +369,7 @@ paths:
                 name: "My_Eyes.jpg"
               status: false
               interest: 
-                _id: "12lasdlajsÃ±ldjkasd"
+                _id: "12lasdlajsasjdhldjkasd"
                 name: Some name
               likes: 0
               blocked: false
@@ -423,7 +424,7 @@ paths:
                 name: "My_Eyes.jpg"
               status: false
               interest: 
-                _id: "12lasdlajsÃ±ldjkasd"
+                _id: "12lasdlajsashjdldjkasd"
                 name: Some name
               likes: 0
               blocked: false
@@ -473,7 +474,7 @@ paths:
                 name: "My_Eyes.jpg"
               status: false
               interest: 
-                _id: "12lasdlajsÃ±ldjkasd"
+                _id: "12lasdlajashdldjkasd"
                 name: Some name
               likes: 1
               blocked: false
