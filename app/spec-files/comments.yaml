@@ -261,7 +261,7 @@ paths:
               _id   : "asdklajqwe123123"
               text : "Some message"
               files: 
-                _id: "12lasdlajsÃ±ldjkasd"
+                _id: "12lasdlajakjsdhldjkasd"
                 name: "new_file.docx"
                 url: "https://aws3.amazon.com/asldkjalsk123d.docx"
               commentsBelow: "1/2/3"
@@ -322,6 +322,7 @@ paths:
                   reported: true
                   blocked: false
                   createdBy: {}
+                  reportedBy : {}
                   timestamps: 
                     createdAt : "random date"
                     updatedAt : "random date"
