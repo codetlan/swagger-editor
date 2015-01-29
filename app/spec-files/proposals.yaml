@@ -45,6 +45,7 @@ paths:
             delivered   : "true/false"
             owner       : "true/false"
             admin       : "true/false"
+            search      : "String to search"
           description: |
             All the fields of filter are optionals. 
             The flag admin indicates if the
@@ -204,7 +205,7 @@ paths:
                     createdAt: "20-August-2014"
                     updatedAt: "21-August-2014"
                   createdBy :
-                    _id : "asdlkjalaskdalÃ±ksd123"
+                    _id : "asdlkjalasasjdhaskjdha"
                     avatar :
                       _id: "12i3ojsaldkjaslkd"
                       name : "avatar.jpg"
@@ -258,7 +259,7 @@ paths:
                 objective : "The objective of this challenge"
 
                 avatar:
-                  _id  : "lvÃ±alkslaksdlkasdvnl"
+                  _id  : "lajshdjasdkslaksdlkasdvnl"
                   name: "new_avatar.png"
                   url : "https://aws3.amazon.com/asldkjalskd.png"
 
