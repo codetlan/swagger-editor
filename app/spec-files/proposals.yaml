@@ -46,6 +46,7 @@ paths:
             owner       : "true/false"
             admin       : "true/false"
             search      : "String to search"
+            sortCreatedAt: "true/false"
           description: |
             All the fields of filter are optionals. 
             The flag admin indicates if the

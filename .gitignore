@@ -12,3 +12,5 @@ app/bower_components
 buttons.diff
 .idea
 *.iml
+
+.vagrant
