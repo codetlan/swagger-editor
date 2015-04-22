@@ -203,6 +203,14 @@ paths:
           description: "The messages that are going to be show per page"
           required: true
           
+        - name: filter
+          in: body
+          schema:
+           filter: 
+            read: "true/false"
+          description: "Filters to be apply"
+          required: false
+          
       responses:
         200:
           description: List messages
