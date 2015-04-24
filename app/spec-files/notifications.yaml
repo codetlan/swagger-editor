@@ -316,3 +316,20 @@ paths:
             total   : 0
             
  
+  /messages/reset:
+    post:
+      summary: Update messages count to zero
+      tags:
+        - Messages
+          
+      responses:
+        200:
+          description: Count reseted
+          schema:
+            status  : 200
+            message : "Count reseted"
+            data    : {}
+            success : true
+            total   : 0
+
+ 
