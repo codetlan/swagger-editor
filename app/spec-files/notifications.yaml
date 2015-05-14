@@ -181,7 +181,27 @@ paths:
             data    : {}
             success : false
             total   : 0
+
+  /notifications/reset:
+    post:
+      summary: Update notifications count to zero
+      tags:
+        - Notifications
+          
+      responses:
+        200:
+          description: Count reseted
+          schema:
+            status  : 200
+            message : "Count reseted"
+            data    : {}
+            success : true
+            total   : 0
+
+ 
             
+            
+
   /messages/index:
     post:
       summary: List Messages
