@@ -182,6 +182,56 @@ paths:
             success : false
             total   : 0
 
+  /notifications/remove:
+    post:
+      summary: Remove notification
+      tags:
+        - Notifications
+      parameters:
+      
+        - name: _id
+          in: body
+          schema:
+           type: string
+          description: The _id of the notification
+          required : true
+          
+      responses:
+        200:
+          description: Remove notifications
+          schema:
+            status  : 200
+            message : "Notification removed"
+            data      :
+              _id   : "asldjl1n2l3j"
+              notificationableType : "idea"
+              notificationableId   : "asl123asdmn12i3"
+              read : true
+              blocked : false
+              kind    : 2
+              user  :
+                firstName : "User"
+                lastName  : "Example"
+                avatar    : {}
+              createdBy:
+                firstName : "User 2"
+                lastName : "Example 2"
+                avatar : {}
+              timestamps: 
+                createdAt : "random date"
+                updatedAt : "random date"
+            success : true
+            total   : 0
+        500:
+          description: Some internal error occurs
+          schema:
+            status  : 500
+            message : "Some internal error ocurrs"
+            data    : {}
+            success : false
+            total   : 0
+
+
   /notifications/reset:
     post:
       summary: Update notifications count to zero
